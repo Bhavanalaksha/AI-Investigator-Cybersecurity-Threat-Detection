@@ -1,0 +1,42 @@
+# Python virtual environment
+venv/
+.venv/
+.env
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.coverage
+htmlcov/
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# Node modules
+node_modules/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Raw large dataset archives (>100MB)
+data/raw/*.gz
+data/raw/*.txt.gz
+data/raw/*.tar.gz
+data/raw/*.zip
+*.gz
+*.tar.gz
+*.zip

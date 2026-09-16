@@ -1,0 +1,44 @@
+============================================================
+DATA PREPROCESSING & NORMALIZATION SUMMARY
+============================================================
+
+1. DATASET OVERVIEW
+------------------------------------------------------------
+Processed File:         C:\Users\WELCOME\Desktop\mini_proj\data\processed\events_processed.csv
+Total Processed Events: 130,497
+Ground-Truth Red-Team:  497
+File Size:              13.61 MB
+
+2. TIME BOUNDARIES & TEMPORAL SPREAD
+------------------------------------------------------------
+Timestamp Min:          691201 (Day 9)
+Timestamp Max:          1123259 (Day 14)
+Duration:               432058 seconds
+
+Events by Day:
+  Day 9:   16,049 events
+  Day 10:    2,050 events
+  Day 11:    2,092 events
+  Day 12:    2,719 events
+  Day 13:  106,788 events
+  Day 14:      799 events
+
+3. EVENT TYPE COMPOSITION
+------------------------------------------------------------
+  AUTH        :   55,000 events ( 42.1%)
+  DNS         :   25,000 events ( 19.2%)
+  PROCESS     :   25,000 events ( 19.2%)
+  FLOW        :   25,000 events ( 19.2%)
+  REDTEAM     :      497 events (  0.4%)
+
+4. DATA INTEGRITY & HYGIENE
+------------------------------------------------------------
+- Missing Values: Standardized to empty string for text fields
+- Schema Integrity: Verified all required columns present
+- Chronological Order: Strictly sorted by timestamp ascending
+- Ground-Truth Integrity: Verified 497 red-team attack labels preserved
+- Derived Features Added: day, time_in_day_sec, hour_of_day, event_id
+
+============================================================
+PREPROCESSING COMPLETE
+============================================================

@@ -1,0 +1,56 @@
+============================================================
+LANL CYBERSECURITY MULTI-SOURCE SUBSET METADATA & STATISTICS
+============================================================
+
+1. INVESTIGATION WINDOW DEFINITION & RECONCILIATION
+------------------------------------------------------------
+Investigation Window: Day 9 to Day 13 (inclusive, 5 days)
+Day Indexing: 1-based (day = timestamp // 86400 + 1)
+Start Timestamp: 691200 (8 * 86400)
+End Timestamp:   1123200 (13 * 86400)
+Total Window Duration: 432000 seconds (120 hours)
+
+Window Discrepancy Note:
+An earlier script used 777600 to 1209600 (Day 10-14, 305 redteam events).
+The reconciled window 691200 to 1123200 correctly corresponds to Day 9-13
+and captures all 497 peak rolling 5-day red-team attack events.
+
+2. OVERALL SUBSET TOTALS
+------------------------------------------------------------
+Total Events in Subset:   130,497
+Red-Team Attack Events:   497
+Unique Users in Subset:   11,510
+Unique Hosts in Subset:   9,050
+Timestamp Min:            691201
+Timestamp Max:            1123259
+
+3. DISTRIBUTION BY EVENT SOURCE
+------------------------------------------------------------
+AUTH        :   55,000 events ( 42.1%)
+DNS         :   25,000 events ( 19.2%)
+PROCESS     :   25,000 events ( 19.2%)
+FLOW        :   25,000 events ( 19.2%)
+REDTEAM     :      497 events (  0.4%)
+
+4. BREAKDOWN BY TELEMETRY RELEVANCE
+------------------------------------------------------------
+Source        Relevant Kept      Background Kept     Total In Window
+------------------------------------------------------------
+AUTH                50,000              5,000          85,585,319
+PROCESS             20,000              5,000          32,143,453
+DNS                 20,000              5,000             336,050
+FLOW                20,000              5,000          36,197,767
+REDTEAM                497                  0                 497
+------------------------------------------------------------
+TOTAL              110,497             20,000         154,263,086
+
+5. RED-TEAM GROUND TRUTH ENTITIES
+------------------------------------------------------------
+Attack Users (71): ['U10379@C3521', 'U1048@DOM1', 'U1133@DOM1', 'U1145@DOM1', 'U1164@DOM1', 'U1289@DOM1', 'U12@DOM1', 'U13@DOM1', 'U1450@DOM1', 'U1480@DOM1', 'U1519@DOM1', 'U1569@DOM1', 'U1581@DOM1', 'U1592@DOM1', 'U1600@DOM1'] ...
+Attack Hosts (240): ['C1', 'C10005', 'C1006', 'C1014', 'C1015', 'C102', 'C1022', 'C1028', 'C1042', 'C10577', 'C10817', 'C1085', 'C1089', 'C1096', 'C11039'] ...
+
+6. FILE LOCATION
+------------------------------------------------------------
+Saved CSV: C:\Users\WELCOME\Desktop\mini_proj\data\subset\multisource_subset.csv
+File size: 10.66 MB
+============================================================

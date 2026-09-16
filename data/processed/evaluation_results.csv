@@ -1,0 +1,16 @@
+Metric,Value,Category
+True Positives (TP),497.0,Event-Level
+False Positives (FP),58885.0,Event-Level
+True Negatives (TN),71115.0,Event-Level
+False Negatives (FN),0.0,Event-Level
+Precision,0.0084,Event-Level
+Recall (Sensitivity),1.0,Event-Level
+Specificity,0.547,Event-Level
+F1-Score,0.0166,Event-Level
+Accuracy,0.5488,Event-Level
+Total Ground-Truth Red-Team Events,497.0,Incident-Level
+Captured Red-Team Events in Incidents,497.0,Incident-Level
+Incident Red-Team Coverage (%),100.0,Incident-Level
+Total Correlated Incidents,1105.0,Incident-Level
+Incidents with Red-Team Activity,28.0,Incident-Level
+Alert Fatigue Reduction Rate (%),99.15,Incident-Level
