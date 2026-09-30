@@ -1,0 +1,7 @@
+Window,System,Total_Events,RedTeam_Events,TP,FP,FN,TN,Precision,Recall,F1,Specificity,Accuracy,Incident_Count,Runtime_Sec
+Window 1: Full Campaign (Day 9–13),Phase 1 Baseline,129698,497,497,58381,0,70820,0.84,100.0,1.67,54.81,54.99,1098,0.15
+Window 1: Full Campaign (Day 9–13),Phase 2 Multi-Agent,129698,497,497,56954,0,72247,0.87,100.0,1.72,55.92,56.09,1069,39.97
+Window 2: Initial Penetration (Day 9–10),Phase 1 Baseline,18099,288,288,73,0,17738,79.78,100.0,88.75,99.59,99.6,153,0.05
+Window 2: Initial Penetration (Day 9–10),Phase 2 Multi-Agent,18099,288,288,0,0,17811,100.0,100.0,100.0,100.0,100.0,19,0.47
+Window 3: Infiltration & Escalation (Day 12–13),Phase 1 Baseline,109507,209,209,58304,0,50994,0.36,100.0,0.71,46.66,46.76,927,0.11
+Window 3: Infiltration & Escalation (Day 12–13),Phase 2 Multi-Agent,109507,209,209,56952,0,52346,0.37,100.0,0.73,47.89,47.99,1048,39.1

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Investigator — Unified Cybersecurity Threat Detection & Response</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v=2.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="soc-dark">
+    <!-- APP HEADER -->
+    <header class="soc-header">
+        <div class="header-left">
+            <div class="logo-shield">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+            </div>
+            <div>
+                <div class="header-brand-row">
+                    <h1 class="header-title">AI INVESTIGATOR</h1>
+                    <span class="header-tagline">Detect. Investigate. Respond.</span>
+                </div>
+                <p class="header-subtitle">Multi-Agent Cybersecurity Threat Detection & Response</p>
+            </div>
+        </div>
+
+        <div class="header-center">
+            <nav class="nav-tabs" id="main-nav">
+                <button class="nav-tab active" data-tab="tab-dashboard" id="nav-dashboard">
+                    <span class="tab-icon">📊</span> Dashboard
+                </button>
+                <button class="nav-tab highlight" data-tab="tab-detect" id="nav-detect">
+                    <span class="tab-icon">🔍</span> Detect New Threat
+                </button>
+                <button class="nav-tab" data-tab="tab-incidents" id="nav-incidents">
+                    <span class="tab-icon">🚨</span> Incidents
+                </button>
+                <button class="nav-tab" data-tab="tab-simulation" id="nav-simulation">
+                    <span class="tab-icon">▶</span> Live Simulation
+                </button>
+                <button class="nav-tab" data-tab="tab-research" id="nav-research">
+                    <span class="tab-icon">🔬</span> Research
+                </button>
+                <button class="nav-tab" data-tab="tab-agents" id="nav-agents">
+                    <span class="tab-icon">🏛️</span> Agent Details
+                </button>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <div class="status-badge online" id="system-status-indicator">
+                <span class="status-dot"></span>
+                <span>SYSTEM ONLINE</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN VIEWPORT CONTAINER -->
+    <main class="main-viewport">
+        
+        <!-- ======================================================== -->
+        <!-- 1. HOME / DASHBOARD TAB                                  -->
+        <!-- ======================================================== -->
+        <section id="tab-dashboard" class="tab-pane active">
+            <div class="dashboard-hero">
+                <div class="hero-badge">Autonomous SOC Intelligence</div>
+                <h2 class="hero-title">What would you like to investigate?</h2>
+                <p class="hero-desc">
+                    AI Investigator analyzes security logs, identifies suspicious behavior, correlates evidence
+                    across multiple security domains, and helps analysts investigate and respond to threats.
+                </p>
+            </div>
+
+            <!-- THREE PRIMARY ACTION CARDS -->
+            <div class="action-cards-grid">
+                <!-- CARD 1 (PRIMARY FEATURE) -->
+                <div class="action-card primary-action" id="card-detect-action">
+                    <div class="card-icon-wrap">
+                        <span class="action-icon">🔍</span>
+                    </div>
+                    <div class="card-badge primary">PRIMARY CAPABILITY</div>
+                    <h3 class="action-title">DETECT NEW THREAT</h3>
+                    <p class="action-desc">
+                        Upload security logs and investigate previously unseen suspicious activity using behavioral analysis, threat intelligence, and multi-agent correlation.
+                    </p>
+                    <button class="btn btn-primary btn-large" id="btn-hero-detect">
+                        ANALYZE NEW LOG →
+                    </button>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="action-card" id="card-incidents-action">
+                    <div class="card-icon-wrap">
+                        <span class="action-icon">🚨</span>
+                    </div>
+                    <div class="card-badge">INCIDENT QUEUE</div>
+                    <h3 class="action-title">INVESTIGATE INCIDENTS</h3>
+                    <p class="action-desc">
+                        Review detected threats, compound evidence, multi-source activity chains, transparent risk scores, and response recommendations.
+                    </p>
+                    <button class="btn btn-secondary btn-large" id="btn-hero-incidents">
+                        VIEW INCIDENTS →
+                    </button>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="action-card" id="card-simulation-action">
+                    <div class="card-icon-wrap">
+                        <span class="action-icon">▶</span>
+                    </div>
+                    <div class="card-badge simulation">BENCHMARK DEMO</div>
+                    <h3 class="action-title">LIVE ATTACK SIMULATION</h3>
+                    <p class="action-desc">
+                        Replay historical LANL multi-source cybersecurity events as a controlled demonstration of real-time event streaming and autonomous triage.
+                    </p>
+                    <button class="btn btn-ghost btn-large" id="btn-hero-simulation">
+                        START SIMULATION →
+                    </button>
+                </div>
+            </div>
+
+            <!-- QUICK DEMO BOX -->
+            <div class="quick-demo-container">
+                <div class="quick-demo-card">
+                    <div class="quick-demo-left">
+                        <div class="demo-icon">⚡</div>
+                        <div>
+                            <div class="quick-demo-tag-row">
+                                <span class="tag tag-demo">QUICK DEMO</span>
+                                <span class="tag tag-label">Sample attack scenario</span>
+                                <span class="tag tag-safe">Demonstration data — not a live attack</span>
+                            </div>
+                            <h4 class="quick-demo-title">Want to see the investigator working?</h4>
+                            <p class="quick-demo-desc">
+                                Execute our realistic multi-stage test scenario (Operation Shadow Breach) simulating NTLM brute force, lateral movement, LOLBins, and data exfiltration without any pre-labeled ground truth.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="quick-demo-actions">
+                        <button class="btn btn-demo-run" id="btn-quick-demo">
+                            ⚡ ANALYZE SAMPLE ATTACK
+                        </button>
+                        <a href="/api/download/sample-attack" class="btn btn-link" download="test_attack.csv">
+                            📥 Download test_attack.csv
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SYSTEM OVERVIEW METRICS -->
+            <div class="section-header-compact">
+                <h3 class="section-title-sm">SYSTEM OVERVIEW</h3>
+                <span class="system-meta-text">Real-time statistics from backend engine</span>
+            </div>
+            <div class="overview-metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Events Analyzed</div>
+                    <div class="metric-value" id="kpi-events-analyzed">0</div>
+                    <div class="metric-sub">Security log telemetry ingested</div>
+                </div>
+                <div class="metric-card alert">
+                    <div class="metric-label">Threats Detected</div>
+                    <div class="metric-value text-red" id="kpi-threats-detected">0</div>
+                    <div class="metric-sub">Anomalies & suspicious behaviors</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Active Incidents</div>
+                    <div class="metric-value text-cyan" id="kpi-active-incidents">0</div>
+                    <div class="metric-sub">Multi-agent correlated cases</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">High / Critical Incidents</div>
+                    <div class="metric-value text-amber" id="kpi-critical-incidents">0</div>
+                    <div class="metric-sub">High priority review queue</div>
+                </div>
+            </div>
+
+            <!-- RECENT ACTIVITY LIST -->
+            <div class="section-header-compact" style="margin-top: 28px;">
+                <h3 class="section-title-sm">RECENT ACTIVITY</h3>
+                <span class="system-meta-text">Latest security incidents under active review</span>
+            </div>
+            <div class="recent-incidents-panel">
+                <div id="recent-incidents-list" class="recent-incidents-list">
+                    <div class="empty-state">
+                        No recent incidents recorded yet. Analyze a log file or start the simulation to generate incidents.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- 2. DETECT NEW THREAT TAB (CORE FEATURE)                  -->
+        <!-- ======================================================== -->
+        <section id="tab-detect" class="tab-pane">
+            <div class="page-header">
+                <div>
+                    <h2 class="page-title">Detect a New Threat</h2>
+                    <p class="page-subtitle">
+                        Upload security logs and let the AI Investigator analyze them using multiple cybersecurity agents.
+                    </p>
+                </div>
+                <div class="claim-disclaimer">
+                    <span class="info-icon">ℹ️</span>
+                    <span>Identifies suspicious and anomalous behavior in previously unseen security logs using behavioral analysis, threat intelligence and multi-agent correlation.</span>
+                </div>
+            </div>
+
+            <!-- LOG UPLOAD ZONE -->
+            <div class="upload-container">
+                <div class="dropzone" id="log-dropzone">
+                    <input type="file" id="log-file-input" accept=".csv,.json,.jsonl,.log,.txt,.cef" style="display: none;">
+                    <div class="dropzone-icon">📁</div>
+                    <h3 class="dropzone-title">Drop security log here</h3>
+                    <p class="dropzone-sub">or click below to browse files from your computer</p>
+                    <button class="btn btn-secondary" id="btn-browse-file" type="button">
+                        [ Choose File ]
+                    </button>
+                    <div class="dropzone-formats">
+                        <span class="format-pill">CSV</span>
+                        <span class="format-pill">JSON</span>
+                        <span class="format-pill">JSONL</span>
+                        <span class="format-pill">Syslog</span>
+                        <span class="format-pill">CEF</span>
+                    </div>
+                    <div class="sample-hint">
+                        Tip: You can test with <strong>test_attack.csv</strong> located on your Desktop or Downloads folder.
+                    </div>
+                </div>
+
+                <!-- SELECTED FILE STATUS BAR -->
+                <div class="file-status-bar" id="file-status-bar" style="display: none;">
+                    <div class="file-status-left">
+                        <span class="file-icon">📄</span>
+                        <div class="file-details">
+                            <div class="file-name" id="selected-file-name">filename.csv</div>
+                            <div class="file-meta">
+                                Format: <strong id="selected-file-format">CSV</strong> • 
+                                Size: <span id="selected-file-size">0 KB</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="file-status-right">
+                        <button class="btn btn-primary btn-large" id="btn-run-analysis">
+                            🚀 ANALYZE THREAT
+                        </button>
+                        <button class="btn btn-ghost" id="btn-clear-file">✕</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANALYSIS PROGRESS BAR & STAGES -->
+            <div class="analysis-progress-card" id="analysis-progress-card" style="display: none;">
+                <div class="progress-header">
+                    <div class="progress-title-row">
+                        <span class="spinner"></span>
+                        <h4 class="progress-title">AI Investigator is analyzing your security logs...</h4>
+                    </div>
+                    <span class="progress-elapsed" id="analysis-elapsed-time">0.0s</span>
+                </div>
+                <div class="stages-checklist">
+                    <div class="stage-item" id="stage-1"><span class="stage-bullet">○</span> Parsing security events with Universal Log Parser</div>
+                    <div class="stage-item" id="stage-2"><span class="stage-bullet">○</span> Building adaptive behavioral baseline context</div>
+                    <div class="stage-item" id="stage-3"><span class="stage-bullet">○</span> Checking authentication behavior (AuthenticationAgent)</div>
+                    <div class="stage-item" id="stage-4"><span class="stage-bullet">○</span> Checking endpoint & LOLBin execution (ProcessAgent)</div>
+                    <div class="stage-item" id="stage-5"><span class="stage-bullet">○</span> Checking DNS entropy & flow volume (NetworkAgent)</div>
+                    <div class="stage-item" id="stage-6"><span class="stage-bullet">○</span> Correlating cross-domain events (CorrelationAgent)</div>
+                    <div class="stage-item" id="stage-7"><span class="stage-bullet">○</span> Calculating transparent risk and confidence (AnalysisAgent)</div>
+                    <div class="stage-item" id="stage-8"><span class="stage-bullet">○</span> Generating response recommendations (ResponseAgent)</div>
+                </div>
+            </div>
+
+            <!-- THREAT RESULT CONTAINER -->
+            <div class="threat-result-view" id="threat-result-view" style="display: none;">
+                
+                <!-- RESULT BANNER -->
+                <div class="result-banner" id="result-banner-header">
+                    <div class="result-banner-left">
+                        <div class="result-status-icon" id="result-status-icon">🚨</div>
+                        <div>
+                            <div class="result-status-badge" id="result-status-badge">SUSPICIOUS ACTIVITY DETECTED</div>
+                            <h3 class="result-main-title" id="result-incident-id">INCIDENT INC-0001</h3>
+                        </div>
+                    </div>
+                    <div class="result-banner-scores">
+                        <div class="score-box">
+                            <span class="score-label">Severity</span>
+                            <span class="severity-pill" id="result-severity-pill">HIGH</span>
+                        </div>
+                        <div class="score-box">
+                            <span class="score-label">Transparent Risk</span>
+                            <div class="score-bar-wrap">
+                                <strong class="score-number text-red" id="result-risk-num">63.5/100</strong>
+                                <div class="mini-progress-bar"><div class="bar-fill red" id="bar-risk-fill" style="width: 63%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="score-box">
+                            <span class="score-label">Transparent Confidence</span>
+                            <div class="score-bar-wrap">
+                                <strong class="score-number text-cyan" id="result-confidence-num">50.6/100</strong>
+                                <div class="mini-progress-bar"><div class="bar-fill cyan" id="bar-confidence-fill" style="width: 51%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESULT NARRATIVE & METADATA -->
+                <div class="result-card">
+                    <h4 class="card-section-title">Investigation Explanation</h4>
+                    <p class="narrative-text" id="result-explanation-text">
+                        Loading investigation details...
+                    </p>
+                    <div class="entities-chips-row" id="result-entities-row">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- WHAT DID THE SYSTEM FIND? (CATEGORIZED EVIDENCE) -->
+                <div class="result-card">
+                    <div class="card-header-row">
+                        <h4 class="card-section-title">What Did The System Find?</h4>
+                        <span class="tag-helper">Categorized evidence extracted by specialist agents</span>
+                    </div>
+                    <div class="evidence-grid" id="evidence-categories-grid">
+                        <!-- Categories with evidence injected dynamically -->
+                    </div>
+                </div>
+
+                <!-- DETECTED ATTACK / ACTIVITY CHAIN -->
+                <div class="result-card">
+                    <div class="card-header-row">
+                        <h4 class="card-section-title">Detected Activity Chain</h4>
+                        <span class="tag-helper">Sequential progression corroborated by correlated events</span>
+                    </div>
+                    <div class="activity-chain-container" id="activity-chain-visualizer">
+                        <!-- Injected dynamically -->
+                    </div>
+                </div>
+
+                <!-- RISK & CONFIDENCE SCORING EXPLANATION -->
+                <div class="result-card">
+                    <h4 class="card-section-title">Transparent Risk & Confidence Assessment</h4>
+                    <div class="scoring-explanation-grid">
+                        <div class="score-explain-box">
+                            <div class="explain-header">
+                                <span class="badge-score-type">Transparent Risk Score</span>
+                                <span class="score-val" id="score-explain-risk">63.5 / 100</span>
+                            </div>
+                            <div class="progress-bar-lg"><div class="bar-fill-lg red" id="bar-explain-risk" style="width: 63%;"></div></div>
+                            <p class="explain-desc"><strong>What it means:</strong> How severe the detected activity appears, calculated from compound agent severity weights, blast radius, and privilege scope.</p>
+                        </div>
+                        <div class="score-explain-box">
+                            <div class="explain-header">
+                                <span class="badge-score-type">Transparent Confidence Score</span>
+                                <span class="score-val" id="score-explain-conf">50.6 / 100</span>
+                            </div>
+                            <div class="progress-bar-lg"><div class="bar-fill-lg cyan" id="bar-explain-conf" style="width: 51%;"></div></div>
+                            <p class="explain-desc"><strong>What it means:</strong> How strongly the available evidence supports the finding, derived from cross-domain corroboration, rule certainty, and diagnostic telemetry completeness.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AGENT FINDINGS ACCORDION -->
+                <div class="result-card">
+                    <div class="accordion-header" id="btn-toggle-agent-findings">
+                        <div class="accordion-title-row">
+                            <span class="icon">🏛️</span>
+                            <h4 class="card-section-title" style="margin:0;">View Specialist Agent Findings</h4>
+                            <span class="badge-count" id="agent-findings-count">6 Agents</span>
+                        </div>
+                        <span class="accordion-arrow" id="agent-findings-arrow">▾</span>
+                    </div>
+                    <div class="accordion-content" id="agent-findings-content" style="display: none;">
+                        <div class="agent-findings-cards-list" id="agent-findings-list">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESPONSE RECOMMENDATION & HUMAN REVIEW -->
+                <div class="response-review-split">
+                    <!-- RESPONSE RECOMMENDATION -->
+                    <div class="result-card response-card">
+                        <div class="response-header">
+                            <div>
+                                <span class="response-priority-badge" id="result-response-priority">P2 - HIGH PRIORITY</span>
+                                <h4 class="response-action-title" id="result-response-action">Tier-2 SOC Analyst Review & Target Host Monitoring</h4>
+                            </div>
+                            <div class="human-enforced-badge">
+                                ⚠️ Human Approval Required: Enforced
+                            </div>
+                        </div>
+                        <div class="response-body">
+                            <div class="playbook-section">
+                                <div class="steps-heading">Recommended Investigation Steps:</div>
+                                <ul class="steps-list" id="result-investigation-steps">
+                                    <li>Audit active sessions for involved user accounts.</li>
+                                    <li>Inspect host event logs and volatile memory.</li>
+                                </ul>
+                            </div>
+                            <div class="playbook-section" style="margin-top: 14px;">
+                                <div class="steps-heading">Recommended Containment Playbook:</div>
+                                <ul class="steps-list" id="result-containment-steps">
+                                    <li>Log anomalous behavioral patterns to baseline profile.</li>
+                                    <li>Place target accounts on high-alert monitoring watchlists.</li>
+                                </ul>
+                            </div>
+                            <div class="safety-advisory-note">
+                                🛡️ <strong>Prototype Safety Rule:</strong> No destructive actions (killing processes, isolating hosts, or disabling accounts) are executed automatically.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HUMAN REVIEW DECISION -->
+                    <div class="result-card review-card">
+                        <h4 class="card-section-title">Human Analyst Review</h4>
+                        <p class="review-desc">
+                            Select an authoritative verdict to update the adaptive feedback learner and maintain institutional knowledge:
+                        </p>
+                        <div class="verdict-buttons-col">
+                            <button class="btn btn-verdict btn-confirm" data-verdict="CONFIRMED_SUSPICIOUS">
+                                ✓ CONFIRM SUSPICIOUS
+                            </button>
+                            <button class="btn btn-verdict btn-investigate" data-verdict="NEED_MORE_INVESTIGATION">
+                                🔍 NEED MORE INVESTIGATION
+                            </button>
+                            <button class="btn btn-verdict btn-benign" data-verdict="MARKED_BENIGN">
+                                ✕ MARK BENIGN
+                            </button>
+                        </div>
+                        <div class="verdict-feedback-alert" id="verdict-feedback-alert" style="display: none;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- 3. INCIDENTS TAB                                         -->
+        <!-- ======================================================== -->
+        <section id="tab-incidents" class="tab-pane">
+            <div class="page-header">
+                <div>
+                    <h2 class="page-title">Security Incidents</h2>
+                    <p class="page-subtitle">
+                        Comprehensive log of all correlated threat incidents formed across new uploads and live replay.
+                    </p>
+                </div>
+                <div class="incidents-filters" id="incidents-filter-group">
+                    <button class="filter-chip active" data-filter="ALL">All (<span id="filter-cnt-all">0</span>)</button>
+                    <button class="filter-chip" data-filter="CRITICAL_HIGH">Critical & High (<span id="filter-cnt-ch">0</span>)</button>
+                    <button class="filter-chip" data-filter="MEDIUM">Medium (<span id="filter-cnt-med">0</span>)</button>
+                    <button class="filter-chip" data-filter="PENDING">Pending Review (<span id="filter-cnt-pending">0</span>)</button>
+                </div>
+            </div>
+
+            <div class="incidents-table-card">
+                <div class="table-responsive">
+                    <table class="soc-table" id="table-incidents">
+                        <thead>
+                            <tr>
+                                <th>Incident ID</th>
+                                <th>Severity</th>
+                                <th>Risk Score</th>
+                                <th>Confidence</th>
+                                <th>Target Users</th>
+                                <th>Target Hosts</th>
+                                <th>Review Status</th>
+                                <th>Duration</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="incidents-table-body">
+                            <tr><td colspan="9" class="text-center">No security incidents detected yet.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- 4. LIVE SIMULATION TAB (LANL REPLAY)                     -->
+        <!-- ======================================================== -->
+        <section id="tab-simulation" class="tab-pane">
+            <div class="page-header">
+                <div>
+                    <h2 class="page-title">LANL Attack Simulation</h2>
+                    <p class="page-subtitle">
+                        Replay historical LANL cybersecurity events as a controlled real-time demonstration.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SIMULATION MODE NOTICE -->
+            <div class="simulation-mode-warning">
+                <span class="warning-icon">⚠️</span>
+                <div>
+                    <strong>SIMULATION MODE:</strong> These are historical events from the Los Alamos National Laboratory (LANL) dataset being replayed for demonstration. They are not live network attacks.
+                </div>
+            </div>
+
+            <!-- SIMULATION CONTROL BAR -->
+            <div class="simulation-controls-card">
+                <div class="sim-controls-left">
+                    <button class="btn btn-primary" id="btn-sim-start">
+                        ▶ START
+                    </button>
+                    <button class="btn btn-secondary" id="btn-sim-pause" disabled>
+                        ⏸ PAUSE
+                    </button>
+                    <button class="btn btn-secondary" id="btn-sim-resume" style="display: none;">
+                        ⏵ RESUME
+                    </button>
+                    <button class="btn btn-danger" id="btn-sim-stop" disabled>
+                        ⏹ STOP
+                    </button>
+                    <button class="btn btn-ghost" id="btn-sim-restart">
+                        ↺ RESTART
+                    </button>
+                </div>
+
+                <div class="sim-controls-right">
+                    <div class="sim-setting">
+                        <label for="sim-scenario-select">Scenario:</label>
+                        <select id="sim-scenario-select" class="soc-select">
+                            <option value="redteam_lateral">LANL Attack Scenario (Lateral Movement Campaign)</option>
+                            <option value="multi_source">Multi-Source Anomaly (Auth + Process Spawning)</option>
+                            <option value="continuous">Mixed Historical Stream (Continuous Telemetry)</option>
+                        </select>
+                    </div>
+                    <div class="sim-setting">
+                        <label for="sim-speed-select">Replay Speed:</label>
+                        <select id="sim-speed-select" class="soc-select">
+                            <option value="1">1x (Real-Time)</option>
+                            <option value="2">2x</option>
+                            <option value="5" selected>5x (Recommended)</option>
+                            <option value="10">10x (Fast)</option>
+                            <option value="20">20x (Hyper)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THREAT ALERT BANNER (Shown during simulation if threat detected) -->
+            <div class="sim-threat-alert" id="sim-threat-banner" style="display: none;">
+                <div class="sim-alert-left">
+                    <span class="alert-icon">🚨</span>
+                    <div>
+                        <div class="alert-badge-row">
+                            <strong class="alert-label">THREAT DETECTED</strong>
+                            <span class="badge-critical" id="sim-banner-sev">CRITICAL</span>
+                        </div>
+                        <div class="alert-desc" id="sim-banner-desc">
+                            Incident <strong id="sim-banner-inc-id">INC-0018</strong> formed via multi-source event correlation.
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-alert-view" id="btn-sim-view-incident">
+                    VIEW INCIDENT →
+                </button>
+            </div>
+
+            <!-- INVESTIGATION STATUS CHECKLIST (COMPACT) -->
+            <div class="checklist-panel">
+                <div class="checklist-header">
+                    <h4 class="checklist-title">Autonomous Agent Investigation Status</h4>
+                    <span class="checklist-sub">Active pipeline state</span>
+                </div>
+                <div class="checklist-grid">
+                    <div class="checklist-item" id="chk-auth"><span class="chk-status">✓</span> Authentication Agent</div>
+                    <div class="checklist-item" id="chk-proc"><span class="chk-status">✓</span> Process Agent</div>
+                    <div class="checklist-item" id="chk-net"><span class="chk-status">✓</span> Network Agent</div>
+                    <div class="checklist-item" id="chk-corr"><span class="chk-status">●</span> Correlation Agent</div>
+                    <div class="checklist-item" id="chk-risk"><span class="chk-status">○</span> Analysis / Risk Agent</div>
+                    <div class="checklist-item" id="chk-resp"><span class="chk-status">○</span> Response Agent</div>
+                </div>
+            </div>
+
+            <!-- LIVE EVENT STREAM (COMPACT TABLE) -->
+            <div class="sim-stream-card">
+                <div class="card-header-row">
+                    <div class="stream-title-group">
+                        <span class="live-dot pulse"></span>
+                        <h4 class="card-section-title" style="margin: 0;">Live Event Stream</h4>
+                    </div>
+                    <span class="stream-counter-text" id="sim-event-counter">0 events streamed</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="soc-table-compact" id="table-sim-stream">
+                        <thead>
+                            <tr>
+                                <th>TIME</th>
+                                <th>TYPE</th>
+                                <th>USER</th>
+                                <th>SOURCE</th>
+                                <th>DESTINATION</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sim-stream-tbody">
+                            <tr><td colspan="6" class="text-center">Simulation idle. Click [▶ START] to begin replaying events.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- 5. RESEARCH BENCHMARK TAB                                -->
+        <!-- ======================================================== -->
+        <section id="tab-research" class="tab-pane">
+            <div class="page-header">
+                <div>
+                    <h2 class="page-title">Research Benchmark</h2>
+                    <p class="page-subtitle">
+                        Empirical evaluation and performance metrics directly loaded from stored experimental results.
+                    </p>
+                </div>
+                <div class="claim-disclaimer">
+                    <span class="info-icon">🔬</span>
+                    <span>LANL is used as the research benchmark and evaluation dataset.</span>
+                </div>
+            </div>
+
+            <!-- BASELINE VS MULTI-AGENT -->
+            <div class="research-table-card">
+                <div class="card-header-row">
+                    <h4 class="card-section-title">Phase 1 Baseline vs. Phase 2 Multi-Agent Architecture</h4>
+                    <span class="badge-success">Data verified from results/phase2/baseline_vs_multiagent.csv</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="soc-table" id="table-research-baseline">
+                        <thead>
+                            <tr>
+                                <th>System Configuration</th>
+                                <th>Scope</th>
+                                <th>TP</th>
+                                <th>FP</th>
+                                <th>FN</th>
+                                <th>TN</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>F1</th>
+                                <th>Specificity</th>
+                                <th>Incidents</th>
+                            </tr>
+                        </thead>
+                        <tbody id="research-baseline-tbody">
+                            <tr><td colspan="11" class="text-center">Loading benchmark data...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- AGENT ABLATION STUDY -->
+            <div class="research-table-card" style="margin-top: 24px;">
+                <div class="card-header-row">
+                    <h4 class="card-section-title">Agent Ablation Study (Configurations A through F)</h4>
+                    <span class="badge-info">results/phase2/agent_ablation_results.csv</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="soc-table" id="table-research-ablation">
+                        <thead>
+                            <tr>
+                                <th>Experiment</th>
+                                <th>Active Architecture</th>
+                                <th>TP</th>
+                                <th>FP</th>
+                                <th>FN</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>F1</th>
+                                <th>Incidents</th>
+                                <th>Runtime</th>
+                            </tr>
+                        </thead>
+                        <tbody id="research-ablation-tbody">
+                            <tr><td colspan="10" class="text-center">Loading ablation results...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- CORRELATION WINDOW SENSITIVITY -->
+            <div class="research-table-card" style="margin-top: 24px;">
+                <div class="card-header-row">
+                    <h4 class="card-section-title">Correlation Window Sensitivity (5m, 10m, 30m)</h4>
+                    <span class="badge-info">results/phase2/agent_window_results.csv</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="soc-table" id="table-research-window">
+                        <thead>
+                            <tr>
+                                <th>Window Setting</th>
+                                <th>Duration</th>
+                                <th>Total Incidents</th>
+                                <th>RedTeam Incidents</th>
+                                <th>RedTeam Events</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>F1</th>
+                                <th>Runtime</th>
+                            </tr>
+                        </thead>
+                        <tbody id="research-window-tbody">
+                            <tr><td colspan="9" class="text-center">Loading window sensitivity results...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- 6. AGENT DETAILS TAB                                     -->
+        <!-- ======================================================== -->
+        <section id="tab-agents" class="tab-pane">
+            <div class="page-header">
+                <div>
+                    <h2 class="page-title">How the AI Investigator Works</h2>
+                    <p class="page-subtitle">
+                        Autonomous multi-agent collaboration for cyber threat detection, correlation, and response.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ARCHITECTURE FLOWCHART -->
+            <div class="arch-flowchart-card">
+                <h4 class="card-section-title">Hierarchical Multi-Agent Investigation Flow</h4>
+                <div class="arch-diagram">
+                    <div class="flow-box source">
+                        <span class="flow-tag">INPUT DATA</span>
+                        <strong>Security Telemetry</strong>
+                        <small>CSV • JSON • Syslog • CEF</small>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-box meta">
+                        <span class="flow-tag">PREPROCESSING & BASELINING</span>
+                        <strong>Universal Parser & Adaptive Baseline Profiler</strong>
+                        <small>Extracts event schema • Builds dynamic entity baselines</small>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="specialists-row">
+                        <div class="flow-box specialist">
+                            <span class="flow-tag">SPECIALIST</span>
+                            <strong>AuthenticationAgent</strong>
+                            <small>Logon bursts • NTLM • Lateral mappings</small>
+                        </div>
+                        <div class="flow-box specialist">
+                            <span class="flow-tag">SPECIALIST</span>
+                            <strong>ProcessAgent</strong>
+                            <small>LOLBins • Encoded cmd • Privilege tools</small>
+                        </div>
+                        <div class="flow-box specialist">
+                            <span class="flow-tag">SPECIALIST</span>
+                            <strong>NetworkAgent</strong>
+                            <small>DGA DNS entropy • Exfiltration bursts</small>
+                        </div>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-box correlation">
+                        <span class="flow-tag">CORRELATION</span>
+                        <strong>CorrelationAgent</strong>
+                        <small>Cross-Domain Temporal Graph Clustering (±10 min window)</small>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-box analysis">
+                        <span class="flow-tag">RISK SCORING</span>
+                        <strong>AnalysisAgent</strong>
+                        <small>Transparent Risk & Confidence • Blast radius • Diagnostic uncertainty</small>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-box response">
+                        <span class="flow-tag">RESPONSE ADVISORY</span>
+                        <strong>ResponseAgent & Human Review</strong>
+                        <small>Containment playbooks • Strict Human-in-the-loop sign-off</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AGENT DETAILS CARDS -->
+            <div class="agent-cards-grid">
+                <!-- 1. OrchestratorAgent -->
+                <div class="agent-spec-card">
+                    <div class="agent-spec-header">
+                        <div>
+                            <h4 class="agent-spec-title">OrchestratorAgent</h4>
+                            <span class="agent-spec-role">System Coordinator & Workflow Dispatcher</span>
+                        </div>
+                        <span class="agent-type-tag tag-meta">Meta-Agent</span>
+                    </div>
+                    <div class="agent-spec-body">
+                        <div class="spec-row"><strong>Receives:</strong> Normalized security event streams and behavioral context.</div>
+                        <div class="spec-row"><strong>Checks:</strong> Partitions events across specialists and tracks execution trace timing.</div>
+                        <div class="spec-row"><strong>Produces:</strong> Orchestrated investigation trace and synthesized cross-agent telemetry.</div>
+                    </div>
+                </div>
+
+                <!-- 2. AuthenticationAgent -->
+                <div class="agent-spec-card">
+                    <div class="agent-spec-header">
+                        <div>
+                            <h4 class="agent-spec-title">AuthenticationAgent</h4>
+                            <span class="agent-spec-role">Identity & Credential Velocity Specialist</span>
+                        </div>
+                        <span class="agent-type-tag tag-specialist">Specialist</span>
+                    </div>
+                    <div class="agent-spec-body">
+                        <div class="spec-row"><strong>Receives:</strong> Authentication & logon events (AUTH).</div>
+                        <div class="spec-row"><strong>Checks:</strong> Brute-force failed logon bursts, protocol downgrades (NTLM), off-hours logins, and rare lateral host-to-host pairings.</div>
+                        <div class="spec-row"><strong>Produces:</strong> Credential anomaly flags, compromised account tags, and authentication risk weights.</div>
+                    </div>
+                </div>
+
+                <!-- 3. ProcessAgent -->
+                <div class="agent-spec-card">
+                    <div class="agent-spec-header">
+                        <div>
+                            <h4 class="agent-spec-title">ProcessAgent</h4>
+                            <span class="agent-spec-role">Endpoint & Execution Specialist</span>
+                        </div>
+                        <span class="agent-type-tag tag-specialist">Specialist</span>
+                    </div>
+                    <div class="agent-spec-body">
+                        <div class="spec-row"><strong>Receives:</strong> Process execution & command line logs (PROCESS).</div>
+                        <div class="spec-row"><strong>Checks:</strong> Living-off-the-Land Binaries (LOLBins: powershell, certutil, whoami, psexec), base64 encoded arguments, and rapid process trees.</div>
+                        <div class="spec-row"><strong>Produces:</strong> Execution threat flags, LOLBin attack indicators, and host suspicion metrics.</div>
+                    </div>
+                </div>
+
+                <!-- 4. NetworkAgent -->
+                <div class="agent-spec-card">
+                    <div class="agent-spec-header">
+                        <div>
+                            <h4 class="agent-spec-title">NetworkAgent</h4>
+                            <span class="agent-spec-role">NetFlow & DNS Resolution Specialist</span>
+                        </div>
+                        <span class="agent-type-tag tag-specialist">Specialist</span>
+                    </div>
+                    <div class="agent-spec-body">
+                        <div class="spec-row"><strong>Receives:</strong> NetFlow connection logs and DNS resolution records (FLOW, DNS).</div>
+                        <div class="spec-row"><strong>Checks:</strong> Volumetric transfer bursts (data exfiltration), unusual outbound ports, and Shannon Entropy for algorithmically generated domains (DGA C2).</div>
+                        <div class="spec-row"><strong>Produces:</strong> C2 beaconing alerts, exfiltration volume tags, and network anomaly flags.</div>
+                    </div>
+                </div>
+
+                <!-- 5. CorrelationAgent -->
+                <div class="agent-spec-card">
+                    <div class="agent-spec-header">
+                        <div>
+                            <h4 class="agent-spec-title">CorrelationAgent</h4>
+                            <span class="agent-spec-role">Temporal Graph Clustering Specialist</span>
+                        </div>
+                        <span class="agent-type-tag tag-specialist">Specialist</span>
+                    </div>
+                    <div class="agent-spec-body">
+                        <div class="spec-row"><strong>Receives:</strong> Anomalies flagged by Authentication, Process, and Network agents.</div>
+                        <div class="spec-row"><strong>Checks:</strong> Shared user/host entity overlap and temporal clustering within a sliding window (±10 minutes / 600s).</div>
+                        <div class="spec-row"><strong>Produces:</strong> Unified multi-source Security Incidents (INC-XXXX) linking discrete events into cohesive threat chains.</div>
+                    </div>
+                </div>
+
+                <!-- 6. AnalysisAgent -->
+                <div class="agent-spec-card">
+                    <div class="agent-spec-header">
+                        <div>
+                            <h4 class="agent-spec-title">AnalysisAgent</h4>
+                            <span class="agent-spec-role">Risk, Confidence & Uncertainty Evaluator</span>
+                        </div>
+                        <span class="agent-type-tag tag-specialist">Specialist</span>
+                    </div>
+                    <div class="agent-spec-body">
+                        <div class="spec-row"><strong>Receives:</strong> Correlated incidents and specialist agent findings.</div>
+                        <div class="spec-row"><strong>Checks:</strong> Severity distributions, multi-agent corroboration weights, blast radius scope, and diagnostic telemetry gaps.</div>
+                        <div class="spec-row"><strong>Produces:</strong> Transparent Risk Score (0-100), Transparent Confidence Score (0-100), Severity rating, and structured explanations.</div>
+                    </div>
+                </div>
+
+                <!-- 7. ResponseAgent -->
+                <div class="agent-spec-card">
+                    <div class="agent-spec-header">
+                        <div>
+                            <h4 class="agent-spec-title">ResponseAgent</h4>
+                            <span class="agent-spec-role">Advisory Playbook & Containment Specialist</span>
+                        </div>
+                        <span class="agent-type-tag tag-specialist">Specialist</span>
+                    </div>
+                    <div class="agent-spec-body">
+                        <div class="spec-row"><strong>Receives:</strong> Incident risk, severity, and impacted host/user entities.</div>
+                        <div class="spec-row"><strong>Checks:</strong> MITRE ATT&CK mitigation playbooks and operational containment steps.</div>
+                        <div class="spec-row"><strong>Produces:</strong> Actionable SOC response recommendations and playbooks (Strictly requiring human approval).</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GLOBAL INCIDENT DETAILS MODAL -->
+    <div class="modal-backdrop" id="incident-modal" style="display: none;">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <h2 class="modal-title" id="modal-inc-id">INCIDENT DETAILS</h2>
+                    <span id="modal-severity-badge" class="badge-critical">CRITICAL</span>
+                    <span id="modal-review-badge" class="badge-review">PENDING REVIEW</span>
+                </div>
+                <button class="btn-close" id="btn-close-modal">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- METRICS GRID -->
+                <div class="modal-metrics-grid">
+                    <div class="metric-box">
+                        <div class="metric-label">Risk Score</div>
+                        <div class="metric-value text-red" id="modal-risk">63.5 / 100</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Confidence Score</div>
+                        <div class="metric-value text-cyan" id="modal-confidence">50.6 / 100</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Correlated Events</div>
+                        <div class="metric-value" id="modal-event-count">0 events</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Duration</div>
+                        <div class="metric-value" id="modal-duration">0s</div>
+                    </div>
+                </div>
+
+                <!-- NARRATIVE -->
+                <div class="modal-section">
+                    <h4 class="section-title">Investigation Narrative (AnalysisAgent)</h4>
+                    <p class="narrative-text" id="modal-explanation">Loading narrative...</p>
+                </div>
+
+                <!-- ENTITIES -->
+                <div class="modal-section">
+                    <h4 class="section-title">Impacted Entities</h4>
+                    <div class="entity-pills-container">
+                        <div><strong>Users:</strong> <span id="modal-users">...</span></div>
+                        <div style="margin-top: 6px;"><strong>Hosts:</strong> <span id="modal-hosts">...</span></div>
+                        <div style="margin-top: 6px;"><strong>Sources:</strong> <span id="modal-sources">...</span></div>
+                    </div>
+                </div>
+
+                <!-- EVIDENCE & AGENT FINDINGS -->
+                <div class="modal-section">
+                    <h4 class="section-title">Correlated Evidence</h4>
+                    <ul class="steps-list" id="modal-evidence-list">
+                        <li>Loading evidence...</li>
+                    </ul>
+                </div>
+
+                <!-- TIMELINE -->
+                <div class="modal-section">
+                    <h4 class="section-title">Chronological Activity Timeline</h4>
+                    <div class="timeline-container" id="modal-timeline">
+                        <!-- Injected dynamically -->
+                    </div>
+                </div>
+
+                <!-- RESPONSE ADVISORY -->
+                <div class="modal-section response-advisory-box">
+                    <div class="response-header">
+                        <div>
+                            <span class="response-priority" id="modal-response-priority">P2 - HIGH PRIORITY</span>
+                            <h4 class="response-action" id="modal-response-action">Tier-2 SOC Analyst Review</h4>
+                        </div>
+                        <div class="approval-badge">
+                            ⚠️ HUMAN APPROVAL REQUIRED
+                        </div>
+                    </div>
+                    <div class="response-body">
+                        <div class="steps-heading">Recommended Containment Playbook:</div>
+                        <ul class="steps-list" id="modal-containment-steps">
+                            <!-- Injected dynamically -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- HUMAN ANALYST VERDICT -->
+                <div class="modal-section human-review-box">
+                    <h4 class="section-title">Human Analyst Verdict (Tier-1 SOC Sign-Off)</h4>
+                    <p class="review-desc">Record your authoritative decision to update the adaptive feedback learner:</p>
+                    <div class="review-actions-group">
+                        <button class="btn btn-verdict btn-confirm" id="modal-btn-confirm" data-verdict="CONFIRMED_SUSPICIOUS">
+                            ✓ Confirm Suspicious
+                        </button>
+                        <button class="btn btn-verdict btn-investigate" id="modal-btn-investigate" data-verdict="NEED_MORE_INVESTIGATION">
+                            🔍 Need More Investigation
+                        </button>
+                        <button class="btn btn-verdict btn-benign" id="modal-btn-benign" data-verdict="MARKED_BENIGN">
+                            ✕ Mark Benign
+                        </button>
+                    </div>
+                    <div id="modal-verdict-feedback" class="verdict-feedback" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP SCRIPT -->
+    <script src="/static/app.js?v=2.0"></script>
+</body>
+</html>

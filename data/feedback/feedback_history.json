@@ -1,0 +1,66 @@
+[
+  {
+    "incident_id": "INC-0001",
+    "verdict": "CONFIRMED_SUSPICIOUS",
+    "action": "ADDED_TO_WATCHLIST",
+    "users": [
+      "evil_admin"
+    ],
+    "hosts": [
+      "BACKUP01",
+      "DC01",
+      "MAIL01",
+      "WS099"
+    ],
+    "processes": [],
+    "notes": "Integration test: confirmed as attack",
+    "timestamp": 1790316415.79165
+  },
+  {
+    "incident_id": "INC-0002",
+    "verdict": "CONFIRMED_SUSPICIOUS",
+    "action": "ADDED_TO_WATCHLIST",
+    "users": [
+      "attacker_x"
+    ],
+    "hosts": [
+      "DC01",
+      "FINANCE_SVR",
+      "UNKNOWN_PC"
+    ],
+    "processes": [],
+    "notes": "Verified by automated test",
+    "timestamp": 1790749418.3771932
+  },
+  {
+    "incident_id": "INC-0001",
+    "verdict": "CONFIRMED_SUSPICIOUS",
+    "action": "ADDED_TO_WATCHLIST",
+    "users": [
+      "sarah"
+    ],
+    "hosts": [
+      "DC01",
+      "LAPTOP02"
+    ],
+    "processes": [],
+    "notes": "Analyst decision recorded via dashboard.",
+    "timestamp": 1790750459.6810932
+  },
+  {
+    "incident_id": "INC-0002",
+    "verdict": "NEED_MORE_INVESTIGATION",
+    "action": "NO_LEARNING_ACTION",
+    "users": [
+      "attacker_x"
+    ],
+    "hosts": [
+      "DC01",
+      "FINANCE_SVR",
+      "UNKNOWN_PC"
+    ],
+    "processes": [],
+    "notes": "Analyst decision recorded via dashboard.",
+    "timestamp": 1790750468.6401985
+  }
+]

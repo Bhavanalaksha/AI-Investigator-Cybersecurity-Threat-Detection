@@ -1,0 +1,17 @@
+{
+  "users": [
+    "attacker_x",
+    "evil_admin",
+    "sarah"
+  ],
+  "hosts": [
+    "BACKUP01",
+    "DC01",
+    "FINANCE_SVR",
+    "LAPTOP02",
+    "MAIL01",
+    "UNKNOWN_PC",
+    "WS099"
+  ],
+  "processes": []
+}

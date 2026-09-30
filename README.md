@@ -1,13 +1,31 @@
 # AI Investigator for Cybersecurity Threat Detection and Response
 
-An explainable, multi-source cybersecurity investigation and threat triage pipeline built using the **Los Alamos National Laboratory (LANL) Comprehensive Multi-Source Cyber-Security Events Dataset**. 
+An autonomous, explainable multi-agent cybersecurity investigation architecture and rule-based SIEM baseline built on the **Los Alamos National Laboratory (LANL) Comprehensive Multi-Source Cyber-Security Events Dataset**.
 
-This system ingests multi-source host and network telemetry (Authentication, Process Execution, DNS, and Network Flow), performs explainable rule-based threat triage, correlates related telemetry across entities (users and hosts) into multi-stage incidents, computes calibrated Risk and Confidence scores, supports human analyst review via an interactive dashboard, and rigorously evaluates detection performance against known Red-Team ground truth.
+This system investigates multi-source enterprise telemetry (Authentication, Process Execution, DNS queries, and NetFlow records) across temporal windows, detects adversary campaigns, correlates cross-domain events into multi-stage incidents, computes transparent Risk and Confidence scores, and generates human-governed defensive response playbooks.
 
 ---
 
 ## 🔒 Defensive Research Scope
-This is an academic, defensive cybersecurity research project. All algorithms, detection logic, and correlation rules operate exclusively on the downloaded, sanitized LANL dataset. No live network scanning, penetration testing, or offensive actions are performed.
+This is an academic, defensive cybersecurity research project. All algorithms, detection logic, and agent workflows operate exclusively on the sanitized, anonymized LANL benchmark dataset. No live network scanning, penetration testing, or offensive actions are performed.
+
+---
+
+## 🏛️ System Architecture: Phase 1 vs. Phase 2
+
+### Phase 1: Rule-Based SIEM Investigation Baseline
+- **Pipeline:** Preprocessing → 10 Explainable Heuristic Rules → Entity-Indexed Correlation (±10 min window) → Incident Construction → Risk & Confidence Scoring → Interactive SOC Dashboard → Ground-Truth Evaluation.
+- **Role:** Represents standard enterprise SIEM/SOC baseline performance. Preserved and fully runnable.
+
+### Phase 2: Autonomous Multi-Agent Cybersecurity Architecture
+Decomposes cognitive investigation into cooperating, specialized software agents:
+1. **OrchestratorAgent (`src/agents/orchestrator_agent.py`):** Central coordinator managing data routing, pipeline sequencing, and end-to-end execution traces.
+2. **AuthenticationAgent (`src/agents/auth_agent.py`):** Ingests `AUTH` events, analyzes logon velocity, NTLM/network protocols, rare lateral mappings, and compromised credentials.
+3. **ProcessAgent (`src/agents/process_agent.py`):** Ingests `PROCESS` events, detects rare binary invocations and rapid process spawning bursts.
+4. **NetworkAgent (`src/agents/network_agent.py`):** Ingests `DNS` & `FLOW` records, analyzes volumetric exfiltration, prolonged sessions, and suspicious lookups.
+5. **CorrelationAgent (`src/agents/correlation_agent.py`):** High-performance Union-Find sliding window correlation ($\Delta t \in \{5\text{m}, 10\text{m}, 30\text{m}\}$) tracking agent evidence provenance.
+6. **AnalysisAgent (`src/agents/analysis_agent.py`):** Computes transparent mathematical Risk ($0–100$) and Confidence ($0–100$), generates explainable incident narratives, and records diagnostic uncertainties.
+7. **ResponseAgent (`src/agents/response_agent.py`):** Synthesizes prioritized defensive containment playbooks (P1–P4) with mandatory human-in-the-loop sign-off (`requires_human_approval: True`).
 
 ---
 
@@ -16,194 +34,125 @@ This is an academic, defensive cybersecurity research project. All algorithms, d
 ```
 mini_proj/
 ├── data/
-│   ├── raw/                       # LANL raw datasets (auth.txt.gz, proc.txt.gz, etc.)
-│   ├── subset/                    # Extracted Day 9-13 subsets
-│   │   ├── redteam_subset.csv     # 497 validated redteam attacks
-│   │   └── multisource_subset.csv # Multi-source telemetry subset (~100k events)
-│   └── processed/                 # Cleaned, triaged, and correlated datasets
-│       ├── events_processed.csv   # Normalized & chronologically sorted events
-│       ├── triaged_events.csv     # Events with risk scores & explainable reasons
-│       ├── incidents.csv          # Correlated multi-stage security incidents
-│       ├── incident_events.csv    # Event-to-incident mapping table
-│       ├── human_review_queue.csv # Tier-1 SOC analyst review queue
-│       └── evaluation_results.csv # TP, TN, FP, FN, Precision, Recall, F1
+│   ├── raw/                           # Raw LANL files (auth.txt.gz, proc.txt.gz, redteam.txt)
+│   ├── subset/                        # Extracted subsets (multisource_subset.csv, redteam_subset.csv)
+│   └── processed/                     # Cleaned, triaged, and correlated datasets
 ├── results/
-│   ├── figures/                   # 8 Publication-grade visualizations (300 DPI)
-│   │   ├── redteam_activity_timeline.png
-│   │   ├── event_source_distribution.png
-│   │   ├── event_type_distribution.png
-│   │   ├── risk_score_distribution.png
-│   │   ├── suspicious_events_timeline.png
-│   │   ├── incident_severity_confidence.png
-│   │   ├── detection_performance_metrics.png
-│   │   └── incident_attack_timeline.png
-│   └── reports/                   # Human-readable evaluation and markdown reports
-│       ├── subset_statistics.txt
-│       ├── preprocessing_summary.txt
-│       ├── incident_summaries.md
-│       ├── investigation_dashboard.html
-│       ├── evaluation_report.txt
-│       └── final_investigation_report.md
-├── src/                           # Python pipeline scripts (Day 1 through Day 10)
-│   ├── day1_explore_redteam.py
-│   ├── day2_build_subset.py
+│   ├── figures/                       # Publication-grade figures (300 DPI)
+│   │   ├── phase2/                    # 8 Phase 2 Multi-Agent figures (fig1 through fig8)
+│   │   └── ...                        # Phase 1 baseline figures
+│   ├── phase2/                        # Phase 2 experimental CSV outputs
+│   │   ├── baseline_vs_multiagent.csv # Direct baseline vs multi-agent comparison
+│   │   ├── agent_ablation_results.csv # 6-stage agent ablation results
+│   │   ├── agent_window_results.csv   # 5m, 10m, 30m correlation window sensitivity
+│   │   ├── multi_agent_comparison.csv # Multi-window evaluation across 3 windows
+│   │   ├── agent_error_analysis.csv   # Detailed FP and FN error audit
+│   │   ├── agent_performance.csv      # Per-agent runtime and call stats
+│   │   └── related_work.csv           # 7 landmark academic papers indexed
+│   └── reports/                       # Comprehensive markdown reports
+│       ├── research_question.md       # Formal research question, H1 and H0
+│       ├── multi_agent_case_studies.md# Deep case studies (INC-0018, INC-0407, INC-0002)
+│       ├── related_work.md            # Extensive academic literature review
+│       ├── phase2_ieee_summary.md     # 20-section IEEE-style research paper report
+│       ├── phase1_results.md          # Comprehensive Phase 1 experimental records
+│       ├── final_investigation_report.md
+│       └── investigation_dashboard.html # Interactive SOC investigation dashboard
+├── src/
+│   ├── agents/                        # Phase 2 Executable Agent Modules
+│   │   ├── __init__.py
+│   │   ├── base_agent.py              # Abstract BaseAgent with telemetry profiling
+│   │   ├── orchestrator_agent.py      # Multi-agent coordinator & execution trace
+│   │   ├── auth_agent.py              # Authentication specialist agent
+│   │   ├── process_agent.py           # Process execution specialist agent
+│   │   ├── network_agent.py           # NetFlow and DNS specialist agent
+│   │   ├── correlation_agent.py       # Sliding-window cross-domain correlation
+│   │   ├── analysis_agent.py          # Mathematical risk/confidence & explainability
+│   │   └── response_agent.py          # Response advisory (human approval mandatory)
+│   ├── phase2/                        # Phase 2 Experiment & Evaluation Drivers
+│   │   ├── run_multi_agent.py         # Full multi-agent investigation pipeline runner
+│   │   ├── evaluate_agents.py         # Baseline vs. multi-agent comparative evaluator
+│   │   ├── run_ablation.py            # Systematic 6-stage agent ablation experiment
+│   │   ├── run_multi_window.py        # Multi-window evaluation (3 windows)
+│   │   ├── run_window_experiment.py   # Correlation window sensitivity (5m, 10m, 30m)
+│   │   ├── generate_phase2_visualizations.py # 8 publication-quality figures
+│   │   └── test_agents.py             # Comprehensive unit and integration test suite
+│   ├── day1_explore_redteam.py        # Phase 1 scripts (Day 1 - Day 10)
 │   ├── day2_build_multisource_subset.py
-│   ├── day2_inspect_data.py
-│   ├── day3_check_auth_format.py
-│   ├── day3_inspect_auth.py
 │   ├── day4_preprocess.py
 │   ├── day5_triage.py
 │   ├── day6_correlation.py
 │   ├── day7_incident_analysis.py
 │   ├── day8_risk_confidence.py
 │   ├── day9_human_review.py
-│   ├── day10_evaluation.py
-│   └── generate_visualizations.py
-├── requirements.txt
-├── README.md
-└── .gitignore
+│   └── day10_evaluation.py
+└── requirements.txt
 ```
 
 ---
 
-## ⚙️ Requirements & Installation
+## 📊 Summary of Experimental Results
 
-- Python 3.10+ (tested on Python 3.14 on Windows)
-- Dependencies: `pandas`, `numpy`, `matplotlib`
+### 1. Detection Performance: Baseline vs. Multi-Agent (Day 9–13 Window)
 
-Install required dependencies:
+| System Configuration | Scope | TP | FP | FN | TN | Precision (%) | Recall (%) | F1-Score (%) | Specificity (%) | Accuracy (%) | Incidents |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| **Phase 1 Baseline** | Rule Triage (Score $\ge 3$) | 497 | 58,885 | 0 | 71,115 | 0.84% | 100.00% | 1.66% | 54.70% | 54.88% | 1,105 |
+| **Phase 2 Multi-Agent** | Specialist Agents | 497 | 57,539 | 0 | 72,461 | 0.86% | 100.00% | 1.70% | 55.74% | 55.91% | 1,075 |
+| **Phase 2 Multi-Agent** | Correlated Incidents | 497 | 57,455 | 0 | 72,545 | 0.86% | 100.00% | 1.70% | 55.80% | 55.97% | 1,075 |
+| **Phase 2 Multi-Agent** | Prioritized Incidents (High/Crit) | 497 | **55,505** | 0 | **74,495** | **0.89%** | **100.00%** | **1.76%** | **57.30%** | **57.47%** | **197** |
+
+*Outcome:* The multi-agent system retains 100% of adversary attacks while suppressing 3,380 false positives and reducing analyst review load to 197 prioritized incidents. In early attack windows (Window 2: Days 9–10), the multi-agent system achieves **100.00% Precision, 100.00% Recall, and 100.00% F1-score** (0 false positives).
+
+### 2. Correlation Window Sensitivity
+
+| Window Setting | Incidents Formed | Red-Team Incidents | Red-Team Attacks Captured | Precision (%) | Recall (%) | F1-Score (%) | Runtime |
+|---|---|---|---|---|---|---|---|
+| **5 Minutes (300s)** | 1,554 | 75 | 497 / 497 (100%) | 0.86% | 100.00% | 1.70% | 30.30s |
+| **10 Minutes (600s)** | 1,075 | 38 | 497 / 497 (100%) | 0.86% | 100.00% | 1.70% | 39.21s |
+| **30 Minutes (1800s)** | 652 | 7 | 497 / 497 (100%) | 0.86% | 100.00% | 1.70% | 8.51s |
+
+---
+
+## 🚀 How to Run and Reproduce
+
+### 1. Run Unit & Integration Tests
+Verify that all 7 agents, input validation, schemas, and human approval enforcement pass:
 ```bash
-pip install -r requirements.txt
+python -m unittest src/phase2/test_agents.py
 ```
 
----
-
-## ⏱️ Investigation Window & Reconciliation
-
-A rolling 5-day window analysis of `redteam.txt` identified **Day 9 to Day 13** as the peak adversary campaign window across the entire LANL dataset:
-- In LANL dataset convention, Day 1 begins at $t = 0$.
-- With 1-based day indexing (`day = timestamp // 86400 + 1`):
-  - **Day 9:** $[8 \times 86400, 9 \times 86400) = [691200, 777600)$ (273 redteam attacks)
-  - **Day 10:** $[9 \times 86400, 10 \times 86400) = [777600, 864000)$ (15 redteam attacks)
-  - **Day 11:** $[10 \times 86400, 11 \times 86400) = [864000, 950400)$ (0 attacks)
-  - **Day 12:** $[11 \times 86400, 12 \times 86400) = [950400, 1036800)$ (0 attacks)
-  - **Day 13:** $[12 \times 86400, 13 \times 86400) = [1036800, 1123200)$ (209 redteam attacks)
-  - **Total:** **497 redteam attacks** across 71 attack users and 240 attack hosts.
-
-> **Discrepancy Note:** An earlier experimental script used $[777600, 1209600)$, which corresponded to Day 10–Day 14 (305 attacks). The reconciled window $[691200, 1123200)$ accurately captures the true Day 9–13 window containing all 497 attacks.
-
----
-
-## 🚀 Execution Pipeline
-
-Run each phase sequentially from the project root directory:
-
+### 2. Run the Multi-Agent Pipeline
+Execute the complete multi-agent investigation architecture on the primary dataset:
 ```bash
-# Day 1: Explore red-team activity & find best attack windows
-python src/day1_explore_redteam.py
+python src/phase2/run_multi_agent.py
+```
 
-# Day 2: Build reconciled red-team and multi-source subset
-python src/day2_build_subset.py
-python src/day2_build_multisource_subset.py
+### 3. Evaluate Baseline vs. Multi-Agent
+Run the comprehensive comparative evaluation:
+```bash
+python src/phase2/evaluate_agents.py
+```
 
-# Day 3: Verify authentication schema & Day 9-13 auth distribution
-python src/day3_check_auth_format.py
-python src/day3_inspect_auth.py
+### 4. Reproduce All Phase 2 Experiments
+Run the ablation study, multi-window comparison, correlation window sensitivity, and visualization generation:
+```bash
+# Agent Ablation Study (Configurations A through F)
+python src/phase2/run_ablation.py
 
-# Day 4: Preprocessing, normalization, and temporal feature extraction
-python src/day4_preprocess.py
+# Multi-Window Evaluation (Windows 1, 2, 3)
+python src/phase2/run_multi_window.py
 
-# Day 5: Explainable rule-based threat triage & risk scoring
+# Correlation Window Sensitivity (5m, 10m, 30m)
+python src/phase2/run_window_experiment.py
+
+# Generate All 8 Publication Figures
+python src/phase2/generate_phase2_visualizations.py
+```
+
+### 5. Run Phase 1 Baseline Pipeline (Unmodified)
+```bash
 python src/day5_triage.py
-
-# Day 6: Cross-source temporal event correlation & incident clustering
 python src/day6_correlation.py
-
-# Day 7: Incident narrative analysis & explainable indicator mapping
-python src/day7_incident_analysis.py
-
-# Day 8: Calibrated Risk & Confidence scoring engine
 python src/day8_risk_confidence.py
-
-# Day 9: Human-in-the-loop review queue & interactive HTML dashboard
-python src/day9_human_review.py
-
-# Day 10: Ground-truth evaluation (Confusion Matrix, Precision, Recall, F1)
 python src/day10_evaluation.py
-
-# Phase 9: Generate publication-grade figures
-python src/generate_visualizations.py
 ```
-
----
-
-## 🖥️ Human-in-the-Loop Investigation Dashboard
-
-The system generates an interactive HTML dashboard:
-```
-results/reports/investigation_dashboard.html
-```
-Open this file in any web browser to:
-- Filter incidents by Review Status, Risk Level, or Telemetry Type
-- Inspect incident details (User pivots, Host pivots, event sequences)
-- Review explainable triage indicators justifying each alert
-- Examine analyst recommendations for containment and further queries
-
----
-
-## 🔬 System Architecture
-
-```
-                    LANL MULTI-SOURCE RAW LOGS
-        (auth.txt.gz, proc.txt.gz, dns.txt.gz, flows.txt.gz, redteam.txt)
-                                  │
-                                  ▼
-                     RECONCILED WINDOW FILTERING
-                   Day 9 to Day 13: [691200, 1123200)
-                                  │
-                                  ▼
-                     MULTI-SOURCE DATA SUBSET
-                 (~100,000 events: Relevant + Normal)
-                                  │
-                                  ▼
-                   PREPROCESSING & NORMALIZATION
-                (Schema hygiene, timestamps, sorting)
-                                  │
-                                  ▼
-                     EXPLAINABLE THREAT TRIAGE
-               (10 Transparent Heuristic Rules + Risk Score)
-                                  │
-                                  ▼
-                   CROSS-SOURCE EVENT CORRELATION
-               (±10 min window: AUTH → PROC → DNS → FLOW)
-                                  │
-                                  ▼
-                    INCIDENT NARRATIVE ANALYSIS
-                 (Explainable indicators & Attack chains)
-                                  │
-                                  ▼
-                     RISK & CONFIDENCE SCORING
-                     (Dual mathematical models)
-                                  │
-                                  ▼
-                    HUMAN-IN-THE-LOOP REVIEW
-               (Interactive SOC Dashboard & Review Queue)
-                                  │
-                                  ▼
-                     GROUND-TRUTH EVALUATION
-                (Confusion Matrix, Precision, Recall, F1)
-                                  │
-                                  ▼
-                     REPORTS & VISUALIZATIONS
-```
-
----
-
-## 🔮 Proposed Future Work (AI / Agentic Extensions)
-
-The current implementation provides a fully explainable, mathematically transparent investigation pipeline. The following features are proposed as extensions:
-1. **LLM-Powered SOC Assistant**: Ingestion of structured incident evidence into an LLM via LangChain/LangGraph to generate human-readable incident summaries and remediation playbooks.
-2. **RAG Knowledge Base**: Integration with MITRE ATT&CK enterprise techniques to map observed LANL tactics automatically.
-3. **Automated Response Orchestration**: Automated IP/host isolation recommendations based on confidence thresholds.
-#   A I - I n v e s t i g a t o r - C y b e r s e c u r i t y - T h r e a t - D e t e c t i o n  
- 

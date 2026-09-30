@@ -133,6 +133,7 @@ html_content = f"""<!DOCTYPE html>
             font-weight: 700;
             background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }}
         .header p {{ color: var(--text-secondary); font-size: 14px; margin-top: 4px; }}
