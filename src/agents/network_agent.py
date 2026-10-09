@@ -181,7 +181,7 @@ class NetworkAgent(BaseAgent):
                 ev_score += 2
                 ev_evidence.append("Compound threat: multiple network risk signals identified")
 
-            if ev_score >= 3 or is_rt == 1:
+            if ev_score >= 3:
                 flagged_events.append({
                     "event_id": ev_id,
                     "timestamp": ts,

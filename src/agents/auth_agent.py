@@ -199,17 +199,14 @@ class AuthenticationAgent(BaseAgent):
                         ev_score += 1
                         ev_evidence.append(f"Host {dst_h} has low user diversity (baseline: {baseline_diversity} users); new user {effective_user} is anomalous")
 
-            # Ground truth red-team flag (preserved for backward compatibility with LANL data)
-            if is_rt == 1:
-                ev_score += 3
-                ev_evidence.append("Confirmed adversary red-team ground-truth action")
+            # [LEAKAGE REMOVED] Ground truth elevation disabled
 
             # Compound multi-indicator bonus
             if len(ev_evidence) >= 2:
                 ev_score += 2
                 ev_evidence.append("Compound threat: multiple anomalous authentication signals simultaneously")
 
-            if ev_score >= 3 or is_rt == 1:
+            if ev_score >= 3:
                 flagged_events.append({
                     "event_id": ev_id,
                     "timestamp": ts,

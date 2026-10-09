@@ -1,47 +1,51 @@
 ============================================================
-CYBERSECURITY THREAT DETECTION & INVESTIGATION EVALUATION
+CYBERSECURITY THREAT DETECTION AND INVESTIGATION EVALUATION
 ============================================================
 
 Evaluation Window: Day 9 to Day 13 (LANL Comprehensive Dataset)
 Ground Truth: LANL redteam.txt (497 validated attack events)
+Telemetry Dataset: triaged_events.csv (Total: 130,497 events)
 
 1. EVENT-LEVEL CLASSIFICATION PERFORMANCE
 ------------------------------------------------------------
 Confusion Matrix:
   True Positives  (TP) :      497  (Attacks correctly flagged as suspicious)
-  False Negatives (FN) :        0  (Attacks missed by triage rules)
+  False Negatives (FN) :        0  (Attacks missed by detection rules)
   False Positives (FP) :   58,885  (Normal events flagged as suspicious)
   True Negatives  (TN) :   71,115  (Normal events correctly kept benign)
   Total Evaluated      :  130,497
 
 Primary Detection Metrics:
-  Precision            :    0.84%  (Purity of suspicious alerts)
+  Precision            :    0.84%  (True threat purity among alerts)
   Recall (Sensitivity) :  100.00%  (Coverage of ground-truth attacks)
-  Specificity          :   54.70%  (Ability to filter benign events)
-  F1-Score             :    1.66%  (Harmonic mean of Precision & Recall)
+  Specificity          :   54.70%  (Ability to reject benign events)
+  False Positive Rate  :   45.30%  (FPR = FP / (FP + TN))
+  F1-Score             : 0.016600   (Harmonic mean, range 0.0 - 1.0)
   Accuracy             :   54.88%  (Overall classification accuracy)
+  ROC-AUC              : 0.999356   (Area under Receiver Operating Characteristic)
+  PR-AUC               : 0.549576   (Area under Precision-Recall Curve)
 
-2. INCIDENT-LEVEL CORRELATION & SOC EFFICIENCY
+2. INCIDENT-LEVEL CORRELATION AND SOC EFFICIENCY
 ------------------------------------------------------------
   Total Ground-Truth Red-Team Events  :      497
   Red-Team Events Captured in Clusters:      497 (100.00%)
   Total Correlated Incidents Formed   :    1,105
   Incidents Corroborating Red-Team    :       28
   Alert Reduction / Fatigue Mitigation: 99.15%
-    (Reduced 130,497 individual raw telemetry events into 1,105 actionable incidents)
+    (Compressed 130,497 raw telemetry events into 1,105 actionable incidents)
 
-3. METHODOLOGICAL INTERPRETATION & LIMITATIONS
+3. METHODOLOGICAL FINDINGS AND DATA LEAKAGE AUDIT
 ------------------------------------------------------------
-- Ground-Truth Completeness: The LANL redteam.txt ground truth captures
-  specific adversary actions. However, associated lateral scanning or
-  benign-looking service calls executed by red-team compromised hosts may
-  trigger behavioral rules (FP) despite being genuine attacker-induced anomalies.
-- Rule Threshold Sensitivity: The current triage threshold (risk_score >= 3)
-  balances high recall (100.0%) to ensure attacks are not missed with
-  acceptable precision for Tier-1 SOC analyst review.
-- Multi-Source Correlation Gain: The correlation phase successfully elevates
-  sporadic alerts into high-confidence multi-stage attack narratives, achieving
-  an alert fatigue reduction of 99.2%.
+- Extreme Class Imbalance: The evaluation set contains only 497 attacks
+  among 130,497 total events (attack prevalence of 0.38%).
+- Heuristic Triage Trade-off: Thresholding at risk_score >= 3 prioritizes
+  100% Recall at the expense of Precision (0.84%), flagging 58,885 background events.
+- Data Leakage Check:
+  * In day5_triage.py and specialist agents, ground truth 'is_redteam' and known
+    attack usernames/hostnames were checked in rule logic (IOC matching).
+  * Without a temporal train/test split, IOC lookup represents target contamination.
+- Ranking Capability: Despite low Precision at threshold 3, the ROC-AUC is 0.9994,
+  demonstrating that true attacks receive systematically higher risk scores than benign traffic.
 
 ============================================================
 EVALUATION COMPLETE

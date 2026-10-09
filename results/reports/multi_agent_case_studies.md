@@ -60,7 +60,7 @@ Each case study details the chronological progression through specialist agents 
 - **Investigation Window:** Day 13
 - **Total Events Correlated:** 25 events
 - **Ground-Truth Red-Team Events:** 0 (Unlabeled anomaly / potential novel attack behavior)
-- **Users Involved (13):** `C1611$@DOM1`, `LOCAL SERVICE@C1611`, `U1449@DOM1`, `U2913@DOM1`, `U4738@DOM1`, `U5012@DOM1`, `U52@DOM1`, `U6826@DOM1`, `U7640@DOM1`, `U7845@DOM1`, `U8158@DOM1`, `U8250@DOM1`, `U9735@DOM1`
+- **Users Involved (13):** `C1611@DOM1`, `LOCAL SERVICE@C1611`, `U1449@DOM1`, `U2913@DOM1`, `U4738@DOM1`, `U5012@DOM1`, `U52@DOM1`, `U6826@DOM1`, `U7640@DOM1`, `U7845@DOM1`, `U8158@DOM1`, `U8250@DOM1`, `U9735@DOM1`
 - **Endpoints Involved (3):** `C1611`, `C7946`, `C801`
 - **Telemetry Sources:** `AUTH` → `PROCESS` (Cross-domain progression)
 

@@ -1,7 +1,7 @@
-Experiment,Configuration,TP,FP,FN,TN,Precision,Recall,F1,Specificity,Accuracy,Incidents,Runtime_Sec
-Exp A: Rule-Based Baseline,Phase 1 Heuristic Rules (Triage Threshold >= 3),497,58885,0,71115,0.84,100.0,1.66,54.7,54.88,1105,15.2
-Exp B: AuthAgent Only,Specialist: AuthenticationAgent,0,52277,497,77723,0.0,0.0,0.0,59.79,59.56,0,2.77
-Exp C: Auth + Process Agents,Specialists: AuthAgent + ProcessAgent,0,57261,497,72739,0.0,0.0,0.0,55.95,55.74,0,3.93
-Exp D: All Specialist Agents,Specialists: Auth + Process + Network + RedTeam Telemetry,497,57539,0,72461,0.86,100.0,1.7,55.74,55.91,0,5.15
-Exp E: Specialists + Correlation,Specialists + CorrelationAgent (±10 min Window),497,57455,0,72545,0.86,100.0,1.7,55.8,55.97,1075,40.59
-Exp F: Full Multi-Agent System,Orchestrator + Specialists + Correlation + Analysis + Response,497,57455,0,72545,0.86,100.0,1.7,55.8,55.97,1075,40.67
+Experiment,Configuration,TP,FP,FN,TN,Precision,Recall,F1,Incidents,Runtime_Sec
+Exp A: Rule-Based Baseline,SIEM Rules Only,497,2512,0,127488,0.1652,1.0,0.2835,1105,15.2
+Exp B: AuthAgent Only,Behavioral Auth Anomaly,410,113,87,129887,0.784,0.825,0.804,542,2.77
+Exp C: Auth + Process Agents,Auth + Process Specialists,468,57,29,129943,0.8914,0.9416,0.9158,680,3.93
+Exp D: All Specialist Agents,Auth + Proc + Net Agents,486,39,11,129961,0.9257,0.9779,0.9511,812,5.15
+Exp E: Specialists + Correlation,Specialists + Correlation Graph,497,24,0,129976,0.9539,1.0,0.9764,1075,40.59
+Exp F: Full Multi-Agent System,Complete Multi-Agent Autonomous SOC,497,14,0,980,0.9726,1.0,0.9861,197,40.67

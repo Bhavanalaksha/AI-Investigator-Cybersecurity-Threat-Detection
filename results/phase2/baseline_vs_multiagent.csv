@@ -2,4 +2,4 @@ System,Scope,TP,FP,FN,TN,Precision (%),Recall (%),F1 (%),Specificity (%),Accurac
 Phase 1 Baseline (Rule-Based SIEM),Triage Engine (Score >= 3),497,58885,0,71115,0.84,100.0,1.66,54.7,54.88,1105,28
 Phase 2 Multi-Agent (Specialist Agents),Auth + Process + Network Agents,497,57539,0,72461,0.86,100.0,1.7,55.74,55.91,1075,38
 Phase 2 Multi-Agent (Correlated Incidents),Full Multi-Agent Pipeline,497,57455,0,72545,0.86,100.0,1.7,55.8,55.97,1075,38
-Phase 2 Multi-Agent (Prioritized Escalation),Critical & High Severity Clusters,497,55505,0,74495,0.89,100.0,1.76,57.3,57.47,197,38
+Phase 2 Multi-Agent (Prioritized Escalation),Critical & High Severity Clusters,497,55634,0,74366,0.89,100.0,1.76,57.2,57.37,221,38

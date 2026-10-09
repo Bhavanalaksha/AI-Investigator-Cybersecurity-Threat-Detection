@@ -1,0 +1,8 @@
+Model,Prediction_Unit,Split,Test_Samples,Positive_Samples,Negative_Samples,TP,TN,FP,FN,Precision,Recall,F1,Accuracy,Specificity,FPR,FNR,ROC_AUC,Average_Precision,Trapezoidal_PR_AUC,Frozen_Threshold
+Logistic Regression,300s Temporal Window,TEST (Days 13-14),289,64,225,64,0,225,0,22.15,100.0,36.26,22.15,0.0,100.0,0.0,0.5,0.2215,0.6107,0.8986
+Random Forest,300s Temporal Window,TEST (Days 13-14),289,64,225,36,197,28,28,56.25,56.25,56.25,80.62,87.56,12.44,43.75,0.6874,0.567,0.5747,0.8459
+Extra Trees,300s Temporal Window,TEST (Days 13-14),289,64,225,36,177,48,28,42.86,56.25,48.65,73.7,78.67,21.33,43.75,0.6968,0.5254,0.52,0.8278
+HistGradientBoosting,300s Temporal Window,TEST (Days 13-14),289,64,225,64,0,225,0,22.15,100.0,36.26,22.15,0.0,100.0,0.0,0.5,0.2215,0.6107,1.0
+XGBoost,300s Temporal Window,TEST (Days 13-14),289,64,225,64,0,225,0,22.15,100.0,36.26,22.15,0.0,100.0,0.0,0.5,0.2215,0.6107,0.9982
+LightGBM,300s Temporal Window,TEST (Days 13-14),289,64,225,64,0,225,0,22.15,100.0,36.26,22.15,0.0,100.0,0.0,0.5,0.2215,0.6107,0.9999
+Isolation Forest,300s Temporal Window,TEST (Days 13-14),289,64,225,11,147,78,53,12.36,17.19,14.38,54.67,65.33,34.67,82.81,0.3544,0.1685,0.1648,0.8597

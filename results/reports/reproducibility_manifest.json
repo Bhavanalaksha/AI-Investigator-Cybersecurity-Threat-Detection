@@ -1,0 +1,69 @@
+{
+  "project_name": "AI Investigator for Cybersecurity Threat Detection",
+  "execution_timestamp": "2026-10-09T07:26:58Z",
+  "best_selected_model": "Random Forest",
+  "model_selection_criterion": "Highest Validation F1-Score & PR-AUC",
+  "selected_hyperparameters": {
+    "n_estimators": 150,
+    "max_depth": 10,
+    "min_samples_leaf": 2,
+    "class_weight": "{0: 1, 1: 10}",
+    "random_state": 42
+  },
+  "frozen_threshold": 0.8459,
+  "operational_window_seconds": 300,
+  "data_partitions": {
+    "train": {
+      "events": 14768,
+      "windows": 216,
+      "attack_windows": 60
+    },
+    "validation": {
+      "events": 8142,
+      "windows": 933,
+      "attack_windows": 50
+    },
+    "test": {
+      "events": 107587,
+      "windows": 289,
+      "attack_windows": 64
+    }
+  },
+  "test_evaluation_metrics": {
+    "Model": "Random Forest",
+    "Prediction_Unit": "300s Temporal Window",
+    "Split": "TEST (Days 13-14)",
+    "Test_Samples": 289,
+    "Positive_Samples": 64,
+    "Negative_Samples": 225,
+    "TP": 36,
+    "TN": 197,
+    "FP": 28,
+    "FN": 28,
+    "Precision": 56.25,
+    "Recall": 56.25,
+    "F1": 56.25,
+    "Accuracy": 80.62,
+    "Specificity": 87.56,
+    "FPR": 12.44,
+    "FNR": 43.75,
+    "ROC_AUC": 0.6874,
+    "Average_Precision": 0.567,
+    "Trapezoidal_PR_AUC": 0.5747,
+    "Frozen_Threshold": 0.8459
+  },
+  "synthetic_demonstration": {
+    "Total_Events": 39,
+    "Total_Windows": 6,
+    "Detected_Windows": 1,
+    "Peak_Score": 88.75,
+    "Contributing_Agents": [
+      "AuthenticationAgent",
+      "ProcessAgent",
+      "CorrelationAgent"
+    ],
+    "Observed_Pattern": "Lateral Kerberos credential hopping followed by anomalous process invocation",
+    "Recommended_Response": "Endpoint host isolation, credential revocation, SOC incident escalation"
+  },
+  "verification_passed": true
+}

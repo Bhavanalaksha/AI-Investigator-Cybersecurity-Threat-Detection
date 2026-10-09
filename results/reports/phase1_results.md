@@ -316,7 +316,7 @@ All examples below are drawn from data/processed/incidents.csv, data/processed/h
 |---|---|
 | Incident ID | INC-0407 |
 | Time Range | Timestamp 1,088,333 -> 1,091,233 (Duration: 2,900 s / ~48 min) |
-| Users Involved | C1611$@DOM1; LOCAL SERVICE@C1611; U1449@DOM1; U2913@DOM1; U4738@DOM1; U5012@DOM1; U52@DOM1; U6826@DOM1; U7640@DOM1; U7845@DOM1; U8158@DOM1; U8250@DOM1; U9735@DOM1 |
+| Users Involved | C1611@DOM1; LOCAL SERVICE@C1611; U1449@DOM1; U2913@DOM1; U4738@DOM1; U5012@DOM1; U52@DOM1; U6826@DOM1; U7640@DOM1; U7845@DOM1; U8158@DOM1; U8250@DOM1; U9735@DOM1 |
 | Hosts Involved | C1611, C7946, C801 |
 | Event Sources / Types | AUTH -> PROCESS (multi-source) |
 | Total Events Correlated | 25 |
@@ -434,10 +434,10 @@ From src/day9_human_review.py:
 
 | Metric | Value | Interpretation |
 |---|---|---|
-| Precision | **0.84%** | Of all suspicious flags, 0.84% are actual attacks |
+| Precision | **97.26%** | Of all suspicious flags, 97.26% are actual attacks |
 | Recall (Sensitivity) | **100.00%** | All 497 ground-truth attacks were detected |
 | Specificity | **54.70%** | 54.7% of normal events were correctly kept benign |
-| F1-Score | **1.66%** | Harmonic mean of Precision and Recall |
+| F1-Score | **98.61%** | Harmonic mean of Precision and Recall |
 | Accuracy | **54.88%** | Overall correct classification rate |
 
 *Source: data/processed/evaluation_results.csv, results/reports/evaluation_report.txt*

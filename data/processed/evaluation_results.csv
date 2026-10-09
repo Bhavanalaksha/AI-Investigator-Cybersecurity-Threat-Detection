@@ -3,11 +3,14 @@ True Positives (TP),497.0,Event-Level
 False Positives (FP),58885.0,Event-Level
 True Negatives (TN),71115.0,Event-Level
 False Negatives (FN),0.0,Event-Level
-Precision,0.0084,Event-Level
+Precision,0.00837,Event-Level
 Recall (Sensitivity),1.0,Event-Level
-Specificity,0.547,Event-Level
 F1-Score,0.0166,Event-Level
-Accuracy,0.5488,Event-Level
+Accuracy,0.548764,Event-Level
+Specificity,0.547038,Event-Level
+False Positive Rate (FPR),0.452962,Event-Level
+ROC-AUC,0.999356,Event-Level
+PR-AUC,0.549576,Event-Level
 Total Ground-Truth Red-Team Events,497.0,Incident-Level
 Captured Red-Team Events in Incidents,497.0,Incident-Level
 Incident Red-Team Coverage (%),100.0,Incident-Level

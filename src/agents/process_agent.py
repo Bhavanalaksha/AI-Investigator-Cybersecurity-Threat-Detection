@@ -219,7 +219,7 @@ class ProcessAgent(BaseAgent):
                 ev_score += 2
                 ev_evidence.append("Compound threat: multiple anomalous process execution signals detected")
 
-            if ev_score >= 3 or is_rt == 1:
+            if ev_score >= 3:
                 flagged_events.append({
                     "event_id": ev_id,
                     "timestamp": ts,

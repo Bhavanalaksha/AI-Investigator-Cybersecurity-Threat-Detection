@@ -8,7 +8,7 @@ ENV/
 # Python cache
 __pycache__/
 *.py[cod]
-*$py.class
+*.class
 *.pytest_cache/
 .coverage
 htmlcov/
@@ -32,11 +32,10 @@ node_modules/
 Thumbs.db
 ehthumbs.db
 
-# Raw large dataset archives (>100MB)
-data/raw/*.gz
-data/raw/*.txt.gz
-data/raw/*.tar.gz
-data/raw/*.zip
+# Raw and large processed datasets
+data/raw/
+data/processed/*.csv
+data/subset/
 *.gz
 *.tar.gz
 *.zip

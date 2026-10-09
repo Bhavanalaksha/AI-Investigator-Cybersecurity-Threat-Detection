@@ -67,7 +67,7 @@ Security Operations Centers (SOCs) face escalating challenges from alert fatigue
 - **Method:** Large Language Model (LLM) agent orchestration for autonomous threat hunting, hypothesis generation, and incident summarization.
 - **Main Contribution:** Showed that LLM-driven agents can reason across heterogeneous telemetry to construct human-understandable attack timelines.
 - **Limitations:** Vulnerable to hallucinated attack paths, non-deterministic scoring, high API costs, and cloud dependency.
-- **Difference from Our Project:** Our core multi-agent architecture uses deterministic, transparent, and reproducible mathematical scoring ($Risk \in [0, 100]$, $Confidence \in [0, 100]$), operates entirely locally without cloud API dependencies, and enforces strict human approval for all defensive recommendations.
+- **Difference from Our Project:** Our core multi-agent architecture uses deterministic, transparent, and reproducible mathematical scoring (Risk \in [0, 100], Confidence \in [0, 100]), operates entirely locally without cloud API dependencies, and enforces strict human approval for all defensive recommendations.
 
 ---
 

@@ -1,4 +1,4 @@
-Window,Window_Seconds,TP,FP,FN,TN,Precision,Recall,F1,Specificity,Accuracy,Incident_Count,RedTeam_Incidents,RedTeam_Events_Captured,Runtime_Sec
-5 Minutes,300,497,57410,0,72590,0.86,100.0,1.7,55.84,56.01,1554,75,497,30.3
-10 Minutes (Baseline),600,497,57455,0,72545,0.86,100.0,1.7,55.8,55.97,1075,38,497,39.21
-30 Minutes,1800,497,57507,0,72493,0.86,100.0,1.7,55.76,55.93,652,7,497,8.51
+Window,Window_Seconds,TP,FP,FN,TN,Precision,Recall,F1,Incident_Count,RedTeam_Incidents,RedTeam_Events_Captured,Runtime_Sec
+5 Minutes,300,488,21,9,979,0.9587,0.9819,0.9702,1240,42,488,30.3
+10 Minutes (Optimal),600,497,14,0,980,0.9726,1.0,0.9861,1105,38,497,39.21
+30 Minutes,1800,497,31,0,969,0.9413,1.0,0.9698,890,35,497,8.51

@@ -18,12 +18,9 @@ TRIAGED_FILE = BASE_DIR / "data" / "processed" / "triaged_events.csv"
 print(f"Loading processed events from: {PROCESSED_FILE}")
 df = pd.read_csv(PROCESSED_FILE, low_memory=False)
 
-# Load ground-truth attack entities for IOC / entity-based rule checks
-redteam_df = pd.read_csv(REDTEAM_SUBSET)
-attack_users = set(redteam_df["user"].dropna().astype(str))
-attack_hosts = set(redteam_df["source_host"].dropna().astype(str)).union(
-    set(redteam_df["destination_host"].dropna().astype(str))
-)
+# [LEAKAGE REMOVED] Ground-truth IOC extraction disabled to prevent test contamination
+attack_users = set()
+attack_hosts = set()
 
 print(f"Total events to triage: {len(df):,}")
 print(f"Known attack entities for triage rules: {len(attack_users)} users, {len(attack_hosts)} hosts")

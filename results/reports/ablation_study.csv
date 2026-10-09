@@ -1,0 +1,6 @@
+Stage,Precision (%),Recall (%),F1 (%),Accuracy (%),Specificity (%),FPR (%),ROC_AUC,Average_Precision
+Stage A: Event Count Baseline,56.82,39.06,46.3,79.93,91.56,8.44,0.7175,0.4136
+Stage B: + Behavioral Features,56.82,39.06,46.3,79.93,91.56,8.44,0.7175,0.4136
+Stage C: + Multi-Source Fusion,56.25,56.25,56.25,80.62,87.56,12.44,0.6874,0.567
+Stage D: + Temporal Correlation,52.86,57.81,55.22,79.24,85.33,14.67,0.7073,0.5342
+Stage E: Full Multi-Agent Meta-Classifier,24.71,67.19,36.13,47.4,41.78,58.22,0.6973,0.5666

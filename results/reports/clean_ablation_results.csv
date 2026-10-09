@@ -1,0 +1,6 @@
+Stage,Precision (%),Recall (%),F1 (%),PR_AUC,FPR (%)
+Stage A: Basic Counts Baseline,3.41,10.29,5.12,0.0862,30.63
+Stage B: ML + Behavioral Features,3.41,10.29,5.12,0.0862,30.63
+Stage C: ML + Multi-Source Features,25.3,46.32,32.73,0.2517,14.35
+Stage D: ML + Temporal Correlation,18.56,68.38,29.2,0.2467,31.48
+Stage E: Full Multi-Agent Pipeline,19.61,66.91,30.33,0.2467,28.78

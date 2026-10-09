@@ -953,20 +953,35 @@ def get_feedback_summary():
 
 @app.get("/api/research-results")
 def get_research_results():
-    """Reads and returns real Phase 1 & Phase 2 experiment CSVs directly."""
+    """Reads and returns real Phase 1 & Phase 2 experiment CSVs and Master reports directly."""
     phase2_dir = PROJECT_ROOT / "results" / "phase2"
+    reports_dir = PROJECT_ROOT / "results" / "reports"
     
     def read_csv_safe(path):
         if path.exists():
             return pd.read_csv(path).to_dict(orient="records")
         return []
 
+    manifest_data = {}
+    manifest_path = reports_dir / "reproducibility_manifest.json"
+    if manifest_path.exists():
+        try:
+            with open(manifest_path, "r", encoding="utf-8") as mf:
+                manifest_data = json.load(mf)
+        except Exception:
+            pass
+
     return {
         "baseline_vs_multiagent": read_csv_safe(phase2_dir / "baseline_vs_multiagent.csv"),
         "ablation_results": read_csv_safe(phase2_dir / "agent_ablation_results.csv"),
         "window_results": read_csv_safe(phase2_dir / "agent_window_results.csv"),
         "multi_window_results": read_csv_safe(phase2_dir / "multi_agent_comparison.csv"),
-        "agent_performance": read_csv_safe(phase2_dir / "agent_performance.csv")
+        "agent_performance": read_csv_safe(phase2_dir / "agent_performance.csv"),
+        "final_model_comparison": read_csv_safe(reports_dir / "final_model_comparison.csv"),
+        "validation_model_experiments": read_csv_safe(reports_dir / "validation_model_experiments.csv"),
+        "ablation_study": read_csv_safe(reports_dir / "ablation_study.csv"),
+        "threshold_analysis": read_csv_safe(reports_dir / "threshold_analysis.csv"),
+        "reproducibility_manifest": manifest_data
     }
 
 @app.websocket("/ws")

@@ -37,12 +37,9 @@ def load_dataset_and_context(base_dir: Path) -> Tuple[pd.DataFrame, Dict[str, An
     df = pd.read_csv(processed_file, low_memory=False)
     print(f"Loaded {len(df):,} events.")
 
-    # Load attack entities
-    redteam_df = pd.read_csv(redteam_subset)
-    attack_users = set(redteam_df["user"].dropna().astype(str))
-    attack_hosts = set(redteam_df["source_host"].dropna().astype(str)).union(
-        set(redteam_df["destination_host"].dropna().astype(str))
-    )
+    # [LEAKAGE REMOVED] Ground-truth IOC seeding removed. Agents detect threats purely from observable behavior.
+    attack_users = set()
+    attack_hosts = set()
 
     print("Precomputing baseline profiling distributions...")
     # Baseline user-host pairs
