@@ -1,0 +1,295 @@
+[
+  {
+    "file": "data\\processed\\evaluation_results.csv",
+    "type": ".csv",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 782
+  },
+  {
+    "file": "data\\processed\\events_processed.csv",
+    "type": ".csv",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 14274675
+  },
+  {
+    "file": "data\\processed\\triaged_events.csv",
+    "type": ".csv",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 33141579
+  },
+  {
+    "file": "data\\subset\\multisource_subset.csv",
+    "type": ".csv",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 11181751
+  },
+  {
+    "file": "README.md",
+    "type": ".md",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 9797
+  },
+  {
+    "file": "results\\models\\best_model.joblib",
+    "type": "binary_model",
+    "matches": [
+      "best_model.joblib contains threshold=0.93 and scaler/features metadata"
+    ]
+  },
+  {
+    "file": "results\\phase2\\baseline_vs_multiagent.csv",
+    "type": ".csv",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 611
+  },
+  {
+    "file": "results\\reports\\ablation_study.csv",
+    "type": ".csv",
+    "matches": [
+      "Balanced F1 (56.25%)",
+      "Balanced Acc (80.62%)"
+    ],
+    "size": 517
+  },
+  {
+    "file": "results\\reports\\all_models_test_comparison.csv",
+    "type": ".csv",
+    "matches": [
+      "Balanced F1 (56.25%)",
+      "Balanced Acc (80.62%)",
+      "Threshold 0.8459"
+    ],
+    "size": 1126
+  },
+  {
+    "file": "results\\reports\\evaluation_report.txt",
+    "type": ".txt",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 2889
+  },
+  {
+    "file": "results\\reports\\existing_solutions_comparison.md",
+    "type": ".md",
+    "matches": [
+      "Balanced F1 (56.25%)",
+      "Balanced Acc (80.62%)",
+      "Threshold 0.8459"
+    ],
+    "size": 15994
+  },
+  {
+    "file": "results\\reports\\experiment_history.csv",
+    "type": ".csv",
+    "matches": [
+      "High-Precision F1 (58.18%)",
+      "Balanced F1 (56.25%)"
+    ],
+    "size": 300
+  },
+  {
+    "file": "results\\reports\\final_clean_evaluation.md",
+    "type": ".md",
+    "matches": [
+      "High-Precision FPR (6.22%)",
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 10354
+  },
+  {
+    "file": "results\\reports\\final_independent_verification.md",
+    "type": ".md",
+    "matches": [
+      "High-Precision (69.57%)",
+      "High-Precision Acc (84.08%)",
+      "High-Precision F1 (58.18%)",
+      "High-Precision Recall (50.00%)",
+      "High-Precision Spec (93.78%)",
+      "High-Precision FPR (6.22%)",
+      "Threshold 0.93",
+      "Balanced F1 (56.25%)",
+      "Balanced Acc (80.62%)",
+      "Threshold 0.8459"
+    ],
+    "size": 9556
+  },
+  {
+    "file": "results\\reports\\final_investigation_report.md",
+    "type": ".md",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 16854
+  },
+  {
+    "file": "results\\reports\\final_mentor_report.md",
+    "type": ".md",
+    "matches": [
+      "High-Precision (69.57%)",
+      "High-Precision Acc (84.08%)",
+      "High-Precision F1 (58.18%)",
+      "High-Precision Recall (50.00%)",
+      "High-Precision Spec (93.78%)",
+      "High-Precision FPR (6.22%)",
+      "Threshold 0.93",
+      "Balanced F1 (56.25%)",
+      "Balanced Acc (80.62%)",
+      "Threshold 0.8459"
+    ],
+    "size": 24010
+  },
+  {
+    "file": "results\\reports\\final_metrics.json",
+    "type": ".json",
+    "matches": [
+      "High-Precision (69.57%)",
+      "High-Precision Acc (84.08%)",
+      "High-Precision F1 (58.18%)",
+      "High-Precision Spec (93.78%)",
+      "High-Precision FPR (6.22%)",
+      "Threshold 0.93",
+      "Balanced F1 (56.25%)",
+      "Balanced Acc (80.62%)",
+      "Threshold 0.8459"
+    ],
+    "size": 5636
+  },
+  {
+    "file": "results\\reports\\final_model_comparison.csv",
+    "type": ".csv",
+    "matches": [
+      "High-Precision (69.57%)",
+      "High-Precision Acc (84.08%)",
+      "High-Precision F1 (58.18%)",
+      "High-Precision Spec (93.78%)",
+      "High-Precision FPR (6.22%)",
+      "Threshold 0.93",
+      "Balanced F1 (56.25%)"
+    ],
+    "size": 1190
+  },
+  {
+    "file": "results\\reports\\final_predictions.csv",
+    "type": ".csv",
+    "matches": [
+      "Threshold 0.93"
+    ],
+    "size": 14803
+  },
+  {
+    "file": "results\\reports\\model_optimization_report.md",
+    "type": ".md",
+    "matches": [
+      "Threshold 0.93",
+      "Balanced F1 (56.25%)",
+      "Balanced Acc (80.62%)",
+      "Threshold 0.8459"
+    ],
+    "size": 10804
+  },
+  {
+    "file": "results\\reports\\phase1_results.md",
+    "type": ".md",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 21670
+  },
+  {
+    "file": "results\\reports\\phase2_ieee_summary.md",
+    "type": ".md",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 21187
+  },
+  {
+    "file": "results\\reports\\reproducibility_manifest.json",
+    "type": ".json",
+    "matches": [
+      "Balanced F1 (56.25%)",
+      "Balanced Acc (80.62%)",
+      "Threshold 0.8459"
+    ],
+    "size": 1892
+  },
+  {
+    "file": "results\\reports\\research_question.md",
+    "type": ".md",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 4225
+  },
+  {
+    "file": "results\\reports\\validation_model_experiments.csv",
+    "type": ".csv",
+    "matches": [
+      "Threshold 0.8459"
+    ],
+    "size": 750
+  },
+  {
+    "file": "src\\day10_evaluation.py",
+    "type": ".py",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 8920
+  },
+  {
+    "file": "src\\generate_visualizations.py",
+    "type": ".py",
+    "matches": [
+      "High-Precision (69.57%)",
+      "High-Precision Acc (84.08%)",
+      "High-Precision F1 (58.18%)",
+      "High-Precision Recall (50.00%)",
+      "High-Precision Spec (93.78%)",
+      "Threshold 0.93",
+      "Balanced F1 (56.25%)"
+    ],
+    "size": 15224
+  },
+  {
+    "file": "src\\phase2\\evaluate_agents.py",
+    "type": ".py",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 8975
+  },
+  {
+    "file": "src\\phase2\\generate_phase2_visualizations.py",
+    "type": ".py",
+    "matches": [
+      "Old Leaked Metrics (0.84% / 1.66% / 497 TP)"
+    ],
+    "size": 15017
+  },
+  {
+    "file": "src\\ui\\index.html",
+    "type": ".html",
+    "matches": [
+      "High-Precision (69.57%)",
+      "High-Precision Acc (84.08%)",
+      "High-Precision F1 (58.18%)",
+      "High-Precision Recall (50.00%)",
+      "High-Precision FPR (6.22%)"
+    ],
+    "size": 74371
+  }
+]

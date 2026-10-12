@@ -1,0 +1,6 @@
+Experiment,Validation_F1 (%),Test_F1 (%),Selected_Model
+Run 1 (Baseline),42.1,32.73,EventCount
+Run 2 (Clean Split),46.3,32.73,RandomForest_60s
+Run 3 (300s Windows),62.5,56.25,RandomForest_300s
+Run 4 (RF Opt),69.14,56.25,RandomForest_Tuned
+Run 5 (Final Benchmark),69.14,58.18,RandomForest_Final

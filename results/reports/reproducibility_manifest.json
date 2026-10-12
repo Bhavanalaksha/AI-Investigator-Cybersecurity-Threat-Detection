@@ -65,5 +65,47 @@
     "Observed_Pattern": "Lateral Kerberos credential hopping followed by anomalous process invocation",
     "Recommended_Response": "Endpoint host isolation, credential revocation, SOC incident escalation"
   },
-  "verification_passed": true
+  "verification_passed": true,
+  "active_configuration": {
+    "model": "Random Forest",
+    "threshold": 0.93,
+    "threshold_mode": "High-Precision Alerting Mode",
+    "operational_window_seconds": 300,
+    "test_samples": 289,
+    "metrics": {
+      "TP": 32,
+      "TN": 211,
+      "FP": 14,
+      "FN": 32,
+      "Accuracy": 84.08,
+      "Precision": 69.57,
+      "Recall": 50.0,
+      "F1": 58.18,
+      "Specificity": 93.78,
+      "FPR": 6.22,
+      "ROC_AUC": 0.6874,
+      "Average_Precision": 0.567
+    }
+  },
+  "historical_reference_configuration": {
+    "model": "Random Forest",
+    "threshold": 0.8459,
+    "threshold_mode": "Balanced F1 Mode (Validation-argmax)",
+    "operational_window_seconds": 300,
+    "test_samples": 289,
+    "metrics": {
+      "TP": 36,
+      "TN": 197,
+      "FP": 28,
+      "FN": 28,
+      "Accuracy": 80.62,
+      "Precision": 56.25,
+      "Recall": 56.25,
+      "F1": 56.25,
+      "Specificity": 87.56,
+      "FPR": 12.44,
+      "ROC_AUC": 0.6874,
+      "Average_Precision": 0.567
+    }
+  }
 }

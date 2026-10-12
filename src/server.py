@@ -1020,6 +1020,17 @@ async def websocket_endpoint(websocket: WebSocket):
 UI_DIR = PROJECT_ROOT / "src" / "ui"
 if UI_DIR.exists():
     app.mount("/static", StaticFiles(directory=str(UI_DIR)), name="static")
+app.mount("/results", StaticFiles(directory=str(PROJECT_ROOT / "results")), name="results")
+
+
+@app.get("/api/final-metrics")
+def get_final_metrics():
+    """Returns final metrics and target tracker data directly from final_metrics.json."""
+    metrics_path = PROJECT_ROOT / "results" / "reports" / "final_metrics.json"
+    if metrics_path.exists():
+        with open(metrics_path, "r", encoding="utf-8") as mf:
+            return json.load(mf)
+    return {"error": "final_metrics.json not found"}
 
 @app.get("/")
 def serve_ui():

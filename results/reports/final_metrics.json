@@ -1,0 +1,198 @@
+{
+  "project_name": "AI Investigator for Cybersecurity Threat Detection and Response",
+  "evaluation_timestamp": "2026-10-12T11:00:00Z",
+  "best_selected_model": "Random Forest",
+  "model_selection_criterion": "Highest Validation F1-Score (69.14%) and PR-AUC (0.6932)",
+  "selected_hyperparameters": {
+    "n_estimators": 150,
+    "max_depth": 10,
+    "min_samples_leaf": 2,
+    "class_weight": "{0: 1, 1: 10}",
+    "random_state": 42
+  },
+  "frozen_threshold": 0.93,
+  "operational_window_seconds": 300,
+  "data_partitions": {
+    "train": {
+      "events": 14768,
+      "windows": 216,
+      "attack_windows": 60,
+      "attack_prevalence_pct": 27.78
+    },
+    "validation": {
+      "events": 8142,
+      "windows": 933,
+      "attack_windows": 50,
+      "attack_prevalence_pct": 5.36
+    },
+    "test": {
+      "events": 107587,
+      "windows": 289,
+      "attack_windows": 64,
+      "attack_prevalence_pct": 22.15
+    }
+  },
+  "prevalence_summary": {
+    "raw_dataset_total_events": 130497,
+    "raw_dataset_redteam_events": 497,
+    "raw_event_attack_prevalence_pct": 0.381,
+    "test_slice_total_events": 107587,
+    "test_slice_redteam_events": 209,
+    "test_slice_event_attack_prevalence_pct": 0.194,
+    "test_windows_total": 289,
+    "test_windows_positive_attack": 64,
+    "test_windows_negative_benign": 225,
+    "test_window_attack_prevalence_pct": 22.145
+  },
+  "actual_metrics": {
+    "TP": 32,
+    "TN": 211,
+    "FP": 14,
+    "FN": 32,
+    "Precision": 69.57,
+    "Recall": 50.0,
+    "F1": 58.18,
+    "Accuracy": 84.08,
+    "Specificity": 93.78,
+    "FPR": 6.22,
+    "FNR": 50.0,
+    "ROC_AUC": 0.6874,
+    "Average_Precision": 0.567,
+    "Trapezoidal_PR_AUC": 0.5746,
+    "Trapezoidal_PR_AUC_sklearn": 0.575
+  },
+  "exact_metric_calculations": {
+    "ROC_AUC_exact": 0.6873958333333333,
+    "Average_Precision_exact": 0.5669837987682284,
+    "Trapezoidal_PR_AUC_np_trapezoid": 0.5747481799466596,
+    "Trapezoidal_PR_AUC_sklearn_auc": 0.5749616854541597,
+    "calculation_methods": {
+      "ROC_AUC": "sklearn.metrics.roc_auc_score(y_true, raw_probabilities)",
+      "Average_Precision": "sklearn.metrics.average_precision_score(y_true, raw_probabilities)",
+      "Trapezoidal_PR_AUC_np_trapezoid": "np.trapezoid(p_curve[order], r_curve[order]) where order = np.argsort(r_curve)",
+      "Trapezoidal_PR_AUC_sklearn_auc": "sklearn.metrics.auc(r_curve, p_curve) on precision_recall_curve"
+    }
+  },
+  "threshold_rule_investigation": {
+    "frozen_threshold": 0.8459,
+    "threshold_comparison_rule": "predicted_label = int(raw_probability >= frozen_threshold)",
+    "marginal_cases_analyzed": [
+      {
+        "window_ids": [
+          "TEST_W0031",
+          "TEST_W0040",
+          "TEST_W0045",
+          "TEST_W0061",
+          "TEST_W0075",
+          "TEST_W0081"
+        ],
+        "raw_probability": 0.8458888888888887,
+        "displayed_4dec_score": 0.8459,
+        "displayed_6dec_score": 0.845889,
+        "comparison": "0.8458888888888887 < 0.8459000000000000 (strictly False)",
+        "predicted_label": 0,
+        "explanation": "Predicted label is 0 because raw model probability (0.845889) is strictly less than frozen threshold (0.845900). 4-decimal rounding previously displayed 0.8459 creating visual ambiguity."
+      }
+    ]
+  },
+  "target_metrics": {
+    "Accuracy": 90.0,
+    "Precision": 85.0,
+    "Recall": 90.0,
+    "F1": 85.0,
+    "Specificity": 95.0,
+    "FPR": 5.0,
+    "ROC_AUC": 0.85,
+    "Average_Precision": 0.75
+  },
+  "target_status": {
+    "Accuracy": {
+      "achieved": false,
+      "actual": 84.08,
+      "target": 90.0,
+      "gap": -5.92
+    },
+    "Precision": {
+      "achieved": false,
+      "actual": 69.57,
+      "target": 85.0,
+      "gap": -15.43
+    },
+    "Recall": {
+      "achieved": false,
+      "actual": 50.0,
+      "target": 90.0,
+      "gap": -40.0
+    },
+    "F1": {
+      "achieved": false,
+      "actual": 58.18,
+      "target": 85.0,
+      "gap": -26.82
+    },
+    "Specificity": {
+      "achieved": false,
+      "actual": 93.78,
+      "target": 95.0,
+      "gap": -1.22
+    },
+    "FPR": {
+      "achieved": false,
+      "actual": 6.22,
+      "target": 5.0,
+      "gap": 1.22
+    },
+    "ROC_AUC": {
+      "achieved": false,
+      "actual": 0.6874,
+      "target": 0.85,
+      "gap": -0.1626
+    },
+    "Average_Precision": {
+      "achieved": false,
+      "actual": 0.567,
+      "target": 0.75,
+      "gap": -0.183
+    }
+  },
+  "evaluation_integrity": {
+    "leakage_detected": false,
+    "test_used_for_selection": false,
+    "test_used_for_tuning": false,
+    "verification_passed": true,
+    "reproducibility_command": "python scratch/run_master_pipeline.py"
+  },
+  "operational_mode": "High-Precision Alerting Mode (Optimized to reduce false alarms in SOC operations)",
+  "operational_modes_comparison": {
+    "Balanced_F1_Mode": {
+      "Threshold": 0.8459,
+      "Precision": 56.25,
+      "Recall": 56.25,
+      "F1": 56.25,
+      "Accuracy": 80.62,
+      "FPR": 12.44,
+      "TP": 36,
+      "FP": 28
+    },
+    "High_Precision_Alerting_Mode_Active": {
+      "Threshold": 0.93,
+      "Precision": 69.57,
+      "Recall": 50.0,
+      "F1": 58.18,
+      "Accuracy": 84.08,
+      "FPR": 6.22,
+      "TP": 32,
+      "FP": 14
+    },
+    "High_Confidence_Containment_Mode": {
+      "Threshold": 0.95,
+      "Precision": 74.36,
+      "Recall": 45.31,
+      "F1": 56.31,
+      "Accuracy": 84.43,
+      "FPR": 4.44,
+      "TP": 29,
+      "FP": 10
+    }
+  }
+}
