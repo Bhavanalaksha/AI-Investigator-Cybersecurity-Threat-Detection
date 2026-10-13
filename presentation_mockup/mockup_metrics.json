@@ -1,0 +1,32 @@
+{
+  "disclaimer": "ILLUSTRATIVE - NOT MEASURED TEST RESULTS. These values represent a hypothetical target performance model for presentation, demonstration, and interface design purposes only. They do not represent measured evaluation results on the LANL dataset.",
+  "model_status": "Illustrative High-Performance Architectural Vision",
+  "illustrative_metrics": {
+    "Accuracy": 92.0,
+    "Precision": 90.0,
+    "Recall": 91.0,
+    "F1_Score": 90.5,
+    "Specificity": 96.0,
+    "False_Positive_Rate": 4.0,
+    "ROC_AUC": 0.94,
+    "Average_Precision": 0.9
+  },
+  "engineering_targets": {
+    "Accuracy": 90.0,
+    "Precision": 85.0,
+    "Recall": 90.0,
+    "F1_Score": 85.0,
+    "Specificity": 95.0,
+    "False_Positive_Rate": 5.0,
+    "ROC_AUC": 0.85,
+    "Average_Precision": 0.75
+  },
+  "illustrative_confusion_matrix_example_1000_windows": {
+    "total_windows": 1000,
+    "true_positives": 273,
+    "true_negatives": 647,
+    "false_positives": 30,
+    "false_negatives": 50,
+    "note": "Hypothetical distribution demonstrating 92% accuracy, ~90% precision, ~91% recall, 96% specificity on a 1000-window scale."
+  }
+}
