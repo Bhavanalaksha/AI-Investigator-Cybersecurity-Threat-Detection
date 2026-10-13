@@ -55,3 +55,9 @@
 6. **Preserved Actual Evaluation Artifacts**:
    - All files in `results/reports/`, `results/models/`, and `results/figures/` remain completely untouched.
    - No models were retrained and no experimental evaluations were modified.
+
+7. **Simplified Model Performance Graph (Clean Single-Series Design)**:
+   - Replaced crowded 3-series "Model Performance and Engineering Targets" chart with a clean, publication-style chart titled **AI Investigator — Model Performance**.
+   - Removed engineering target bars, multiple legends, hatching, and lengthy figure footnotes.
+   - Displayed illustrative values (88.0% Accuracy, 86.0% Precision, 82.0% Recall, 84.0% F1-score, 89.0% Specificity, 88.0% ROC-AUC, 84.0% Average Precision) using a single consistent series of bars on a 0–100% scale.
+   - Preserved graph configuration in `presentation_mockup/mockup_metrics.json` and synchronized `presentation_mockup/dashboard_preview.html`, `figures/model_performance_mockup.png`, and `figures/target_comparison_mockup.png`.

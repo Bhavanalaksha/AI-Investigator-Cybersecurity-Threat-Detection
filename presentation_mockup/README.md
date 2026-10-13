@@ -143,9 +143,10 @@ All presentation-specific demonstration files are isolated in this folder:
    - Features interactive Chart.js comparisons, KPI cards, incident triage feed, and multi-agent reasoning trace.
    - Open in any web browser for visual demonstrations.
 
-2. **`figures/target_comparison_mockup.png`**:
-   - Title: **Model Performance and Engineering Targets**
-   - Professional bar chart contrasting Measured LANL Test Results, Engineering Targets, and the Illustrative Scenario.
+2. **`figures/model_performance_mockup.png`** (also mirrored at `figures/target_comparison_mockup.png`):
+   - Title: **AI Investigator — Model Performance**
+   - Clean, academic-style single-series bar chart displaying illustrative presentation metrics: Accuracy (88.0%), Precision (86.0%), Recall (82.0%), F1-score (84.0%), Specificity (89.0%), ROC-AUC (88.0%), and Average Precision (84.0%).
+   - Restrained styling with a white background, dark readable labels, consistent 0–100% scale, and subtle gridlines. Provenance and distinction from measured LANL results are maintained in the report methodology.
 
 3. **`figures/confusion_matrix_mockup.png`**:
    - Clean heatmap illustrating the 205 TP, 267 TN, 33 FP, 45 FN integer breakdown with exact derived percentages.

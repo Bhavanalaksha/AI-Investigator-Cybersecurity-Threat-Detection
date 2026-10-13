@@ -75,5 +75,74 @@
       "Specificity": "TN / (TN + FP) = 267 / 300 = 89.0%",
       "FPR": "FP / (FP + TN) = 33 / 300 = 11.0%"
     }
+  },
+  "presentation_performance_chart": {
+    "title": "AI Investigator \u2014 Model Performance",
+    "filename": "model_performance_mockup.png",
+    "legacy_filename": "target_comparison_mockup.png",
+    "metrics": [
+      {
+        "name": "Accuracy",
+        "value": 88.0,
+        "formatted": "88.0%"
+      },
+      {
+        "name": "Precision",
+        "value": 86.0,
+        "formatted": "86.0%"
+      },
+      {
+        "name": "Recall",
+        "value": 82.0,
+        "formatted": "82.0%"
+      },
+      {
+        "name": "F1-score",
+        "value": 84.0,
+        "formatted": "84.0%"
+      },
+      {
+        "name": "Specificity",
+        "value": 89.0,
+        "formatted": "89.0%"
+      },
+      {
+        "name": "ROC-AUC",
+        "value": 88.0,
+        "formatted": "88.0%"
+      },
+      {
+        "name": "Average Precision",
+        "value": 84.0,
+        "formatted": "84.0%"
+      }
+    ],
+    "y_axis": {
+      "min": 0,
+      "max": 100,
+      "label": "Score (%)",
+      "ticks": [
+        0,
+        20,
+        40,
+        60,
+        80,
+        100
+      ]
+    },
+    "style": {
+      "figure_size": [
+        10.0,
+        5.2
+      ],
+      "dpi": 300,
+      "background_color": "#ffffff",
+      "bar_color": "#2563eb",
+      "bar_edge_color": "#1d4ed8",
+      "bar_width": 0.52,
+      "text_color": "#0f172a",
+      "grid_color": "#cbd5e1"
+    },
+    "provenance_note": "Presentation demonstration scenario. Not measured results from the trained LANL model. Provenance documented in presentation_mockup/README.md."
   }
 }
