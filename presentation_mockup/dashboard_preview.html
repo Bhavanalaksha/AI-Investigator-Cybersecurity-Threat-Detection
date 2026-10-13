@@ -525,29 +525,128 @@
     <!-- Figures Gallery -->
     <div class="card">
         <div class="card-title-row">
-            <div class="card-title">Presentation Graphics (300 DPI)</div>
-            <span class="card-tag">presentation_mockup/figures/</span>
+            <div class="card-title">Presentation Visualizations & Diagrams Suite (17 Figures @ 300 DPI)</div>
+            <span class="card-tag"><a href="figure_index.md" style="color: #38bdf8; text-decoration: none;">View Master Figure Index &rarr;</a></span>
         </div>
+        <p style="font-size: 0.82rem; color: #94a3b8; margin-top: 4px;">
+            A publication-grade visual suite documenting architecture, feature engineering, multi-agent workflows, diagnostic curves, and benchmark comparisons.
+        </p>
+
+        <!-- Category 1: Architecture & Pipelines -->
+        <h3 style="font-size: 0.95rem; color: #38bdf8; margin-top: 18px; border-bottom: 1px solid #1e293b; padding-bottom: 6px;">
+            1. Architecture & Pipeline Workflows
+        </h3>
         <div class="figures-grid">
             <div class="figure-card">
-                <h4>AI Investigator — Model Performance</h4>
-                <img src="figures/model_performance_mockup.png" alt="Model Performance">
-                <p>Clean illustrative model performance chart showing Accuracy (88.0%), Precision (86.0%), Recall (82.0%), F1 (84.0%), Specificity (89.0%), ROC-AUC (88.0%), and AP (84.0%).</p>
+                <h4>Fig 1: System Architecture Diagram</h4>
+                <a href="figures/system_architecture.png" target="_blank"><img src="figures/system_architecture.png" alt="System Architecture"></a>
+                <p>End-to-end 8-stage operational defensive workflow from multi-source logs to human authorization.</p>
             </div>
             <div class="figure-card">
-                <h4>Mathematically Consistent Confusion Matrix</h4>
-                <img src="figures/confusion_matrix_mockup.png" alt="Confusion Matrix">
-                <p>Matrix demonstration with derived Precision: 86.1%, Recall: 82.0%, Specificity: 89.0%.</p>
+                <h4>Fig 2: Dataset-to-Feature Pipeline</h4>
+                <a href="figures/dataset_feature_pipeline.png" target="_blank"><img src="figures/dataset_feature_pipeline.png" alt="Dataset Feature Pipeline"></a>
+                <p>Multi-source ingestion and 23-feature domain extraction across 300s operational analysis windows.</p>
             </div>
             <div class="figure-card">
-                <h4>Illustrative ROC & Precision-Recall Curves</h4>
-                <img src="figures/roc_pr_curves_mockup.png" alt="ROC and PR Curves">
-                <p>Diagnostic curves demonstrating AUC = 0.88 and Average Precision = 0.84.</p>
+                <h4>Fig 3: Model Training Workflow</h4>
+                <a href="figures/model_training_workflow.png" target="_blank"><img src="figures/model_training_workflow.png" alt="Model Training Workflow"></a>
+                <p>Chronological splitting, class-weight reweighting (1:10), Random Forest fitting, and artifact freezing.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 4: Multi-Agent Workflow</h4>
+                <a href="figures/multi_agent_workflow.png" target="_blank"><img src="figures/multi_agent_workflow.png" alt="Multi-Agent Workflow"></a>
+                <p>Parallel specialist agents (Auth, Proc, Net, Corr, Response) synthesizing unified incident dossiers.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 5: Live Inference Sequence</h4>
+                <a href="figures/live_inference_sequence.png" target="_blank"><img src="figures/live_inference_sequence.png" alt="Live Inference Sequence"></a>
+                <p>Real-time telemetry streaming, ML risk calculation, agent dispatch, and REST API alert sequence.</p>
+            </div>
+        </div>
+
+        <!-- Category 2: Performance & Diagnostic Curves -->
+        <h3 style="font-size: 0.95rem; color: #38bdf8; margin-top: 24px; border-bottom: 1px solid #1e293b; padding-bottom: 6px;">
+            2. Model Performance & Diagnostic Curves
+        </h3>
+        <div class="figures-grid">
+            <div class="figure-card">
+                <h4>Fig 17: Model Performance Overview</h4>
+                <a href="figures/model_performance_mockup.png" target="_blank"><img src="figures/model_performance_mockup.png" alt="Model Performance Overview"></a>
+                <p>Clean single-series presentation chart showing 88% Accuracy, 86% Precision, 82% Recall, 84% F1, 89% Specificity.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 6: Mathematically Consistent Confusion Matrix</h4>
+                <a href="figures/confusion_matrix_mockup.png" target="_blank"><img src="figures/confusion_matrix_mockup.png" alt="Confusion Matrix"></a>
+                <p>Derived rates from N = 550 windows: 205 TP, 267 TN, 33 FP, 45 FN (Precision: 86.1%, Recall: 82.0%).</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 7: Illustrative ROC Curve (AUC = 0.88)</h4>
+                <a href="figures/roc_curve_mockup.png" target="_blank"><img src="figures/roc_curve_mockup.png" alt="ROC Curve"></a>
+                <p>Receiver Operating Characteristic curve illustrating AUC = 0.88 with operating point at FPR = 11.0%.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 8: Illustrative PR Curve (AP = 0.84)</h4>
+                <a href="figures/pr_curve_mockup.png" target="_blank"><img src="figures/pr_curve_mockup.png" alt="PR Curve"></a>
+                <p>Precision-Recall curve demonstrating Average Precision = 0.84 against prevalence baseline.</p>
             </div>
             <div class="figure-card">
                 <h4>Presentation Scorecard Cards</h4>
-                <img src="figures/performance_cards_mockup.png" alt="Performance Cards">
-                <p>Clean executive scorecard for presentation slide decks.</p>
+                <a href="figures/performance_cards_mockup.png" target="_blank"><img src="figures/performance_cards_mockup.png" alt="Performance Cards"></a>
+                <p>Executive scorecards formatted for technical presentation slide decks.</p>
+            </div>
+        </div>
+
+        <!-- Category 3: Benchmarks, Features & Ablation -->
+        <h3 style="font-size: 0.95rem; color: #38bdf8; margin-top: 24px; border-bottom: 1px solid #1e293b; padding-bottom: 6px;">
+            3. Comparative Benchmarks & Feature Forensics
+        </h3>
+        <div class="figures-grid">
+            <div class="figure-card">
+                <h4>Fig 9: Candidate Model Comparison</h4>
+                <a href="figures/model_comparison_mockup.png" target="_blank"><img src="figures/model_comparison_mockup.png" alt="Model Comparison"></a>
+                <p>Contrasting presentation scenario against measured Random Forest, Extra Trees, and baseline models.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 10: Top Domain Feature Importance</h4>
+                <a href="figures/feature_importance_mockup.png" target="_blank"><img src="figures/feature_importance_mockup.png" alt="Feature Importance"></a>
+                <p>Top 10 domain features in 23-feature model highlighting auth failures, admin logons, and NTLM ratios.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 11: Threshold Trade-Off Analysis</h4>
+                <a href="figures/threshold_tradeoff_mockup.png" target="_blank"><img src="figures/threshold_tradeoff_mockup.png" alt="Threshold Trade-off"></a>
+                <p>Sensitivity-precision trade-off curves demonstrating how threshold tuning cuts false positive alarms.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 14: Feature Family Ablation Study</h4>
+                <a href="figures/ablation_study_mockup.png" target="_blank"><img src="figures/ablation_study_mockup.png" alt="Ablation Study"></a>
+                <p>Contribution of multi-source fusion and temporal dynamics over single-source baseline monitoring.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 15: Defensive Solutions Matrix</h4>
+                <a href="figures/solution_comparison_matrix.png" target="_blank"><img src="figures/solution_comparison_matrix.png" alt="Solution Comparison Matrix"></a>
+                <p>Architectural capability matrix contrasting AI Investigator against SIEM, EDR, and Signature IDS.</p>
+            </div>
+        </div>
+
+        <!-- Category 4: SOC Triage & Interface Design -->
+        <h3 style="font-size: 0.95rem; color: #38bdf8; margin-top: 24px; border-bottom: 1px solid #1e293b; padding-bottom: 6px;">
+            4. Incident Triage & SOC Operations
+        </h3>
+        <div class="figures-grid">
+            <div class="figure-card">
+                <h4>Fig 12: Attack Progression Timeline</h4>
+                <a href="figures/attack_timeline_mockup.png" target="_blank"><img src="figures/attack_timeline_mockup.png" alt="Attack Timeline"></a>
+                <p>Multi-stage lateral movement campaign progression across 8 hours and automated AI alert point.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 13: Severity Distribution & Dwell Time</h4>
+                <a href="figures/incident_severity_distribution.png" target="_blank"><img src="figures/incident_severity_distribution.png" alt="Incident Severity Distribution"></a>
+                <p>Prioritized alert distribution and 87% triage time acceleration compared to manual SIEM analysis.</p>
+            </div>
+            <div class="figure-card">
+                <h4>Fig 16: SOC Dashboard Layout Overview</h4>
+                <a href="figures/dashboard_overview.png" target="_blank"><img src="figures/dashboard_overview.png" alt="Dashboard Layout Overview"></a>
+                <p>Comprehensive schematic layout of the interactive Security Operations Center analyst interface.</p>
             </div>
         </div>
     </div>
