@@ -30,7 +30,7 @@ The AI Investigator architecture connects 8 modular engineering stages:
 2. **Event Normalization:** Maps diverse schemas into a standardized operational event representation.
 3. **Domain Feature Engineering:** Computes 23 temporal, behavioral, and cross-source fusion features (e.g., failed auth rates, NTLM spikes, process rarity, cross-source interaction flags).
 4. **Temporal Window Aggregation:** Bins events into 300-second analysis windows to capture correlated multi-hop activity.
-5. **Supervised ML Threat Risk Scoring:** Evaluates windows using an optimized Random Forest classifier ($n=150$, $\text{max\_depth}=10$, $\text{class\_weight}=\{0:1, 1:10\}$).
+5. **Supervised ML Threat Risk Scoring:** Evaluates windows using an optimized Random Forest classifier (n=150, max_depth=10, class_weight=\{0:1, 1:10\}).
 6. **Multi-Agent Specialist Reasoning:** Specialized domain agents (Auth, Process, Network, Correlation) analyze flagged windows to extract entity graphs and MITRE ATT&CK tactics.
 7. **Advisory Incident Synthesis:** Synthesizes structured incident reports with severity ranking, confidence scores, and containment playbooks.
 8. **Human-in-the-Loop Review:** SOC analysts inspect evidence and execute response recommendations via the interactive dashboard.
@@ -55,14 +55,14 @@ The operational model is deployed in **High-Precision Alerting Mode (Threshold =
 
 | Metric | Reported Test Performance | Research Target Goal | Status & Empirical Analysis |
 | :--- | :---: | :---: | :--- |
-| **Precision** | **69.57%** | $\ge 85.0\%$ | **Substantially Improved (+13.32 pp over balanced mode)** |
-| **Accuracy** | **84.08%** | $\ge 90.0\%$ | **Substantially Improved (+3.46 pp over balanced mode)** |
-| **F1-Score** | **58.18%** | $\ge 85.0\%$ | **Substantially Improved (+1.93 pp over balanced mode)** |
-| **Specificity** | **93.78%** | $\ge 95.0\%$ | **Near Target (-1.22 pp gap)** |
-| **False Positive Rate (FPR)** | **6.22%** | $\le 5.0\%$ | **Slashed in half (from 12.44% to 6.22%; 14 FP)** |
-| **Recall** | **50.00%** | $\ge 90.0\%$ | Operational trade-off (-4 attack windows caught) |
-| **ROC-AUC** | **0.6874** | $\ge 0.850$ | Rank-based continuous discriminative ability |
-| **Average Precision (AP)** | **0.5670** | $\ge 0.750$ | Area under empirical Precision-Recall curve |
+| **Precision** | **69.57%** | >= 85.0% | **Substantially Improved (+13.32 pp over balanced mode)** |
+| **Accuracy** | **84.08%** | >= 90.0% | **Substantially Improved (+3.46 pp over balanced mode)** |
+| **F1-Score** | **58.18%** | >= 85.0% | **Substantially Improved (+1.93 pp over balanced mode)** |
+| **Specificity** | **93.78%** | >= 95.0% | **Near Target (-1.22 pp gap)** |
+| **False Positive Rate (FPR)** | **6.22%** | <= 5.0% | **Slashed in half (from 12.44% to 6.22%; 14 FP)** |
+| **Recall** | **50.00%** | >= 90.0% | Operational trade-off (-4 attack windows caught) |
+| **ROC-AUC** | **0.6874** | >= 0.850 | Rank-based continuous discriminative ability |
+| **Average Precision (AP)** | **0.5670** | >= 0.750 | Area under empirical Precision-Recall curve |
 
 ### Confusion Matrix (Test Set, N = 289 Windows)
 
@@ -82,11 +82,11 @@ Total Windows                      243                    46               289
 
 ## 5. Operational Threshold Trade-Off Analysis
 
-| Operational Mode | Threshold $\theta$ | Precision | Recall | F1-Score | Accuracy | FPR | FP Count | Best Deployment Context |
+| Operational Mode | Threshold Threshold | Precision | Recall | F1-Score | Accuracy | FPR | FP Count | Best Deployment Context |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
 | **High-Precision Alerting Mode (Active)** | **0.9300** | **69.57%** | **50.00%** | **58.18%** | **84.08%** | **6.22%** | **14** | **Primary SOC Alerting:** Slashes false alarm fatigue by 50% while maintaining high F1. |
-| **High-Confidence Containment Tier** | **0.9500** | **74.36%** | **45.31%** | **56.31%** | **84.43%** | **4.44%** | **10** | **Automated Host Quarantine:** Meets the $<5\%$ FPR and $\ge 95\%$ Specificity targets. |
-| **Balanced $F_1$ Mode (Reference)** | **0.8459** | **56.25%** | **56.25%** | **56.25%** | **80.62%** | **12.44%** | **28** | **Validation-Maximized Reference:** Symmetrical balance between precision and recall. |
+| **High-Confidence Containment Tier** | **0.9500** | **74.36%** | **45.31%** | **56.31%** | **84.43%** | **4.44%** | **10** | **Automated Host Quarantine:** Meets the <5% FPR and >= 95% Specificity targets. |
+| **Balanced F1-Score Mode (Reference)** | **0.8459** | **56.25%** | **56.25%** | **56.25%** | **80.62%** | **12.44%** | **28** | **Validation-Maximized Reference:** Symmetrical balance between precision and recall. |
 
 ---
 
@@ -98,7 +98,7 @@ Total Windows                      243                    46               289
 | **Random Forest (Balanced)** | 56.25% | 56.25% | 56.25% | 80.62% | 87.56% | 12.44% | 0.6874 | 0.8459 |
 | **Multi-Agent Meta-Classifier** | 56.25% | 56.25% | 56.25% | 80.62% | 87.56% | 12.44% | 0.6874 | 0.8459 |
 | **Extra Trees** | 48.65% | 42.86% | 56.25% | 73.70% | 78.67% | 21.33% | 0.6968 | 0.8278 |
-| **Event-Count Baseline (Historical)** | 46.30% | 56.82% | 39.06% | 79.93% | 91.11% | 8.89% | - | Rule $\ge 3$ |
+| **Event-Count Baseline (Historical)** | 46.30% | 56.82% | 39.06% | 79.93% | 91.11% | 8.89% | - | Rule >= 3 |
 | **HistGradientBoosting** | 36.26% | 22.15% | 100.00% | 22.15% | 0.00% | 100.00% | 0.5000 | 1.0000 |
 | **XGBoost** | 36.26% | 22.15% | 100.00% | 22.15% | 0.00% | 100.00% | 0.5000 | 0.9982 |
 | **LightGBM** | 36.26% | 22.15% | 100.00% | 22.15% | 0.00% | 100.00% | 0.5000 | 0.9999 |

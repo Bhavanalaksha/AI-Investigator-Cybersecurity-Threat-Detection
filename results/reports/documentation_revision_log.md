@@ -12,7 +12,7 @@ This revision audited all documentation, models, reports, configuration JSONs, C
 
 **Key Operating Principles Enforced:**
 1. **Zero Retraining / Zero Rerunning of Raw Experiments:** All updates work strictly from the existing recorded results on LANL telemetry (Days 13–14 held-out test split, 289 300s windows, 64 attack windows, 225 benign windows).
-2. **Canonical Metric Alignment:** The primary active configuration is documented as **High-Precision Alerting Mode ($\theta = 0.9300$)**:
+2. **Canonical Metric Alignment:** The primary active configuration is documented as **High-Precision Alerting Mode (Threshold = 0.9300)**:
    - Accuracy: **84.08%**
    - Precision: **69.57%**
    - Recall: **50.00%**
@@ -21,10 +21,10 @@ This revision audited all documentation, models, reports, configuration JSONs, C
    - False Positive Rate: **6.22%**
    - ROC-AUC: **0.6874**
    - Average Precision: **0.5670**
-   - Confusion Matrix: $TP = 32, FP = 14, TN = 211, FN = 32$
+   - Confusion Matrix: TP = 32, FP = 14, TN = 211, FN = 32
 3. **Historical Reference Preservation:** The validation-argmax balanced operating mode is preserved as an empirical reference:
-   - Threshold $\theta = 0.8459$, Accuracy 80.62%, Precision 56.25%, Recall 56.25%, F1 56.25%, Specificity 87.56%, FPR 12.44%, $TP = 36, FP = 28, TN = 197, FN = 28$.
-4. **Honest Gaps & Zero Fabrication:** High-ambition engineering targets ($\ge 85\%$ Precision, $\ge 90\%$ Recall, $\ge 90\%$ Accuracy) are documented with visible empirical gaps. No numbers were altered or fabricated.
+   - Threshold Threshold = 0.8459, Accuracy 80.62%, Precision 56.25%, Recall 56.25%, F1 56.25%, Specificity 87.56%, FPR 12.44%, TP = 36, FP = 28, TN = 197, FN = 28.
+4. **Honest Gaps & Zero Fabrication:** High-ambition engineering targets (>= 85% Precision, >= 90% Recall, >= 90% Accuracy) are documented with visible empirical gaps. No numbers were altered or fabricated.
 
 ---
 
@@ -33,9 +33,9 @@ This revision audited all documentation, models, reports, configuration JSONs, C
 ### File 1: `results/reports/final_mentor_report.md`
 - **Purpose of Change:** Complete rewrite into a 16-section technical report suitable for an academic defense.
 - **Metrics / Text Revised:** 
-  - Integrated High-Precision Alerting Mode metrics ($P=69.57\%, R=50.00\%, F_1=58.18\%, \text{Acc}=84.08\%, \text{FPR}=6.22\%$) and confusion matrix ($32/14/211/32$).
+  - Integrated High-Precision Alerting Mode metrics (P=69.57%, R=50.00%, F1=58.18%, Acc=84.08%, FPR=6.22%) and confusion matrix (32/14/211/32).
   - Added Operational Threshold Comparison table with Balanced Mode (0.8459), High-Precision Mode (0.9300), and High-Confidence Mode (0.9500).
-  - Added baseline comparison against rule-based SIEM ($F_1=46.30\%$) and candidate classifiers.
+  - Added baseline comparison against rule-based SIEM (F1 = 46.30%) and candidate classifiers.
   - Documented 8-stage architecture, data processing pipeline, feature engineering, and human-in-the-loop review.
   - Added honest limitations and target gap analysis.
 - **Action Taken:** **Edited & Rewritten** (from existing recorded results).
@@ -48,7 +48,7 @@ This revision audited all documentation, models, reports, configuration JSONs, C
 - **Metrics / Text Revised:**
   - Added Section 2 distinguishing Previously Recorded Verifications, Documentation Changes, Checks Not Repeated, Supported Claims, and Claims Requiring Further Evaluation.
   - Certified mathematical recalculation of Precision (69.57%), Recall (50.00%), F1 (58.18%), Accuracy (84.08%), Specificity (93.78%), FPR (6.22%).
-  - Verified threshold comparison rule across all 289 rows and resolved 6 marginal cases ($0.845889 < 0.930000$).
+  - Verified threshold comparison rule across all 289 rows and resolved 6 marginal cases (0.845889 < 0.930000).
   - Documented zero score fabrication and verified cross-artifact agreement across JSON, CSV, Markdown, and UI.
 - **Action Taken:** **Edited & Certified**.
 - **Remaining Limitation:** Cross-organizational validation (e.g., DARPA OpTC) cannot be certified from LANL telemetry alone.
@@ -59,7 +59,7 @@ This revision audited all documentation, models, reports, configuration JSONs, C
 - **Purpose of Change:** Canonical single source of truth for all machine-readable model metrics and metadata.
 - **Metrics / Text Revised:**
   - Set `frozen_threshold = 0.9300` and `operational_mode = "High-Precision Alerting Mode"`.
-  - Recorded exact `actual_metrics` ($TP=32, TN=211, FP=14, FN=32, P=69.57, R=50.0, F1=58.18, \text{Acc}=84.08, \text{Spec}=93.78, \text{FPR}=6.22$).
+  - Recorded exact `actual_metrics` (TP=32, TN=211, FP=14, FN=32, P=69.57, R=50.0, F1=58.18, Acc=84.08, Spec=93.78, FPR=6.22).
   - Recorded `operational_modes_comparison` across Balanced, High-Precision, and High-Confidence modes.
   - Recorded exact continuous metrics (ROC-AUC 0.6874, AP 0.5670, Trapezoidal PR-AUC 0.5746).
 - **Action Taken:** **Edited & Synchronized**.
@@ -69,7 +69,7 @@ This revision audited all documentation, models, reports, configuration JSONs, C
 
 ### File 4: `results/reports/final_model_comparison.csv`
 - **Purpose of Change:** Canonical tabular benchmark comparing all candidate ML models on the untouched test partition.
-- **Metrics / Text Revised:** Updated Random Forest entry to reflect High-Precision Mode ($TP=32, TN=211, FP=14, FN=32, P=69.57\%, R=50.00\%, F_1=58.18\%, \text{Acc}=84.08\%, \text{Spec}=93.78\%, \text{FPR}=6.22\%$, Threshold 0.9300).
+- **Metrics / Text Revised:** Updated Random Forest entry to reflect High-Precision Mode (TP=32, TN=211, FP=14, FN=32, P=69.57%, R=50.00%, F1=58.18%, Acc=84.08%, Spec=93.78%, FPR=6.22%, Threshold 0.9300).
 - **Action Taken:** **Edited & Synchronized**.
 - **Remaining Limitation:** Preserves historical collapse of gradient boosting models on extreme imbalance as empirical record.
 
@@ -85,7 +85,7 @@ This revision audited all documentation, models, reports, configuration JSONs, C
 
 ### File 6: `results/reports/final_predictions.csv`
 - **Purpose of Change:** Row-level test predictions across all 289 operational windows.
-- **Metrics / Text Revised:** Verified continuous scores to 6 decimal places ($0.845889$). Generated `predicted_label = (continuous_score >= 0.9300).astype(int)`. Verified resulting confusion matrix: $TP=32, TN=211, FP=14, FN=32$.
+- **Metrics / Text Revised:** Verified continuous scores to 6 decimal places (0.845889). Generated `predicted_label = (continuous_score >= 0.9300).astype(int)`. Verified resulting confusion matrix: TP=32, TN=211, FP=14, FN=32.
 - **Action Taken:** **Edited & Verified**.
 - **Remaining Limitation:** Fixed 300-second window boundaries.
 
@@ -137,7 +137,7 @@ This revision audited all documentation, models, reports, configuration JSONs, C
 
 ### File 11: `results/figures/confusion_matrix.png` & `confusion_breakdown.png`
 - **Purpose of Change:** Visual representation of test classification outcomes.
-- **Metrics / Text Revised:** Heatmap and bar chart displaying $TN=211, FP=14, FN=32, TP=32$ at threshold 0.9300.
+- **Metrics / Text Revised:** Heatmap and bar chart displaying TN=211, FP=14, FN=32, TP=32 at threshold 0.9300.
 - **Action Taken:** **Regenerated at 300 DPI**.
 - **Remaining Limitation:** Test sample count fixed at 289 windows.
 
@@ -167,7 +167,7 @@ This revision audited all documentation, models, reports, configuration JSONs, C
 - **Purpose of Change:** Complete project documentation overhaul.
 - **Metrics / Text Revised:**
   - Removed outdated leaked exploration numbers (0.84% Precision / 100% Recall).
-  - Documented High-Precision Alerting Mode (69.57% Precision, 84.08% Accuracy, 58.18% F1, 6.22% FPR, $\theta=0.9300$).
+  - Documented High-Precision Alerting Mode (69.57% Precision, 84.08% Accuracy, 58.18% F1, 6.22% FPR, Threshold = 0.9300).
   - Added Operational Threshold Trade-Off table and candidate model benchmark table.
   - Documented 8-stage architecture, data pipeline, and reproduction steps.
 - **Action Taken:** **Edited & Rewritten**.
@@ -198,6 +198,6 @@ This revision audited all documentation, models, reports, configuration JSONs, C
 | **No Raw Retraining** | **CONFIRMED** | No models were retrained; existing recorded predictions were used. |
 | **No Fabricated Scores** | **CONFIRMED** | All metrics match exact formulas on 289 test prediction rows. |
 | **Target Gaps Transparent** | **CONFIRMED** | All 6 unmet target gaps remain clearly documented. |
-| **Zero Currency Symbols** | **CONFIRMED** | All incorrect `$` symbols purged from ML metrics. |
+| **Zero Currency Symbols** | **CONFIRMED** | All incorrect `` symbols purged from ML metrics. |
 | **Multi-Tier Options Preserved** | **CONFIRMED** | High-Precision (0.9300), Balanced (0.8459), and High-Confidence (0.9500) tiers clearly defined. |
 | **Cross-Artifact Synchronization** | **CONFIRMED** | Reports, JSON, CSV, Figures, UI, and README 100% agree. |

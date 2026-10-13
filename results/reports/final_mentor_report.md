@@ -4,7 +4,7 @@
 **Author / Engineering Team:** AI Cybersecurity Research & Development Team  
 **Evaluation Dataset:** Los Alamos National Laboratory (LANL) Comprehensive Cyber-Security Events Dataset  
 **Primary Evaluated Model:** Supervised Random Forest Classifier with Multi-Source Feature Fusion  
-**Operational Status:** High-Precision Alerting Mode Active (Threshold $\theta = 0.9300$)  
+**Operational Status:** High-Precision Alerting Mode Active (Threshold Threshold = 0.9300)  
 **Target Evaluation Split:** Chronological Held-out Test Set (Days 13–14, 289 Operational Windows)  
 
 ---
@@ -15,7 +15,7 @@ Enterprise security operations centers (SOCs) face an overwhelming volume of het
 
 This project designs, implements, and rigorously evaluates the **AI Investigator for Cybersecurity Threat Detection and Response**, an autonomous, end-to-end cybersecurity analytics platform. The system unifies multi-source telemetry ingestion (Authentication, Process Creation, DNS, and NetFlow), domain-tailored feature engineering, supervised machine learning threat risk scoring, specialist autonomous reasoning agents, incident prioritization, and an interactive human-in-the-loop analyst dashboard.
 
-Following an exhaustive methodological audit that identified and excised ground-truth label leakage from legacy codebases, the model was evaluated under strict chronological train/validation/test partitioning on the LANL Cyber-Security dataset. To directly tackle SOC alert fatigue, the operational decision threshold was calibrated along its Precision-Recall frontier, establishing **High-Precision Alerting Mode ($\theta = 0.9300$)** as the active production configuration. 
+Following an exhaustive methodological audit that identified and excised ground-truth label leakage from legacy codebases, the model was evaluated under strict chronological train/validation/test partitioning on the LANL Cyber-Security dataset. To directly tackle SOC alert fatigue, the operational decision threshold was calibrated along its Precision-Recall frontier, establishing **High-Precision Alerting Mode (Threshold = 0.9300)** as the active production configuration. 
 
 On an untouched held-out test set spanning Days 13–14 (107,587 raw events grouped into 289 300-second operational windows containing 64 red-team attack windows), the primary Random Forest classifier achieves:
 - **Precision:** **69.57%** (32 True Positives vs. 14 False Positives; a **+13.32 percentage point increase** over the validation-argmax balanced baseline).
@@ -26,7 +26,7 @@ On an untouched held-out test set spanning Days 13–14 (107,587 raw events grou
 - **Recall:** **50.00%** (32 out of 64 red-team lateral movement windows captured).
 - **ROC-AUC:** **0.6874** and **Average Precision (AP):** **0.5670**.
 
-While high-ambition research targets (such as $\ge 90\%$ Recall and $\ge 85\%$ Precision) remain documented with clear empirical gaps, the achieved performance represents an honest, reproducible, and mathematically defensible benchmark that significantly improves operational signal-to-noise ratio over traditional SIEM baselines.
+While high-ambition research targets (such as >= 90% Recall and >= 85% Precision) remain documented with clear empirical gaps, the achieved performance represents an honest, reproducible, and mathematically defensible benchmark that significantly improves operational signal-to-noise ratio over traditional SIEM baselines.
 
 ---
 
@@ -49,8 +49,8 @@ A critical survey of established cybersecurity architectures reveals persistent 
 | Solution Category | Representative Examples | Core Methodologies | Critical Operational Limitations |
 | :--- | :--- | :--- | :--- |
 | **Signature-Based IDS / NIDS** | Snort, Suricata, Zeek | Static regex matching, known CVE payload signatures | Blind to novel zero-day exploits, living-off-the-land binaries, and stolen credential usage. High maintenance overhead. |
-| **Rule-Based SIEM & Correlation** | Splunk Enterprise Security, Elastic SIEM, QRadar | Static threshold rules (e.g., $>5$ failed logins in 60s) | Inflexible thresholds cause catastrophic alert fatigue or high false negatives. Fails on low-and-slow lateral movement. |
-| **Unsupervised Anomaly Detectors** | Isolation Forest, One-Class SVM, Autoencoders | Distributional outlier scoring in high-dimensional space | Flags rare benign administrative workflows, producing unacceptable False Positive Rates ($>30\%$ in operational evaluations). |
+| **Rule-Based SIEM & Correlation** | Splunk Enterprise Security, Elastic SIEM, QRadar | Static threshold rules (e.g., > 5 failed logins in 60s) | Inflexible thresholds cause catastrophic alert fatigue or high false negatives. Fails on low-and-slow lateral movement. |
+| **Unsupervised Anomaly Detectors** | Isolation Forest, One-Class SVM, Autoencoders | Distributional outlier scoring in high-dimensional space | Flags rare benign administrative workflows, producing unacceptable False Positive Rates (> 30% in operational evaluations). |
 | **Black-Box Deep Learning** | LSTM, Deep Packet Inspection RNNs | Raw sequence modeling, high-dimensional neural representations | Lack of interpretability for SOC analysts; extreme training compute requirements; brittle under temporal concept drift. |
 
 ---
@@ -120,9 +120,9 @@ The model is evaluated on the benchmark **LANL Comprehensive Multi-Source Cyber-
 
 ### 5.2 Chronological Partitioning Protocol
 To prevent data leakage, temporal shuffling was strictly prohibited. Telemetry was partitioned chronologically:
-- **Training Split (Day 9, 00:00 to 18:00):** 14,768 raw events $\to$ 216 300-second windows (60 attack windows, 27.78% prevalence).
-- **Validation Split (Day 9 18:00 to Day 12 24:00):** 8,142 raw events $\to$ 933 300-second windows (50 attack windows, 5.36% prevalence). Used exclusively for model selection and threshold calibration.
-- **Untouched Test Split (Days 13 to 14, 00:00 to 24:00):** 107,587 raw events $\to$ 289 300-second windows (64 attack windows, 22.15% prevalence; 225 benign windows, 77.85%). Kept completely isolated until final evaluation.
+- **Training Split (Day 9, 00:00 to 18:00):** 14,768 raw events  ->  216 300-second windows (60 attack windows, 27.78% prevalence).
+- **Validation Split (Day 9 18:00 to Day 12 24:00):** 8,142 raw events  ->  933 300-second windows (50 attack windows, 5.36% prevalence). Used exclusively for model selection and threshold calibration.
+- **Untouched Test Split (Days 13 to 14, 00:00 to 24:00):** 107,587 raw events  ->  289 300-second windows (64 attack windows, 22.15% prevalence; 225 benign windows, 77.85%). Kept completely isolated until final evaluation.
 
 ---
 
@@ -148,10 +148,10 @@ A domain-tailored feature extractor maps raw events in each 300-second window in
 | `source_host` | Entity | Count of distinct originating source hosts. |
 | `process` | Entity | Count of unique process executable names observed. |
 | `user_to_host_ratio` | Graph | Ratio of distinct users to destination hosts; flags credential hopping. |
-| `active_sources` | Fusion | Number of concurrent telemetry streams active ($1 \le S \le 4$). |
+| `active_sources` | Fusion | Number of concurrent telemetry streams active (1 <= S <= 4). |
 | `multi_source_flag` | Fusion | Boolean flag indicating cross-domain multi-source telemetry presence. |
-| `auth_proc_interaction` | Cross-Source | Interaction term: `auth_fail` $\times$ `proc_rare`; catches execution post-failure. |
-| `auth_flow_interaction` | Cross-Source | Interaction term: `auth_fail` $\times$ `is_flow`; catches network movement post-failure. |
+| `auth_proc_interaction` | Cross-Source | Interaction term: `auth_fail`  x  `proc_rare`; catches execution post-failure. |
+| `auth_flow_interaction` | Cross-Source | Interaction term: `auth_fail`  x  `is_flow`; catches network movement post-failure. |
 | `delta_total_events` | Dynamics | Rate of change in total volume relative to the preceding window. |
 | `delta_auth_fails` | Dynamics | First-order acceleration in authentication failure counts. |
 | `delta_procs` | Dynamics | First-order acceleration in process executions. |
@@ -162,7 +162,7 @@ All numerical features are standardized using `StandardScaler` fitted strictly o
 
 ## 7. Multi-Agent Investigation Workflow
 
-Windows flagged by the ML classifier (continuous score $\ge \theta$) trigger the autonomous multi-agent investigation pipeline:
+Windows flagged by the ML classifier (continuous score >= Threshold) trigger the autonomous multi-agent investigation pipeline:
 
 1. **Authentication Specialist Agent (`AuthAgent`):** Analyzes Kerberos/NTLM authentication patterns, identifies anomalous source computers, tracks target user accounts, and computes credential dispersion scores.
 2. **Process Specialist Agent (`ProcessAgent`):** Inspects process execution trees, flags unauthorized living-off-the-land binaries (e.g., PowerShell, cmd, certutil), and identifies abnormal execution timing.
@@ -188,7 +188,7 @@ An independent methodological audit verified:
 1. Complete removal of `if is_rt == 1: score += 3` shortcuts from legacy scripts.
 2. Complete removal of `is_rt == 1` flags from all specialist agent logic.
 3. Isolation of red-team user and host entity lists during feature generation.
-4. Mathematical verification that decision rule $\hat{y} = \mathbb{I}(\text{continuous\_score} \ge \theta)$ holds across 100% of test rows.
+4. Mathematical verification that decision rule predicted_label holds across 100% of test rows.
 
 ---
 
@@ -196,18 +196,18 @@ An independent methodological audit verified:
 
 The finalized Random Forest model was evaluated in a single frozen pass on the untouched Test partition (Days 13–14, 289 operational windows, 64 attack windows, 225 benign windows).
 
-### Table 1: Core Performance Metrics Summary (High-Precision Alerting Mode @ $\theta = 0.9300$)
+### Table 1: Core Performance Metrics Summary (High-Precision Alerting Mode @ Threshold = 0.9300)
 
 | Metric | Reported Test Score | Research Target Goal | Status | Empirical Gap |
 | :--- | :---: | :---: | :---: | :---: |
-| **Precision** | **69.57%** | $\ge 85.0\%$ | Substantially Improved (+13.32 pp) | -15.43% |
-| **Accuracy** | **84.08%** | $\ge 90.0\%$ | Substantially Improved (+3.46 pp) | -5.92% |
-| **F1-Score** | **58.18%** | $\ge 85.0\%$ | Substantially Improved (+1.93 pp) | -26.82% |
-| **Specificity** | **93.78%** | $\ge 95.0\%$ | Near Target (-1.22 pp gap) | -1.22% |
-| **False Positive Rate (FPR)** | **6.22%** | $\le 5.0\%$ | Halved (from 12.44% to 6.22%) | +1.22% |
-| **Recall** | **50.00%** | $\ge 90.0\%$ | Operational Trade-off | -40.00% |
-| **ROC-AUC** | **0.6874** | $\ge 0.850$ | Rank Metric Verified | -0.1626 |
-| **Average Precision (AP)** | **0.5670** | $\ge 0.750$ | PR Area Verified | -0.1830 |
+| **Precision** | **69.57%** | >= 85.0% | Substantially Improved (+13.32 pp) | -15.43% |
+| **Accuracy** | **84.08%** | >= 90.0% | Substantially Improved (+3.46 pp) | -5.92% |
+| **F1-Score** | **58.18%** | >= 85.0% | Substantially Improved (+1.93 pp) | -26.82% |
+| **Specificity** | **93.78%** | >= 95.0% | Near Target (-1.22 pp gap) | -1.22% |
+| **False Positive Rate (FPR)** | **6.22%** | <= 5.0% | Halved (from 12.44% to 6.22%) | +1.22% |
+| **Recall** | **50.00%** | >= 90.0% | Operational Trade-off | -40.00% |
+| **ROC-AUC** | **0.6874** | >= 0.850 | Rank Metric Verified | -0.1626 |
+| **Average Precision (AP)** | **0.5670** | >= 0.750 | PR Area Verified | -0.1830 |
 
 ### Confusion Matrix (Test Set, N = 289 Windows)
 
@@ -227,16 +227,16 @@ Total Windows                      243                    46               289
 
 ## 10. Operating-Threshold Comparison
 
-The decision threshold $\theta$ serves as an operational dial balancing detection sensitivity against analyst investigation workload:
+The decision threshold Threshold serves as an operational dial balancing detection sensitivity against analyst investigation workload:
 
-| Operational Mode | Threshold $\theta$ | Precision | Recall | F1-Score | Accuracy | Specificity | FPR | FP Count | Primary Operational Use Case |
+| Operational Mode | Threshold Threshold | Precision | Recall | F1-Score | Accuracy | Specificity | FPR | FP Count | Primary Operational Use Case |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
 | **High-Precision Alerting Mode (Active)** | **0.9300** | **69.57%** | **50.00%** | **58.18%** | **84.08%** | **93.78%** | **6.22%** | **14** | **Primary SOC Deployment:** Slashes false positive investigations by 50% while achieving highest F1. |
-| **High-Confidence Containment Tier** | **0.9500** | **74.36%** | **45.31%** | **56.31%** | **84.43%** | **95.56%** | **4.44%** | **10** | **Automated Quarantine:** Meets $\le 5\%$ FPR and $\ge 95\%$ Specificity targets for disruption-free containment. |
-| **Balanced $F_1$ Mode (Reference)** | **0.8459** | **56.25%** | **56.25%** | **56.25%** | **80.62%** | **87.56%** | **12.44%** | **28** | **Academic Baseline:** Equal balance between precision and recall ($TP=36, FP=28$). |
+| **High-Confidence Containment Tier** | **0.9500** | **74.36%** | **45.31%** | **56.31%** | **84.43%** | **95.56%** | **4.44%** | **10** | **Automated Quarantine:** Meets <= 5% FPR and >= 95% Specificity targets for disruption-free containment. |
+| **Balanced F1-Score Mode (Reference)** | **0.8459** | **56.25%** | **56.25%** | **56.25%** | **80.62%** | **87.56%** | **12.44%** | **28** | **Academic Baseline:** Equal balance between precision and recall (TP=36, FP=28). |
 
 ### Operational Trade-Off Analysis:
-Transitioning from Balanced Mode ($\theta = 0.8459$) to High-Precision Mode ($\theta = 0.9300$):
+Transitioning from Balanced Mode (Threshold = 0.8459) to High-Precision Mode (Threshold = 0.9300):
 - **False Positive Alarms:** Dropped from **28 to 14** (50% reduction in wasted SOC investigations).
 - **Precision:** Increased from **56.25% to 69.57%** (**+13.32 percentage points**).
 - **Overall Accuracy:** Increased from **80.62% to 84.08%** (**+3.46 percentage points**).
@@ -248,7 +248,7 @@ Transitioning from Balanced Mode ($\theta = 0.8459$) to High-Precision Mode ($\t
 ## 11. Baseline Comparison
 
 ### 11.1 Comparison with Historical Rule-Based SIEM Baseline
-In earlier exploratory phases, a standard rule-based SIEM threshold baseline (scoring events based on threshold rules $\ge 3$) was evaluated:
+In earlier exploratory phases, a standard rule-based SIEM threshold baseline (scoring events based on threshold rules >= 3) was evaluated:
 - **Baseline Recall:** 39.06% (25/64 attack windows).
 - **Baseline Precision:** 56.82% (25/44 flagged windows; 19 FP).
 - **Baseline F1-Score:** 46.30%.
@@ -286,7 +286,7 @@ The project provides an interactive Security Operations Center (SOC) dashboard b
 1. `target_comparison.png`: Reported model performance vs desired engineering targets with visible empirical gaps.
 2. `threshold_comparison.png`: Operational threshold trade-off comparing Balanced Mode vs High-Precision Mode.
 3. `model_comparison.png`: Benchmark across candidate classifiers and baselines.
-4. `confusion_matrix.png`: Heatmap representation of the frozen test set confusion matrix ($TP=32, TN=211, FP=14, FN=32$).
+4. `confusion_matrix.png`: Heatmap representation of the frozen test set confusion matrix (TP=32, TN=211, FP=14, FN=32).
 5. `precision_recall_tradeoff.png`: Empirical Precision-Recall frontier highlighting active operating points.
 6. `solution_comparison_matrix.png`: Comprehensive matrix comparing our solution with published academic literature.
 7. `system_architecture_workflow.png`: 8-stage end-to-end architecture dataflow diagram.
@@ -299,7 +299,7 @@ The project delivers tangible engineering contributions supported directly by co
 
 1. **Multi-Source Telemetry Fusion:** Successfully normalizes and correlates 4 disparate enterprise log formats (Auth, Proc, Flows, DNS) into unified 300-second temporal feature vectors.
 2. **Methodological Rigor & Leakage Excision:** Cleanly identified and eliminated ground-truth label leakage, establishing an uncompromised evaluation standard.
-3. **Calibrated Alert Fatigue Reduction:** Demonstrated that threshold calibration along the empirical PR curve raises Precision to 69.57% and cuts false positive alarms by 50% ($28 \to 14$).
+3. **Calibrated Alert Fatigue Reduction:** Demonstrated that threshold calibration along the empirical PR curve raises Precision to 69.57% and cuts false positive alarms by 50% (28  ->  14).
 4. **Autonomous Agentic Investigation:** Implemented specialist agents that enrich raw ML flags with human-interpretable contextual evidence and MITRE ATT&CK tactics.
 5. **Human-in-the-Loop Governance:** Designed containment response workflows requiring explicit SOC analyst sign-off before executing defensive remediations.
 
@@ -318,7 +318,7 @@ In the spirit of honest scientific inquiry, several engineering limitations rema
 
 ## 15. Conclusion
 
-This report documents the design, optimization, and rigorous evaluation of the **AI Investigator for Cybersecurity Threat Detection and Response**. By combining multi-source telemetry fusion, cost-sensitive Random Forest classification, and autonomous agent reasoning, the system significantly outperforms traditional SIEM rule baselines. Deployed in High-Precision Alerting Mode ($\theta = 0.9300$), the system achieves **69.57% Precision**, **84.08% Accuracy**, and **58.18% F1-score**, cutting false alarm fatigue in half while maintaining robust lateral threat detection on real-world enterprise telemetry.
+This report documents the design, optimization, and rigorous evaluation of the **AI Investigator for Cybersecurity Threat Detection and Response**. By combining multi-source telemetry fusion, cost-sensitive Random Forest classification, and autonomous agent reasoning, the system significantly outperforms traditional SIEM rule baselines. Deployed in High-Precision Alerting Mode (Threshold = 0.9300), the system achieves **69.57% Precision**, **84.08% Accuracy**, and **58.18% F1-score**, cutting false alarm fatigue in half while maintaining robust lateral threat detection on real-world enterprise telemetry.
 
 ---
 

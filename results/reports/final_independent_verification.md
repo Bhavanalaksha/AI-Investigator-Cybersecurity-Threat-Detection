@@ -4,8 +4,8 @@
 **Repository Path:** `C:\Users\WELCOME\Desktop\mini_proj`  
 **Evaluation Dataset:** LANL Comprehensive Multi-Source Cyber-Security Events Dataset (Days 9–14)  
 **Primary Evaluated Model:** Random Forest Classifier (Multi-Source Temporal Fusion)  
-**Active Production Configuration:** High-Precision Alerting Mode ($\theta = 0.9300$)  
-**Reference Baseline Configuration:** Balanced $F_1$ Mode ($\theta = 0.8459$)  
+**Active Production Configuration:** High-Precision Alerting Mode (Threshold = 0.9300)  
+**Reference Baseline Configuration:** Balanced F1-Score Mode (Threshold = 0.8459)  
 **Audit Purpose:** Methodological audit distinguishing previously recorded verifications, documentation revisions, verified claims, and remaining research limitations.
 
 ---
@@ -23,7 +23,7 @@ To adhere to rigorous scientific standards, this audit explicitly categorizes th
 | Category | Description | Artifacts & Evidence Covered |
 | :--- | :--- | :--- |
 | **A. Previously Recorded Verifications** | Verifications empirically computed on real model outputs prior to this revision. | Single-pass test evaluation, historical 60s vs 300s window audit, removal of `is_rt == 1` heuristic leakage from data pipelines, initial validation model comparison. |
-| **B. Documentation Changes in This Revision** | Updates performed strictly to improve presentation, consistency, and clarity without retraining. | Transition to primary High-Precision Alerting Mode ($\theta = 0.9300$), re-exporting `final_predictions.csv`, updating `final_metrics.json`, rebuilding `target_comparison.png`, `threshold_comparison.png`, and `model_comparison.png`, updating `README.md`. |
+| **B. Documentation Changes in This Revision** | Updates performed strictly to improve presentation, consistency, and clarity without retraining. | Transition to primary High-Precision Alerting Mode (Threshold = 0.9300), re-exporting `final_predictions.csv`, updating `final_metrics.json`, rebuilding `target_comparison.png`, `threshold_comparison.png`, and `model_comparison.png`, updating `README.md`. |
 | **C. Checks Not Repeated** | Complex historical procedures preserved from earlier logs and not rerun. | Full re-training of all 7 candidate classifiers from raw `.gz` files; full hyperparameter grid sweep; raw raw-telemetry extraction from 7.6GB `auth.txt.gz`. |
 | **D. Supported Claims** | Claims directly substantiated by source code and recorded prediction artifacts. | Classification formulas, confusion matrix values, threshold evaluation logic, cross-source feature definitions, removal of currency symbols. |
 | **E. Claims Requiring Further Evaluation** | Future research dimensions that cannot be resolved solely from LANL Days 9–14 telemetry. | Generalization to non-LANL enterprise environments (e.g., DARPA OpTC, CIC-IDS); sub-minute streaming latency; adversarial evasion robustness. |
@@ -33,22 +33,22 @@ To adhere to rigorous scientific standards, this audit explicitly categorizes th
 ## 3. Empirical Verification of Recorded Test Metrics
 
 ### Check 1: Mathematical Classification Metric Recalculation
-Recomputed directly from the 289 rows of `final_predictions.csv` where $\hat{y} = \mathbb{I}(\text{continuous\_score} \ge 0.9300)$:
+Recomputed directly from the 289 rows of `final_predictions.csv` where predicted_label:
 
-- **True Positives (TP):** $\sum (y = 1 \land \hat{y} = 1) = \mathbf{32}$
-- **True Negatives (TN):** $\sum (y = 0 \land \hat{y} = 0) = \mathbf{211}$
-- **False Positives (FP):** $\sum (y = 0 \land \hat{y} = 1) = \mathbf{14}$
-- **False Negatives (FN):** $\sum (y = 1 \land \hat{y} = 0) = \mathbf{32}$
-- **Total Test Samples:** $32 + 211 + 14 + 32 = \mathbf{289}$ operational windows
+- **True Positives (TP):** \sum (y = 1 \land \hat{y} = 1) = 32
+- **True Negatives (TN):** \sum (y = 0 \land \hat{y} = 0) = 211
+- **False Positives (FP):** \sum (y = 0 \land \hat{y} = 1) = 14
+- **False Negatives (FN):** \sum (y = 1 \land \hat{y} = 0) = 32
+- **Total Test Samples:** 32 + 211 + 14 + 32 = 289 operational windows
 
 **Formulas & Recalculated Values:**
-- $\text{Precision} = \frac{TP}{TP + FP} = \frac{32}{46} = 0.695652 \implies \mathbf{69.57\%}$
-- $\text{Recall} = \frac{TP}{TP + FN} = \frac{32}{64} = 0.500000 \implies \mathbf{50.00\%}$
-- $\text{F1-Score} = \frac{2 \times P \times R}{P + R} = \frac{2 \times 0.695652 \times 0.500000}{1.195652} = 0.581818 \implies \mathbf{58.18\%}$
-- $\text{Accuracy} = \frac{TP + TN}{\text{Total}} = \frac{243}{289} = 0.840830 \implies \mathbf{84.08\%}$
-- $\text{Specificity} = \frac{TN}{TN + FP} = \frac{211}{225} = 0.937778 \implies \mathbf{93.78\%}$
-- $\text{False Positive Rate (FPR)} = \frac{FP}{FP + TN} = \frac{14}{225} = 0.062222 \implies \mathbf{6.22\%}$
-- $\text{False Negative Rate (FNR)} = \frac{FN}{TP + FN} = \frac{32}{64} = 0.500000 \implies \mathbf{50.00\%}$
+- Precision = TP / (TP + FP) = 32 / 46 = 0.695652 => 69.57%
+- Recall = TP / (TP + FN) = 32 / 64 = 0.500000 => 50.00%
+- F1-Score = \frac{2  x  P  x  R}{P + R} = \frac{2  x  0.695652  x  0.500000}{1.195652} = 0.581818 => 58.18%
+- Accuracy = (TP + TN) / Total = 243 / 289 = 0.840830 => 84.08%
+- Specificity = TN / (TN + FP) = 211 / 225 = 0.937778 => 93.78%
+- False Positive Rate (FPR) = FP / (FP + TN) = 14 / 225 = 0.062222 => 6.22%
+- False Negative Rate (FNR) = FN / (TP + FN) = 32 / 64 = 0.500000 => 50.00%
 
 **Audit Finding:** All formulas match the canonical `final_metrics.json` and `final_model_comparison.csv` with zero mathematical discrepancy.  
 **Status:** **PASS**
@@ -59,13 +59,13 @@ Recomputed directly from the 289 rows of `final_predictions.csv` where $\hat{y} 
 Computed from the full-precision prediction probabilities in `final_predictions.csv`:
 - **ROC-AUC (Receiver Operating Characteristic):**
   - Formula: `sklearn.metrics.roc_auc_score(y_true, continuous_score)`
-  - Exact Value: `0.6873958333333333` $\implies \mathbf{0.6874}$
+  - Exact Value: `0.6873958333333333` => 0.6874
 - **Average Precision (AP):**
   - Formula: `sklearn.metrics.average_precision_score(y_true, continuous_score)`
-  - Exact Value: `0.5669837987682284` $\implies \mathbf{0.5670}$
+  - Exact Value: `0.5669837987682284` => 0.5670
 - **Trapezoidal PR-AUC (Area Under Precision-Recall Curve):**
   - Formula: `sklearn.metrics.auc(r_curve, p_curve)` on sorted recall
-  - Exact Value: `0.5749616854541597` $\implies \mathbf{0.5750}$ (trapezoid sorted: `0.5747`)
+  - Exact Value: `0.5749616854541597` => 0.5750 (trapezoid sorted: `0.5747`)
 
 **Audit Finding:** Exact agreement with recorded JSON and report metrics.  
 **Status:** **PASS**
@@ -74,11 +74,11 @@ Computed from the full-precision prediction probabilities in `final_predictions.
 
 ### Check 3: Threshold Decision Logic Verification
 The threshold decision rule requires that:
-$$\text{predicted\_label} = \mathbb{I}(\text{continuous\_score} \ge \text{frozen\_threshold})$$
+predicted_label = 1 if (continuous_score >= frozen_threshold) else 0
 
-- Audited across all 289 rows of `final_predictions.csv` with $\text{frozen\_threshold} = 0.9300$.
+- Audited across all 289 rows of `final_predictions.csv` with frozen_threshold = 0.9300.
 - Mismatches detected: **0 rows**.
-- Investigation of the 6 marginal windows (`TEST_W0031`, `TEST_W0040`, `TEST_W0045`, `TEST_W0061`, `TEST_W0075`, `TEST_W0081`): Each window has a continuous score of $0.845889$. Under $\theta = 0.9300$, $0.845889 < 0.930000$, correctly producing predicted label `0`.
+- Investigation of the 6 marginal windows (`TEST_W0031`, `TEST_W0040`, `TEST_W0045`, `TEST_W0061`, `TEST_W0075`, `TEST_W0081`): Each window has a continuous score of 0.845889. Under Threshold = 0.9300, 0.845889 < 0.930000, correctly producing predicted label `0`.
 
 **Status:** **PASS**
 
@@ -97,7 +97,7 @@ Verified consistency across the following files:
 9. `results/figures/confusion_matrix.png`
 10. `src/ui/index.html`
 
-**Audit Finding:** All 10 artifacts report consistent High-Precision mode metrics ($TP=32, TN=211, FP=14, FN=32, P=69.57\%, R=50.00\%, F_1=58.18\%, \text{Acc}=84.08\%, \text{FPR}=6.22\%$) and document the reference Balanced Mode ($TP=36, TN=197, FP=28, FN=28, P=56.25\%$).  
+**Audit Finding:** All 10 artifacts report consistent High-Precision mode metrics (TP=32, TN=211, FP=14, FN=32, P=69.57%, R=50.00%, F1=58.18%, Acc=84.08%, FPR=6.22%) and document the reference Balanced Mode (TP=36, TN=197, FP=28, FN=28, P=56.25%).  
 **Status:** **PASS**
 
 ---
@@ -105,9 +105,9 @@ Verified consistency across the following files:
 ### Check 5: Target Leakage Freedom Verification
 - Source code in `src/day5_triage.py`, `src/agents/auth_agent.py`, `src/agents/process_agent.py`, and `src/agents/network_agent.py` was inspected to confirm that heuristic shortcuts (`if is_rt == 1: score += 3`) have been excised.
 - The chronological train/validation/test split manifest (`data_split_manifest.csv`) verifies non-overlapping time boundaries:
-  - Train: $t \le 756,000$ (Day 9 18:00)
-  - Validation: $756,001 \le t \le 1,036,800$ (Days 9–12)
-  - Test: $1,036,801 \le t \le 1,209,600$ (Days 13–14)
+  - Train: t <= 756,000 (Day 9 18:00)
+  - Validation: 756,001 <= t <= 1,036,800 (Days 9–12)
+  - Test: 1,036,801 <= t <= 1,209,600 (Days 13–14)
 - **Status:** **PASS**
 
 ---
@@ -139,8 +139,8 @@ Verified consistency across the following files:
 | :--- | :---: | :--- |
 | **Classification Metric Formulas** | **PASS** | Exact match across TP, TN, FP, FN, Precision, Recall, F1, Accuracy, Specificity, FPR. |
 | **Continuous Metrics (ROC, AP, PR-AUC)** | **PASS** | Recomputed from full-precision prediction probabilities. |
-| **Threshold Decision Rule** | **PASS** | Rule $\hat{y} = \mathbb{I}(\text{score} \ge 0.9300)$ holds across 100% of test rows. |
-| **Marginal Prediction Resolution** | **PASS** | 6 marginal rows with score $0.845889 < 0.930000$ verified as predicted label 0. |
+| **Threshold Decision Rule** | **PASS** | Rule predicted_label holds across 100% of test rows. |
+| **Marginal Prediction Resolution** | **PASS** | 6 marginal rows with score 0.845889 < 0.930000 verified as predicted label 0. |
 | **Cross-Artifact Agreement** | **PASS** | CSV, JSON, Markdown reports, figures, and UI are 100% synchronized. |
 | **Prevalence Accuracy** | **PASS** | Correctly distinguishes 22.15% window prevalence from 0.381% event prevalence. |
 | **Leakage Excision** | **PASS** | Heuristic shortcuts removed; temporal train/val/test boundaries verified. |

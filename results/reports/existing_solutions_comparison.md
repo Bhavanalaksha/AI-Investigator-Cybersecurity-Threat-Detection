@@ -90,7 +90,7 @@ Our proposed **AI Investigator for Cybersecurity Threat Detection and Response**
 
 1. **Data Ingestion & Event Normalization:** Ingests heterogeneous telemetry (Authentication, Process, DNS, Network Flows) and normalizes timestamps and attributes into a canonical schema.
 2. **Temporal Window Aggregation:** Partitions continuous event streams into 300-second operational windows, computing burst dynamics, delta metrics, and cross-domain interaction terms.
-3. **Supervised Random Forest Classifier:** Evaluates 23 domain features using an ensemble of 150 decision trees ($n=150$, $	ext{max\_depth}=10$, $	ext{class\_weight}=\{0:1, 1:10\}$) with a decision threshold ($0.8459$) frozen strictly on validation data.
+3. **Supervised Random Forest Classifier:** Evaluates 23 domain features using an ensemble of 150 decision trees (n=150, 	ext{max_depth}=10, 	ext{class_weight}=\{0:1, 1:10\}) with a decision threshold (0.8459) frozen strictly on validation data.
 4. **Specialized Multi-Agent Investigation:**
    - `OrchestratorAgent`: Manages execution lifecycle and dispatches window data.
    - `AuthenticationAgent`: Investigates credential anomalies, NTLM degradation, and login bursts.
@@ -109,14 +109,14 @@ We distinguish between genuine system contributions and engineering integrations
 
 1. **Scientific Integrity & Leakage-Free Methodology (Methodological Contribution):**
    - Completely excises ground-truth shortcuts (`is_rt == 1`, test IOC user/host seeding).
-   - Enforces strict chronological train/validation/test partitions ($691,201 \le t \le 755,991$ Train; $756,001 \le t \le 1,036,769$ Val; $t > 1,036,800$ Test).
+   - Enforces strict chronological train/validation/test partitions (691,201 <= t <= 755,991 Train; 756,001 <= t <= 1,036,769 Val; t > 1,036,800 Test).
    - Freezes model parameters and decision thresholds strictly on validation PR-curves prior to a single-pass test evaluation.
 
 2. **Cross-Domain Telemetry Fusion (Engineering Contribution):**
    - Connects authentication, process, DNS, and NetFlow events into 23 engineered features, incorporating cross-source interaction terms (`auth_proc_interaction`, `auth_flow_interaction`).
 
 3. **Hybrid Stacking & Investigation Pipeline (Systems Contribution):**
-   - Combines low-latency tabular machine learning ($14.5	ext{ ms}$ batch inference) for rapid filtering with multi-agent reasoning for automated incident narrative synthesis.
+   - Combines low-latency tabular machine learning (14.5	ext{ ms} batch inference) for rapid filtering with multi-agent reasoning for automated incident narrative synthesis.
    - Balances automated detection with human oversight, ensuring no destructive containment actions occur without human review.
 
 ---
