@@ -1,15 +1,48 @@
 {
-  "disclaimer": "ILLUSTRATIVE - NOT MEASURED TEST RESULTS. These values represent a hypothetical target performance model for presentation, demonstration, and interface design purposes only. They do not represent measured evaluation results on the LANL dataset.",
-  "model_status": "Illustrative High-Performance Architectural Vision",
-  "illustrative_metrics": {
-    "Accuracy": 92.0,
-    "Precision": 90.0,
-    "Recall": 91.0,
-    "F1_Score": 90.5,
-    "Specificity": 96.0,
-    "False_Positive_Rate": 4.0,
-    "ROC_AUC": 0.94,
-    "Average_Precision": 0.9
+  "section_note": "Illustrative presentation scenario. These values demonstrate a moderate target operating scenario for interface and slide presentation purposes. They do not represent measured evaluation results from the trained LANL model.",
+  "illustrative_scenario_metrics": {
+    "Accuracy": 88.0,
+    "Precision": 86.0,
+    "Recall": 82.0,
+    "F1_Score": 84.0,
+    "Specificity": 89.0,
+    "False_Positive_Rate": 11.0,
+    "ROC_AUC": 0.88,
+    "Average_Precision": 0.84
+  },
+  "actual_measured_lanl_results": {
+    "Accuracy": 84.08,
+    "Precision": 69.57,
+    "Recall": 50.0,
+    "F1_Score": 58.18,
+    "Specificity": 93.78,
+    "False_Positive_Rate": 6.22,
+    "ROC_AUC": 0.6874,
+    "Average_Precision": 0.567,
+    "threshold": 0.93,
+    "confusion_matrix": {
+      "TN": 211,
+      "FP": 14,
+      "FN": 32,
+      "TP": 32,
+      "total_windows": 289
+    }
+  },
+  "historical_balanced_baseline": {
+    "Accuracy": 80.62,
+    "Precision": 56.25,
+    "Recall": 56.25,
+    "F1_Score": 56.25,
+    "Specificity": 87.56,
+    "False_Positive_Rate": 12.44,
+    "threshold": 0.8459,
+    "confusion_matrix": {
+      "TN": 197,
+      "FP": 28,
+      "FN": 28,
+      "TP": 36,
+      "total_windows": 289
+    }
   },
   "engineering_targets": {
     "Accuracy": 90.0,
@@ -21,12 +54,26 @@
     "ROC_AUC": 0.85,
     "Average_Precision": 0.75
   },
-  "illustrative_confusion_matrix_example_1000_windows": {
-    "total_windows": 1000,
-    "true_positives": 273,
-    "true_negatives": 647,
-    "false_positives": 30,
-    "false_negatives": 50,
-    "note": "Hypothetical distribution demonstrating 92% accuracy, ~90% precision, ~91% recall, 96% specificity on a 1000-window scale."
+  "illustrative_confusion_matrix_derivation": {
+    "sample_size": 550,
+    "TP": 205,
+    "TN": 267,
+    "FP": 33,
+    "FN": 45,
+    "derived_precision": 86.13,
+    "derived_recall": 82.0,
+    "derived_f1": 84.02,
+    "derived_accuracy": 85.82,
+    "derived_specificity": 89.0,
+    "derived_fpr": 11.0,
+    "derived_fnr": 18.0,
+    "calculation_rules": {
+      "Precision": "TP / (TP + FP) = 205 / (205 + 33) = 86.1%",
+      "Recall": "TP / (TP + FN) = 205 / (205 + 45) = 82.0%",
+      "F1_Score": "2 * P * R / (P + R) = 84.0%",
+      "Accuracy": "(TP + TN) / Total = (205 + 267) / 550 = 85.8%",
+      "Specificity": "TN / (TN + FP) = 267 / 300 = 89.0%",
+      "FPR": "FP / (FP + TN) = 33 / 300 = 11.0%"
+    }
   }
 }
