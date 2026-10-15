@@ -1,0 +1,18 @@
+=== VERIFIED CLASSIFICATION REPORT ===
+Dataset: LANL Multi-Source Cyber Telemetry (Days 13-14 Test Partition)
+Samples: N = 289 (Benign = 225, Attack = 64)
+Frozen Decision Threshold: 0.93
+
+              precision    recall  f1-score   support
+
+  Benign (0)     0.8683    0.9378    0.9017       225
+  Attack (1)     0.6957    0.5000    0.5818        64
+
+    accuracy                         0.8408       289
+   macro avg     0.7820    0.7189    0.7418       289
+weighted avg     0.8301    0.8408    0.8309       289
+
+Specificity: 93.78%
+False Positive Rate: 6.22%
+ROC-AUC: 0.6874
+Average Precision (PR-AUC): 0.5670

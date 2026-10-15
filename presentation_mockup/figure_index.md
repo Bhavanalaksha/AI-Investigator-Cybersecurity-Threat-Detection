@@ -2,7 +2,7 @@
 
 This index provides a structured reference catalog for all 17 presentation figures, system diagrams, and performance charts created for the **AI Investigator for Cybersecurity Threat Detection and Response** project.
 
-> **Provenance Note:** The quantitative performance figures in this index (Figures 6, 7, 8, 9, 11, 14, and 17) demonstrate an illustrative target operating scenario (Accuracy: 88.0%, Precision: 86.0%, Recall: 82.0%, F1-score: 84.0%, Specificity: 89.0%, FPR: 11.0%, ROC-AUC: 0.88, Average Precision: 0.84) designed for technical presentations and slide decks. The actual empirical LANL benchmark results (Accuracy: 84.08%, Precision: 69.57%, Recall: 50.00%, F1: 58.18%, Specificity: 93.78%, FPR: 6.22%, ROC-AUC: 0.6874, AP: 0.5670) are preserved unmodified in `results/reports/`.
+> **Provenance Note:** The quantitative performance figures in this index (Figures 6, 7, 8, 9, 11, 14, and 17) demonstrate an illustrative target operating scenario (Accuracy: 84.08%, Precision: 69.57%, Recall: 50.00%, F1-score: 58.18%, Specificity: 93.78%, FPR: 6.22%, ROC-AUC: 0.6874, Average Precision: 0.5670) designed for technical presentations and slide decks. The actual empirical LANL benchmark results (Accuracy: 84.08%, Precision: 69.57%, Recall: 50.00%, F1: 58.18%, Specificity: 93.78%, FPR: 6.22%, ROC-AUC: 0.6874, AP: 0.5670) are preserved unmodified in `results/reports/`.
 
 ---
 
@@ -15,9 +15,9 @@ This index provides a structured reference catalog for all 17 presentation figur
 | **Fig 3** | Model Training Workflow | `figures/model_training_workflow.png` | Machine Learning | Chronological splitting, class weighting, and model serialization |
 | **Fig 4** | Multi-Agent Workflow | `figures/multi_agent_workflow.png` | Autonomous Agents | Specialist agent dispatching and MITRE ATT&CK mapping |
 | **Fig 5** | Live Inference Sequence | `figures/live_inference_sequence.png` | Runtime Architecture | Telemetry streaming, ML scoring, and REST alert sequence |
-| **Fig 6** | Confusion Matrix | `figures/confusion_matrix_mockup.png` | Evaluation | Mathematically consistent N = 550 sample matrix |
-| **Fig 7** | ROC Curve | `figures/roc_curve_mockup.png` | Diagnostic Curves | Illustrative ROC curve (AUC = 0.88) with operating point |
-| **Fig 8** | Precision-Recall Curve | `figures/pr_curve_mockup.png` | Diagnostic Curves | Illustrative PR curve (AP = 0.84) with baseline reference |
+| **Fig 6** | Confusion Matrix | `figures/confusion_matrix_mockup.png` | Evaluation | Mathematically consistent N = 289 sample matrix |
+| **Fig 7** | ROC Curve | `figures/roc_curve_mockup.png` | Diagnostic Curves | Illustrative ROC curve (AUC = 0.6874) with operating point |
+| **Fig 8** | Precision-Recall Curve | `figures/pr_curve_mockup.png` | Diagnostic Curves | Illustrative PR curve (AP = 0.5670) with baseline reference |
 | **Fig 9** | Model Comparison Chart | `figures/model_comparison_mockup.png` | Benchmarking | Candidate architectures vs. baseline comparisons |
 | **Fig 10** | Feature Importance Chart | `figures/feature_importance_mockup.png` | Feature Analysis | Top 10 domain features in 23-feature Random Forest model |
 | **Fig 11** | Threshold Trade-off Graph | `figures/threshold_tradeoff_mockup.png` | Operational Controls | Sensitivity vs. precision trade-off curves across thresholds |
@@ -59,28 +59,28 @@ This index provides a structured reference catalog for all 17 presentation figur
 
 ### Figure 6: Confusion Matrix (Illustrative Presentation Scenario)
 - **File:** [`figures/confusion_matrix_mockup.png`](figures/confusion_matrix_mockup.png)
-- **Scope:** Mathematically consistent sample distribution evaluated on N = 550 operational windows (250 attacks, 300 benign):
-  - True Negatives (TN): 267 (Specificity: 89.0%)
-  - False Positives (FP): 33 (False Positive Rate: 11.0%)
+- **Scope:** Mathematically consistent sample distribution evaluated on N = 289 operational windows (250 attacks, 300 benign):
+  - True Negatives (TN): 267 (Specificity: 93.78%)
+  - False Positives (FP): 33 (False Positive Rate: 6.22%)
   - False Negatives (FN): 45 (False Negative Rate: 18.0%)
-  - True Positives (TP): 205 (Recall: 82.0%, Precision: 86.1%)
+  - True Positives (TP): 205 (Recall: 50.00%, Precision: 86.1%)
   - Sample Accuracy: 85.82%, Derived F1-score: 84.02%
 - **Visual Style:** High-contrast blue heatmap, white background, cell count annotations, and formula derivation note.
 
 ### Figure 7: Illustrative ROC Curve
 - **File:** [`figures/roc_curve_mockup.png`](figures/roc_curve_mockup.png)
-- **Scope:** Displays the illustrative Receiver Operating Characteristic (ROC) curve achieving an Area Under Curve (AUC) of 0.88, highlighting the target operating point at FPR = 11.0% and Recall = 82.0% against a random classification baseline (0.50).
+- **Scope:** Displays the illustrative Receiver Operating Characteristic (ROC) curve achieving an Area Under Curve (AUC) of 0.6874, highlighting the target operating point at FPR = 6.22% and Recall = 50.00% against a random classification baseline (0.50).
 - **Visual Style:** 2.5pt blue curve, teal operating point marker, subtle gridlines, 0–1 coordinate axes.
 
 ### Figure 8: Illustrative Precision-Recall Curve
 - **File:** [`figures/pr_curve_mockup.png`](figures/pr_curve_mockup.png)
-- **Scope:** Displays the illustrative Precision-Recall (PR) curve achieving an Average Precision (AP) of 0.84, with an operating point at Recall = 82.0% and Precision = 86.0% plotted against the empirical dataset prevalence baseline.
+- **Scope:** Displays the illustrative Precision-Recall (PR) curve achieving an Average Precision (AP) of 0.5670, with an operating point at Recall = 50.00% and Precision = 69.57% plotted against the empirical dataset prevalence baseline.
 - **Visual Style:** Purple curve, teal operating point marker, horizontal baseline reference, clean coordinate framing.
 
 ### Figure 9: Model Architecture Comparison
 - **File:** [`figures/model_comparison_mockup.png`](figures/model_comparison_mockup.png)
 - **Scope:** Horizontal bar chart benchmarking the proposed architecture against candidate models evaluated during research:
-  - Proposed Architecture (Presentation Scenario): 86.0% Precision, 82.0% Recall, 84.0% F1
+  - Proposed Architecture (Presentation Scenario): 69.57% Precision, 50.00% Recall, 58.18% F1
   - Random Forest (Measured High-Precision Mode): 69.57% Precision, 50.00% Recall, 58.18% F1
   - Random Forest (Balanced Baseline): 56.25% Precision, 56.25% Recall, 56.25% F1
   - Extra Trees Classifier: 42.86% Precision, 56.25% Recall, 48.65% F1
@@ -114,7 +114,7 @@ This index provides a structured reference catalog for all 17 presentation figur
 ### Figure 14: Feature Family Ablation Study
 - **File:** [`figures/ablation_study_mockup.png`](figures/ablation_study_mockup.png)
 - **Scope:** Measures the empirical contribution of feature subsets:
-  - Full 23-Feature Architecture: 86.0% Precision, 84.0% F1
+  - Full 23-Feature Architecture: 69.57% Precision, 58.18% F1
   - Without Temporal Windowing: 78.2% Precision, 76.5% F1
   - Without Cross-Source Correlation: 71.0% Precision, 68.4% F1
   - Single-Source Only (Auth Logs): 69.6% Precision, 58.2% F1
@@ -132,7 +132,7 @@ This index provides a structured reference catalog for all 17 presentation figur
 
 ### Figure 17: Model Performance Overview
 - **File:** [`figures/model_performance_mockup.png`](figures/model_performance_mockup.png) *(also mirrored at `figures/target_comparison_mockup.png`)*
-- **Scope:** Clean single-series bar chart displaying illustrative presentation metrics: Accuracy (88.0%), Precision (86.0%), Recall (82.0%), F1-score (84.0%), Specificity (89.0%), ROC-AUC (88.0%), and Average Precision (84.0%).
+- **Scope:** Clean single-series bar chart displaying illustrative presentation metrics: Accuracy (84.08%), Precision (69.57%), Recall (50.00%), F1-score (58.18%), Specificity (93.78%), ROC-AUC (84.08%), and Average Precision (58.18%).
 - **Visual Style:** Pure white background, restrained blue bars (`#2563eb`), dark readable horizontal labels, subtle horizontal gridlines, 0–100% scale, zero comparison clutter.
 
 ---

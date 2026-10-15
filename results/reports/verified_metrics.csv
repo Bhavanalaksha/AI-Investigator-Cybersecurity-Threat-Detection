@@ -1,0 +1,10 @@
+Metric,Value (%),Interpretation
+Accuracy,84.08,Overall correct classification proportion
+Precision,69.57,Proportion of positive alerts that are true attacks
+Recall,50.0,Proportion of true attacks correctly detected
+F1-Score,58.18,Harmonic mean of precision and recall
+Specificity,93.78,Proportion of benign windows correctly identified
+False Positive Rate (FPR),6.22,Proportion of benign windows falsely alarmed
+ROC-AUC,0.6874,Area under the Receiver Operating Characteristic curve
+Average Precision (PR-AUC),0.567,Area under the Precision-Recall curve
+Decision Threshold,0.93,Operating probability threshold for class 1

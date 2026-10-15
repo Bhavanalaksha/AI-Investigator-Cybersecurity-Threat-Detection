@@ -59,20 +59,22 @@ In the AI Investigator platform:
 
 ---
 
-## 3. Clear Distinction: Measured Results vs. Illustrative Presentation Scenario
+## 3. Project-Wide Metric Alignment and Complete Verification
 
-To ensure transparency and academic integrity, the project maintains an explicit distinction between **measured test results** and the **illustrative presentation scenario** utilized in design mockups:
+All reports, figures, presentation assets, and dashboards across the repository are strictly aligned with the genuine, measured test results (
+esults/reports/final_metrics.json and 
+esults/reports/verified_metrics.json). All previously introduced illustrative mock-up values have been purged and replaced with genuine experimental evidence:
 
-| Evaluation Metric | Measured LANL Test Results (`results/reports/final_metrics.json`) | Illustrative Presentation Scenario (`presentation_mockup/`) |
-|---|---|---|
-| **Role & Purpose** | Verified scientific benchmark on LANL dataset | Professional design scenario for SOC UI mockups |
-| **Accuracy** | **84.08%** | 88.0% |
-| **Precision** | **69.57%** | 86.0% |
-| **Recall** | **50.00%** | 82.0% |
-| **F1-Score** | **58.18%** | 84.0% |
-| **Specificity** | **93.78%** | 89.0% |
-| **False Positive Rate** | **6.22%** | 11.0% |
-| **ROC-AUC** | **0.6874** | 0.8800 |
-| **Average Precision** | **0.5670** | 0.8400 |
+| Evaluation Metric | Measured LANL Test Results (
+esults/reports/final_metrics.json) | Verification Status | Operational Role in SOC |
+|---|---|---|---|
+| **Accuracy** | **84.08%** (243 / 289) | Verified from inal_predictions.csv | Overall correct classification proportion |
+| **Precision** | **69.57%** (32 / 46) | Verified from inal_predictions.csv | Substantially eliminates false positive alarm fatigue |
+| **Recall** | **50.00%** (32 / 64) | Verified from inal_predictions.csv | Operational trade-off in High-Precision Alerting Mode |
+| **F1-Score** | **58.18%** | Verified from inal_predictions.csv | Harmonic mean balancing precision and recall |
+| **Specificity** | **93.78%** (211 / 225) | Verified from inal_predictions.csv | Filters out 93.8% of benign operational background noise |
+| **False Positive Rate** | **6.22%** (14 / 225) | Verified from inal_predictions.csv | Low false-alarm frequency against enterprise baseline |
+| **ROC-AUC** | **0.6874** | Verified from raw probability curve | Area under Receiver Operating Characteristic curve |
+| **Average Precision** | **0.5670** | Verified from raw precision-recall curve | Area under empirical Precision-Recall curve |
 
-> **Examiner Guidance:** When asked for your measured model results during a viva or review, always cite the **84.08% Accuracy / 69.57% Precision / 50.00% Recall** values from the LANL test benchmark.
+> **Examiner Guidance:** When asked for your measured model results during a viva or review, always cite the verified **84.08% Accuracy / 69.57% Precision / 50.00% Recall / 58.18% F1-score** values from the LANL test benchmark.

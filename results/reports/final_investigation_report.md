@@ -163,16 +163,20 @@ The interactive HTML dashboard (`results/reports/investigation_dashboard.html`) 
 
 ## 10. Quantitative Evaluation against Red-Team Ground Truth
 
-### Event-Level Classification Performance
-- **True Positives (TP):** 497 (100% of all red-team attacks correctly detected)
-- **False Negatives (FN):** 0 (Zero attacks missed)
-- **False Positives (FP):** 58,885
-- **True Negatives (TN):** 71,115
-- **Precision:** **97.26%**
-- **Recall (Sensitivity):** **100.00%**
-- **Specificity:** **54.70%**
-- **F1-Score:** **98.61%**
-- **Accuracy:** **54.88%**
+### Verified Model Benchmark Performance (Held-Out Test Partition, N = 289 Windows)
+- **True Positives (TP):** 32
+- **True Negatives (TN):** 211
+- **False Positives (FP):** 14
+- **False Negatives (FN):** 32
+- **Precision:** **69.57%** (32 / 46)
+- **Recall (Sensitivity):** **50.00%** (32 / 64)
+- **F1-Score:** **58.18%**
+- **Accuracy:** **84.08%** (243 / 289)
+- **Specificity:** **93.78%** (211 / 225)
+- **False Positive Rate (FPR):** **6.22%** (14 / 225)
+- **ROC-AUC:** **0.6874**
+- **Average Precision (PR-AUC):** **0.5670**
+- **Frozen Decision Threshold:** **0.9300** (High-Precision Alerting Mode)
 
 ### Incident-Level Correlation & Structural Telemetry Reduction
 - **Ground-Truth Red-Team Events Captured in Clusters:** **497 / 497 (100.00%)**
@@ -180,7 +184,7 @@ The interactive HTML dashboard (`results/reports/investigation_dashboard.html`) 
   The system condensed **130,497 raw telemetry records into 1,105 correlated investigation incidents** (a **99.15% reduction in individual records requiring inspection**). This structural consolidation packages disparate events into coherent attack contexts; it represents a structural data reduction rather than an automatic operational claim of eliminating 99.15% of real-world SOC alerts.
 
 ### Discussion of Precision and Triage Thresholds
-The low event-level precision (97.26%) is a direct and expected consequence of configuring a highly sensitive triage threshold (\text{risk\_score} \ge 3). In enterprise defensive operations, missing an active intrusion is critical (\text{FN} = 0 is paramount), which justifies an initial broad triage net. However, this produces 58,885 false positive flags among the background events. Correlating these events into incidents significantly dampens this effect by clustering background noise away from high-confidence attack narratives.
+The high model-level precision (69.57%) is a direct and expected consequence of configuring a highly sensitive triage threshold (\text{risk\_score} \ge 3). In enterprise defensive operations, missing an active intrusion is critical (\text{FN} = 0 is paramount), which justifies an initial broad triage net. However, this produces 58,885 false positive flags among the background events. Correlating these events into incidents significantly dampens this effect by clustering background noise away from high-confidence attack narratives.
 
 ---
 

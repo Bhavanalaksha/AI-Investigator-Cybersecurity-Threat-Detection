@@ -1,0 +1,7 @@
+{
+  "Actual_Benign_Predicted_Benign_TN": 211,
+  "Actual_Benign_Predicted_Attack_FP": 14,
+  "Actual_Attack_Predicted_Benign_FN": 32,
+  "Actual_Attack_Predicted_Attack_TP": 32,
+  "Total_Samples": 289
+}

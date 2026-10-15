@@ -80,58 +80,7 @@ Total Windows                      243                    46               289
 The decision threshold serves as an operational control to balance detection sensitivity against SOC investigation capacity:
 
 | Operating Configuration | Threshold | Precision | Recall | F1-Score | Accuracy | FPR | False Positives |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **High-Precision Alerting Mode (Current)** | **0.9300** | **69.57%** | **50.00%** | **58.18%** | **84.08%** | **6.22%** | **14 windows** |
-| **Balanced Reference Baseline (Validation)** | 0.8459 | 56.25% | 56.25% | 56.25% | 80.62% | 12.44% | 28 windows |
-
-### Trade-Off Analysis:
-Transitioning from Balanced Mode (Threshold = 0.8459) to High-Precision Mode (Threshold = 0.9300):
-- **False Positive Reduction:** False alarms dropped from 28 to 14, cutting unneeded analyst triage investigations by 50%.
-- **Precision Increase:** Alert precision increased by +13.32 percentage points (from 56.25% to 69.57%).
-- **Overall Accuracy Increase:** Accuracy increased by +3.46 percentage points (from 80.62% to 84.08%).
-- **Recall Trade-Off:** Adversary recall decreased from 56.25% to 50.00%, meaning 4 additional low-intensity attack windows were missed.
-
----
-
-## 5. Illustrative Presentation Scenario (Moderate Target Tier)
-
-*Section Note: The metrics in this section represent a separate illustrative demonstration scenario for slide presentations, executive scorecards, and interface walkthroughs. They do not represent measured evaluation results from the trained LANL model.*
-
-### Illustrative Scenario Metrics
-
-| Metric | Illustrative Value | Engineering Target | Status in Scenario |
-| :--- | :---: | :---: | :---: |
-| **Overall Accuracy** | **88.0%** | >= 90.0% | Moderate Target Tier |
-| **Alert Precision** | **86.0%** | >= 85.0% | Target Met |
-| **Adversary Recall** | **82.0%** | >= 90.0% | Moderate Target Tier |
-| **F1-Score** | **84.0%** | >= 85.0% | Moderate Target Tier |
-| **Specificity** | **89.0%** | >= 95.0% | Moderate Target Tier |
-| **False Positive Rate (FPR)** | **11.0%** | <= 5.0% | Moderate Target Tier |
-| **ROC-AUC\*** | **0.88** | >= 0.85 | Target Met |
-| **Average Precision\*** | **0.84** | >= 0.75 | Target Met |
-
-*\*ROC-AUC and Average Precision are continuous rank-based metrics.*
-
-### Mathematically Consistent Confusion Matrix Example
-
-**Sample Distribution: N = 550 Operational Windows (250 Attacks, 300 Benign)**
-
-```
-                            Predicted Benign (0)   Predicted Attack (1)    Total
-Actual Benign Telemetry (0)        267 (TN)               33 (FP)           300
-Actual Adversary Attack (1)         45 (FN)              205 (TP)           250
-Total Windows                      312                   238                550
-```
-
-### Exact Metric Derivations:
-- **Precision:** TP / (TP + FP) = 205 / (205 + 33) = 205 / 238 = **86.13% (~86.0%)**
-- **Recall:** TP / (TP + FN) = 205 / (205 + 45) = 205 / 250 = **82.00% (82.0%)**
-- **F1-Score:** 2 x (Precision x Recall) / (Precision + Recall) = **84.02% (84.0%)**
-- **Specificity:** TN / (TN + FP) = 267 / (267 + 33) = 267 / 300 = **89.00% (89.0%)**
-- **False Positive Rate (FPR):** FP / (FP + TN) = 33 / 300 = **11.00% (11.0%)**
-- **False Negative Rate (FNR):** FN / (FN + TP) = 45 / 250 = **18.00% (18.0%)**
-- **Sample Accuracy:** (TP + TN) / Total = (205 + 267) / 550 = 472 / 550 = **85.82%**
-
+| :
 ---
 
 ## 6. Comprehensive 17-Figure Presentation Visual Suite
@@ -160,10 +109,10 @@ All 17 presentation figures are rendered at 300 DPI and stored in [`presentation
    - Mathematically consistent sample distribution (N = 550 windows: 205 TP, 267 TN, 33 FP, 45 FN).
 7. **[`figures/roc_curve_mockup.png`](figures/roc_curve_mockup.png)**:
    - *Title:* **Illustrative ROC Curve**
-   - Receiver Operating Characteristic curve achieving presentation target AUC = 0.88.
+   - Receiver Operating Characteristic curve (ROC-AUC = 0.6874).
 8. **[`figures/pr_curve_mockup.png`](figures/pr_curve_mockup.png)**:
    - *Title:* **Illustrative Precision-Recall Curve**
-   - PR curve demonstrating presentation Average Precision = 0.84 with operating point (P=86%, R=82%).
+   - PR curve demonstrating Average Precision = 0.5670 with operating point (P=69.57%, R=50.00%).
 9. **[`figures/model_comparison_mockup.png`](figures/model_comparison_mockup.png)**:
    - *Title:* **Model Comparison Chart**
    - Benchmark contrasting presentation scenario against measured Random Forest, Extra Trees, and baselines.
@@ -190,7 +139,7 @@ All 17 presentation figures are rendered at 300 DPI and stored in [`presentation
     - Comprehensive layout schematic of the interactive Security Operations Center analyst interface.
 17. **[`figures/model_performance_mockup.png`](figures/model_performance_mockup.png)** *(also mirrored at `figures/target_comparison_mockup.png`)*:
     - *Title:* **Model Performance Overview**
-    - Clean single-series bar chart displaying illustrative presentation metrics: Accuracy (88.0%), Precision (86.0%), Recall (82.0%), F1-score (84.0%), Specificity (89.0%), ROC-AUC (88.0%), and AP (84.0%).
+    - Clean single-series bar chart displaying verified evaluation metrics: Accuracy (84.08%), Precision (69.57%), Recall (50.00%), F1-score (58.18%), Specificity (93.78%), ROC-AUC (0.6874), and AP (0.5670).
 
 *Additional Presentation Assets:*
 - **[`figures/performance_cards_mockup.png`](figures/performance_cards_mockup.png)**: Executive presentation scorecard cards.

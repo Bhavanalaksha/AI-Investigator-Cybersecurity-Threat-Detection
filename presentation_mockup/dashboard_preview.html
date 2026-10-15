@@ -336,7 +336,7 @@
     <div class="dashboard-header">
         <div class="header-title">
             <h1>AI Investigator - Security Operations Center</h1>
-            <span class="status-badge">Multi-Source Prototype</span>
+            <span class="status-badge">Verified Evaluation Benchmark</span>
         </div>
         <div class="header-meta">
             <div>Deployment Target: Multi-Source Enterprise Telemetry</div>
@@ -344,46 +344,46 @@
         </div>
     </div>
 
-    <!-- Key Performance Indicators (Moderate Illustrative Scenario) -->
+    <!-- Key Performance Indicators (Verified Test Results (N = 289)) -->
     <div class="kpi-grid">
         <div class="kpi-card">
             <div class="kpi-label">Overall Accuracy</div>
-            <div class="kpi-value teal">88.0%</div>
+<div class="kpi-value teal">84.1%</div>
             <div class="kpi-target">Target: >= 90.0%</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-label">Alert Precision</div>
-            <div class="kpi-value teal">86.0%</div>
+<div class="kpi-value teal">69.6%</div>
             <div class="kpi-target">Target: >= 85.0%</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-label">Adversary Recall</div>
-            <div class="kpi-value amber">82.0%</div>
+<div class="kpi-value amber">50.0%</div>
             <div class="kpi-target">Target: >= 90.0%</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-label">F1-Score</div>
-            <div class="kpi-value teal">84.0%</div>
+<div class="kpi-value teal">58.2%</div>
             <div class="kpi-target">Target: >= 85.0%</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-label">Specificity</div>
-            <div class="kpi-value amber">89.0%</div>
+<div class="kpi-value teal">93.8%</div>
             <div class="kpi-target">Target: >= 95.0%</div>
         </div>
         <div class="kpi-card">
             <div class="kpi-label">False Positive Rate</div>
-            <div class="kpi-value amber">11.0%</div>
+<div class="kpi-value teal">6.2%</div>
             <div class="kpi-target">Target: <= 5.0%</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-label">ROC-AUC*</div>
-            <div class="kpi-value blue">0.88</div>
+            <div class="kpi-label">ROC-AUC</div>
+<div class="kpi-value blue">0.6874</div>
             <div class="kpi-target">Target: >= 0.85</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-label">Average Precision*</div>
-            <div class="kpi-value purple">0.84</div>
+            <div class="kpi-label">Average Precision</div>
+<div class="kpi-value purple">0.5670</div>
             <div class="kpi-target">Target: >= 0.75</div>
         </div>
     </div>
@@ -395,7 +395,7 @@
             <div class="card">
                 <div class="card-title-row">
                     <div class="card-title">AI Investigator — Model Performance</div>
-                    <span class="card-tag">Illustrative Scenario</span>
+                    <span class="card-tag">Verified Test Benchmark</span>
                 </div>
                 <div style="height: 270px;">
                     <canvas id="targetChart"></canvas>
@@ -465,20 +465,20 @@
         <div>
             <div class="card">
                 <div class="card-title-row">
-                    <div class="card-title">Illustrative Confusion Matrix Example</div>
-                    <span class="card-tag">Sample: N = 550 Windows</span>
+                    <div class="card-title">Verified Test Confusion Matrix</div>
+                    <span class="card-tag">Test Set: N = 289 Windows</span>
                 </div>
                 <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px;">
                     Derived directly from exact integer counts:
                 </p>
                 <div class="matrix-grid">
                     <div class="matrix-cell">
-                        <div class="cell-num">267</div>
-                        <div class="cell-desc">True Negatives (TN)<br>Specificity: 89.0% (267/300)</div>
+                        <div class="cell-num">211</div>
+<div class="cell-desc">True Negatives (TN)<br>Specificity: 93.8% (211/225)</div>
                     </div>
                     <div class="matrix-cell">
-                        <div class="cell-num">33</div>
-                        <div class="cell-desc">False Positives (FP)<br>FPR: 11.0% (33/300)</div>
+                        <div class="cell-num">14</div>
+<div class="cell-desc">False Positives (FP)<br>FPR: 6.2% (14/225)</div>
                     </div>
                     <div class="matrix-cell">
                         <div class="cell-num">45</div>
@@ -486,7 +486,7 @@
                     </div>
                     <div class="matrix-cell">
                         <div class="cell-num">205</div>
-                        <div class="cell-desc">True Positives (TP)<br>Recall: 82.0% | Prec: 86.1%</div>
+                        <div class="cell-desc">True Positives (TP)<br>Recall: 50.0% | Prec: 69.6%</div>
                     </div>
                 </div>
                 <div style="margin-top: 12px; font-size: 0.74rem; color: var(--text-muted); line-height: 1.4;">
@@ -577,12 +577,12 @@
             <div class="figure-card">
                 <h4>Fig 6: Mathematically Consistent Confusion Matrix</h4>
                 <a href="figures/confusion_matrix_mockup.png" target="_blank"><img src="figures/confusion_matrix_mockup.png" alt="Confusion Matrix"></a>
-                <p>Derived rates from N = 550 windows: 205 TP, 267 TN, 33 FP, 45 FN (Precision: 86.1%, Recall: 82.0%).</p>
+                <p>Verified rates from N = 289 windows: 32 TP, 211 TN, 14 FP, 32 FN (Precision: 69.6%, Recall: 50.0%).</p>
             </div>
             <div class="figure-card">
                 <h4>Fig 7: Illustrative ROC Curve (AUC = 0.88)</h4>
                 <a href="figures/roc_curve_mockup.png" target="_blank"><img src="figures/roc_curve_mockup.png" alt="ROC Curve"></a>
-                <p>Receiver Operating Characteristic curve illustrating AUC = 0.88 with operating point at FPR = 11.0%.</p>
+                <p>Receiver Operating Characteristic curve (ROC-AUC = 0.6874) with operating point at FPR = 6.22%.</p>
             </div>
             <div class="figure-card">
                 <h4>Fig 8: Illustrative PR Curve (AP = 0.84)</h4>

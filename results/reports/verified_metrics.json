@@ -1,0 +1,40 @@
+{
+  "project_name": "AI Investigator for Cybersecurity Threat Detection and Response",
+  "evaluation_dataset": "Los Alamos National Laboratory (LANL) Multi-Source Cyber Telemetry",
+  "test_split_description": "Days 13-14 held-out evaluation window partition",
+  "total_test_windows": 289,
+  "benign_samples_count": 225,
+  "attack_samples_count": 64,
+  "attack_prevalence_pct": 22.15,
+  "frozen_decision_threshold": 0.93,
+  "operational_mode": "High-Precision Alerting Mode",
+  "confusion_matrix": {
+    "true_positives": 32,
+    "true_negatives": 211,
+    "false_positives": 14,
+    "false_negatives": 32
+  },
+  "metrics": {
+    "accuracy_pct": 84.08,
+    "precision_pct": 69.57,
+    "recall_pct": 50.0,
+    "f1_score_pct": 58.18,
+    "specificity_pct": 93.78,
+    "false_positive_rate_pct": 6.22,
+    "false_negative_rate_pct": 50.0,
+    "roc_auc": 0.6874,
+    "average_precision_pr_auc": 0.567
+  },
+  "exact_calculations": {
+    "accuracy": 84.08304498269896,
+    "precision": 69.56521739130434,
+    "recall": 50.0,
+    "f1_score": 58.18181818181818,
+    "specificity": 93.77777777777779,
+    "false_positive_rate": 6.222222222222222,
+    "roc_auc": 0.6873958333333333,
+    "average_precision": 0.566961313348248
+  },
+  "verification_status": "VERIFIED_FROM_RAW_PREDICTIONS",
+  "source_file": "results/reports/final_predictions.csv"
+}
