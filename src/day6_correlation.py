@@ -20,7 +20,7 @@ df = pd.read_csv(TRIAGED_FILE, low_memory=False)
 print(f"Total events loaded: {len(df):,}")
 
 # Prioritize candidate events: suspicious events and ground-truth redteam events
-suspicious_df = df[(df["is_suspicious"] == 1) | (df["is_redteam"] == 1)].copy()
+suspicious_df = df[df["is_suspicious"] == 1].copy()
 print(f"Candidate anchor events (suspicious / redteam): {len(suspicious_df):,}")
 
 # Sort strictly chronologically
@@ -118,7 +118,7 @@ for c in active_clusters:
     c_events = suspicious_df.iloc[c.event_indices]
     has_rt = (c_events["is_redteam"].sum() > 0)
     max_risk = c_events["risk_score"].max()
-    if has_rt or len(c.event_indices) >= 3 or max_risk >= 5:
+    if len(c.event_indices) >= 3 or max_risk >= 5:
         filtered_clusters.append((c, c_events))
 
 print(f"Meaningful incidents after noise reduction: {len(filtered_clusters):,}")

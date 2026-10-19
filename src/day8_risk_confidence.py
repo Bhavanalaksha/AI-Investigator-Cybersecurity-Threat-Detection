@@ -62,7 +62,7 @@ for _, row in incidents.iterrows():
     velocity = (ev_count / dur) * 60.0
     r_velocity = min(10.0, velocity * 1.5)
     # Ground truth / known threat bonus (up to 15)
-    r_threat = 15.0 if rt_count > 0 else (5.0 if any("REDTEAM" in r for r in inc_evs.get("triggered_rules", [])) else 0.0)
+    r_threat = 15.0 if (max_ev_risk >= 6 or any("BURST" in str(r) for r in inc_evs.get("triggered_rules", []))) else 0.0
 
     total_risk = int(np.clip(np.round(r_base + r_lateral + r_velocity + r_threat), 0, 100))
 
@@ -86,7 +86,7 @@ for _, row in incidents.iterrows():
     # Identity consistency: both user and host identified (up to 15)
     c_entities = 15.0 if (num_hosts > 0 and num_users > 0) else (8.0 if num_hosts > 0 else 0.0)
     # Ground-truth corroboration (up to 15)
-    c_groundtruth = 15.0 if rt_count > 0 else 0.0
+    c_groundtruth = 15.0 if (dur > 300 and ev_count >= 5) else (8.0 if ev_count >= 3 else 0.0)
 
     total_confidence = int(np.clip(np.round(c_sources + c_volume + c_entities + c_groundtruth), 0, 100))
 

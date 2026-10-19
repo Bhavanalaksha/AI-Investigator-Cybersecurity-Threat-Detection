@@ -178,11 +178,7 @@ for idx, row in df.iterrows():
         matched_h = src_h if src_h in attack_hosts else dst_h
         reasons.append(f"Involves known compromised host ({matched_h})")
 
-    # Explicit redteam ground-truth event bonus
-    if is_rt == 1:
-        score += 3
-        triggered.append("R_REDTEAM_GROUND_TRUTH")
-        reasons.append("Confirmed Red-Team ground truth attack event")
+    # Ground truth label is preserved for post-hoc evaluation only; no triage score influence.
 
     # R10: Multi-signal temporal co-occurrence
     if len(triggered) >= 2:

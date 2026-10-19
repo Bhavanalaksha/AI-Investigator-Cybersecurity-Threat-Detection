@@ -143,8 +143,7 @@ def run_ablation_experiments():
     runtime_d = runtime_c + (time.perf_counter() - t0)
 
     net_flagged_ids = {e["event_id"] for e in net_res["flagged_events"]}
-    rt_flagged_ids = set(rt_df["event_id"])
-    d_flagged = auth_flagged_ids | proc_flagged_ids | net_flagged_ids | rt_flagged_ids
+    d_flagged = auth_flagged_ids | proc_flagged_ids | net_flagged_ids
     y_pred_d = df["event_id"].isin(d_flagged).astype(int)
     m_d = compute_metrics(y_true, y_pred_d, len(df))
     ablation_records.append({
@@ -182,7 +181,7 @@ def run_ablation_experiments():
         } for r in rt_df.itertuples()]
     }
     t0 = time.perf_counter()
-    corr_res = corr_agent.run([auth_res, proc_res, net_res, rt_finding], context)
+    corr_res = corr_agent.run([auth_res, proc_res, net_res], context)
     runtime_e = runtime_d + (time.perf_counter() - t0)
 
     inc_events_ids = set()

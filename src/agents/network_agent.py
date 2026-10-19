@@ -171,10 +171,7 @@ class NetworkAgent(BaseAgent):
                     ev_score += 1
                     ev_evidence.append(f"Communication with previously unseen destination: {dst_h}")
 
-            # Ground truth red-team flag (backward compatibility)
-            if is_rt == 1:
-                ev_score += 3
-                ev_evidence.append("Confirmed adversary red-team ground-truth network action")
+            # Ground truth label is preserved for evaluation targets only; no score influence.
 
             # Compound multi-indicator bonus
             if len(ev_evidence) >= 2:

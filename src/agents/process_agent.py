@@ -209,10 +209,7 @@ class ProcessAgent(BaseAgent):
                         ev_score += 2
                         ev_evidence.append(f"Never-before-seen process: {proc} (zero occurrences in baseline)")
 
-            # Ground truth red-team flag (backward compatibility)
-            if is_rt == 1:
-                ev_score += 3
-                ev_evidence.append("Confirmed adversary red-team ground-truth execution event")
+            # Ground truth label is preserved for evaluation targets only; no score influence.
 
             # Compound multi-indicator bonus
             if len(ev_evidence) >= 2:

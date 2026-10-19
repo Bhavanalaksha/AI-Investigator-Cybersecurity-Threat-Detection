@@ -128,31 +128,7 @@ class OrchestratorAgent(BaseAgent):
                 "status": net_result.get("_agent_meta", {}).get("status", "SUCCESS")
             })
 
-        # Also preserve explicit ground-truth redteam events if present in subset
-        if "event_type" in df.columns:
-            rt_events = df[df["event_type"].str.lower() == "redteam"]
-            if not rt_events.empty:
-                rt_flagged = []
-                for _, row in rt_events.iterrows():
-                    rt_flagged.append({
-                        "event_id": str(row.get("event_id", "")),
-                        "timestamp": int(row.get("timestamp", 0)),
-                        "event_type": "redteam",
-                        "user": str(row.get("user", "")),
-                        "source_host": str(row.get("source_host", "")),
-                        "destination_host": str(row.get("destination_host", "")),
-                        "risk_score": 10.0,
-                        "is_redteam": 1,
-                        "evidence": ["LANL Ground-truth red-team adversary attack event"]
-                    })
-                specialist_findings["RedTeamGroundTruth"] = {
-                    "agent": "RedTeamGroundTruth",
-                    "suspicious": True,
-                    "risk_contribution": len(rt_flagged) * 10.0,
-                    "flagged_count": len(rt_flagged),
-                    "events": rt_flagged,
-                    "flagged_events": rt_flagged
-                }
+        # Note: Specialist findings come strictly from specialist agents; no synthetic ground-truth injection.
 
         # 4. Invoke CorrelationAgent
         corr_result = self.correlation_agent.run(specialist_findings, context)

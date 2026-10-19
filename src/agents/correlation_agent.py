@@ -197,7 +197,7 @@ class CorrelationAgent(BaseAgent):
             c_events = [deduped_events[i] for i in c.event_indices]
             has_rt = any(int(e.get("is_redteam", 0)) == 1 for e in c_events)
             max_risk = max((float(e.get("risk_score", 0)) for e in c_events), default=0.0)
-            if has_rt or len(c.event_indices) >= 3 or max_risk >= 5:
+            if len(c.event_indices) >= 3 or max_risk >= 5:
                 meaningful_clusters.append((c, c_events))
 
         meaningful_clusters.sort(key=lambda item: (item[0].start, -len(item[1])))

@@ -243,7 +243,7 @@ async def simulation_loop():
             if etype == "auth":
                 state.agents_status["AuthenticationAgent"] = {"state": "ANALYZING", "status_text": f"Analyzing logon: {ev.get('user', '')} -> {ev.get('destination_host', '')}", "last_update": time.time()}
                 res = AUTH_AGENT.run([ev], CONTEXT)
-                if res.get("suspicious", False) or is_rt:
+                if res.get("suspicious", False):
                     state.threats_detected += 1
                     state.agents_status["AuthenticationAgent"]["state"] = "FLAGGED"
                     state.agents_status["AuthenticationAgent"]["status_text"] = f"FLAGGED: {res.get('evidence', ['Anomalous logon'])[0]}"
@@ -255,7 +255,7 @@ async def simulation_loop():
             elif etype == "process":
                 state.agents_status["ProcessAgent"] = {"state": "ANALYZING", "status_text": f"Inspecting binary: {ev.get('process', '')} on {ev.get('source_host', '')}", "last_update": time.time()}
                 res = PROC_AGENT.run([ev], CONTEXT)
-                if res.get("suspicious", False) or is_rt:
+                if res.get("suspicious", False):
                     state.threats_detected += 1
                     state.agents_status["ProcessAgent"]["state"] = "FLAGGED"
                     state.agents_status["ProcessAgent"]["status_text"] = f"FLAGGED: {res.get('evidence', ['Rare binary invocation'])[0]}"
@@ -267,7 +267,7 @@ async def simulation_loop():
             elif etype in ["dns", "flow"]:
                 state.agents_status["NetworkAgent"] = {"state": "ANALYZING", "status_text": f"Analyzing network flow: {ev.get('source_host', '')} -> {ev.get('destination_host', '')}", "last_update": time.time()}
                 res = NET_AGENT.run([ev], CONTEXT)
-                if res.get("suspicious", False) or is_rt:
+                if res.get("suspicious", False):
                     state.threats_detected += 1
                     state.agents_status["NetworkAgent"]["state"] = "FLAGGED"
                     state.agents_status["NetworkAgent"]["status_text"] = f"FLAGGED: {res.get('evidence', ['Network anomaly'])[0]}"
@@ -276,12 +276,11 @@ async def simulation_loop():
                     state.agents_status["NetworkAgent"]["state"] = "COMPLETED"
                     state.agents_status["NetworkAgent"]["status_text"] = "Typical administrative network traffic"
 
-            elif is_rt:
-                state.threats_detected += 1
+            # Red-team ground truth is not evaluated as a real-time detection trigger.
 
             # Trigger Correlation & Analysis when suspicious burst or periodically every 15 events
             new_incident_formed = None
-            if len(batch_accum) >= 15 or is_rt:
+            if len(batch_accum) >= 15:
                 state.agents_status["CorrelationAgent"] = {"state": "ANALYZING", "status_text": f"Correlating batch of {len(batch_accum)} events across entities", "last_update": time.time()}
                 
                 # Run actual pipeline correlation on recent accumulated window
