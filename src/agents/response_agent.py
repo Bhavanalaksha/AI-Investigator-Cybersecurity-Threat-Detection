@@ -24,13 +24,12 @@ class ResponseAgent(BaseAgent):
         severity = analysis.get("severity", "Medium")
         risk_score = analysis.get("risk_score", 0.0)
         confidence_score = analysis.get("confidence_score", 0.0)
-        rt_count = analysis.get("redteam_event_count", 0)
         users = analysis.get("users", [])
         hosts = analysis.get("hosts", [])
         sources = analysis.get("sources", [])
 
         # Priority mapping
-        if rt_count > 0 or risk_score >= 80:
+        if risk_score >= 80:
             priority = "P1 - Critical / Urgent"
         elif risk_score >= 60:
             priority = "P2 - High Priority"
@@ -53,7 +52,7 @@ class ResponseAgent(BaseAgent):
             investigation_steps.append("Review network flow egress logs and DNS sinkhole captures for command-and-control beacons.")
 
         # Containment recommendations (strictly requiring human analyst approval)
-        if rt_count > 0 or risk_score >= 75:
+        if risk_score >= 75:
             recommended_action = "Immediate Analyst Escalation & Endpoint Isolation Staging"
             containment_steps.append(f"Stage immediate network segment isolation for compromised hosts: {', '.join(hosts[:3])} (pending analyst sign-off).")
             containment_steps.append(f"Prepare administrative credential suspension for compromised accounts: {', '.join(users[:3])}.")

@@ -1,0 +1,6 @@
+System,Operating Mode / Threshold,TP,FP,FN,TN,Precision (%),Recall (%),F1 (%),Specificity (%),FPR (%),Accuracy (%),Alert_Windows_Count,ROC_AUC,PR_AUC
+Rule-Based SIEM Baseline,Triage Engine (Score >= 3),64,162,0,63,28.32,100.0,44.14,28.0,72.0,43.94,226,,
+Isolated Graph-Only Baseline,"Events >= 3, Hosts >= 2 (600s)",64,225,0,0,22.15,100.0,36.26,0.0,100.0,22.15,289,,
+Random Forest ML Baseline,Balanced Mode (0.8459),36,28,28,197,56.25,56.25,56.25,87.56,12.44,80.62,64,0.683,0.5314
+Random Forest ML Baseline,SOC Alert Mode (0.9300),30,14,34,211,68.18,46.88,55.56,93.78,6.22,83.39,44,0.683,0.5314
+AI Investigator Multi-Agent,Autonomous Correlated Incidents,64,168,0,57,27.59,100.0,43.24,25.33,74.67,41.87,232,,

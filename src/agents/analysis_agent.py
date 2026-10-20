@@ -36,7 +36,6 @@ class AnalysisAgent(BaseAgent):
         num_events = len(events)
         duration = max(1, incident.get("duration_sec", 1))
         num_hosts = len(incident.get("hosts", []))
-        has_ground_truth = incident.get("redteam_event_count", 0) > 0
         agents_involved = incident.get("agents_involved", [])
         num_agents = len(agents_involved)
 
@@ -51,12 +50,9 @@ class AnalysisAgent(BaseAgent):
         velocity = (num_events / duration) * 90.0
         r_velocity = min(10.0, velocity)
 
-        # Phase 2: Threat bonus — multi-agent corroboration OR ground truth
-        # If 3+ specialist agents independently flagged events, treat as high-threat
-        if has_ground_truth:
-            r_threat = 15.0  # Backward compatible: LANL ground truth
-        elif num_agents >= 3:
-            r_threat = 15.0  # Phase 2: Strong multi-agent corroboration
+        # Threat bonus based strictly on multi-agent corroboration (zero ground-truth leakage)
+        if num_agents >= 3:
+            r_threat = 15.0  # Strong multi-agent corroboration
         elif num_agents >= 2:
             r_threat = 10.0  # Moderate corroboration
         else:
@@ -78,7 +74,6 @@ class AnalysisAgent(BaseAgent):
         num_events = len(events)
         users = incident.get("users", [])
         hosts = incident.get("hosts", [])
-        has_ground_truth = incident.get("redteam_event_count", 0) > 0
 
         # Corroborating sources / agents (up to 50)
         source_count = max(len(sources), len(agents_involved))
@@ -90,18 +85,13 @@ class AnalysisAgent(BaseAgent):
         # Entity completeness: presence of both hosts and users (15 vs 8)
         c_entities = 15.0 if (len(users) > 0 and len(hosts) > 0) else 8.0
 
-        # Phase 2: Corroboration score — replaces ground-truth dependency
-        if has_ground_truth:
-            c_corroboration = 15.0  # Backward compatible
+        # Corroboration score based strictly on event-level evidence density
+        if events:
+            avg_risk = sum(float(e.get("risk_score", 0)) for e in events) / num_events
+            # Normalize: avg_risk of 8+ maps to full 15 points
+            c_corroboration = min(15.0, (avg_risk / 8.0) * 15.0)
         else:
-            # Calculate from event-level evidence density
-            # Average risk score across events as a proxy for anomaly severity
-            if events:
-                avg_risk = sum(float(e.get("risk_score", 0)) for e in events) / num_events
-                # Normalize: avg_risk of 8+ maps to full 15 points
-                c_corroboration = min(15.0, (avg_risk / 8.0) * 15.0)
-            else:
-                c_corroboration = 0.0
+            c_corroboration = 0.0
 
         return min(100.0, round(c_sources + c_volume + c_entities + c_corroboration, 1))
 
@@ -149,9 +139,8 @@ class AnalysisAgent(BaseAgent):
             uncertainties.append("DNS query observed without corresponding network flow volume confirmation.")
         if not users or all(u.endswith("$") for u in users):
             uncertainties.append("Activity dominated by machine/system accounts; human intentionality remains unverified.")
-        # Phase 2: Note absence of ground truth
-        if rt_count == 0:
-            uncertainties.append("No ground-truth labels available; classification is based on behavioral anomaly detection only.")
+        # Transparent behavioral classification notice
+        uncertainties.append("Classification is based on behavioral anomaly detection and multi-source corroboration.")
 
         # Construct explainable plain-English narrative
         user_str = ", ".join(users[:3]) + (f" (+{len(users)-3} more)" if len(users) > 3 else "") if users else "unspecified users"

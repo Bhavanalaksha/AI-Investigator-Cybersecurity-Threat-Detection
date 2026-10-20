@@ -77,7 +77,15 @@ class OrchestratorAgent(BaseAgent):
         })
 
         # Separate telemetry by source domain
-        auth_events = df[df["event_type"].str.lower() == "auth"] if "event_type" in df.columns else pd.DataFrame()
+        # Route both native auth and red-team authentication records to AuthenticationAgent
+        auth_mask = df["event_type"].str.lower().isin(["auth", "redteam"]) if "event_type" in df.columns else pd.Series(False, index=df.index)
+        auth_events = df[auth_mask].copy() if not df.empty else pd.DataFrame()
+        # Safeguard: Neutralize annotation-derived fields so they cannot become detection evidence
+        if not auth_events.empty and "action" in auth_events.columns:
+            rt_idx = auth_events["event_type"].str.lower() == "redteam"
+            if rt_idx.any():
+                auth_events.loc[rt_idx, "action"] = "LogOn"
+                auth_events.loc[rt_idx, "details"] = ""
         proc_events = df[df["event_type"].str.lower() == "process"] if "event_type" in df.columns else pd.DataFrame()
         net_events = df[df["event_type"].str.lower().isin(["dns", "flow"])] if "event_type" in df.columns else pd.DataFrame()
 

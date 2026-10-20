@@ -1,0 +1,44 @@
+{
+  "dataset_name": "multisource_stratified_120h.csv",
+  "csv_sha256": "82faebf1f713b7156725a313ae803318688bf37e63e136cd09bfa46ba81c5ec0",
+  "manifest_sha256": "4ad7277a99e7f550373413eb32f285832939b84c8777931968b975fc3aa57bd1",
+  "execution_interval": "[691200, 1123200)",
+  "duration_hours": 120,
+  "total_sampled_events": 120000,
+  "modality_breakdown": {
+    "auth": 60000,
+    "proc": 24000,
+    "flow": 24000,
+    "dns": 12000
+  },
+  "peak_memory_mb": 90.8,
+  "total_runtime_sec": 6126.28,
+  "total_runtime_min": 102.1,
+  "performance_by_modality": {
+    "dns": {
+      "elapsed_sec": 14.97,
+      "scanned_lines": 812571,
+      "in_window_lines": 336004,
+      "throughput_lines_sec": 54287.2
+    },
+    "proc": {
+      "elapsed_sec": 1523.45,
+      "scanned_lines": 82949921,
+      "in_window_lines": 32130842,
+      "throughput_lines_sec": 54448.8
+    },
+    "flow": {
+      "elapsed_sec": 2161.55,
+      "scanned_lines": 106878030,
+      "in_window_lines": 36193717,
+      "throughput_lines_sec": 49445.0
+    },
+    "auth": {
+      "elapsed_sec": 2426.14,
+      "scanned_lines": 218732862,
+      "in_window_lines": 85570496,
+      "throughput_lines_sec": 90156.8
+    }
+  },
+  "random_seed": 42
+}

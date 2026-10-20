@@ -1,0 +1,81 @@
+{
+  "train_metrics": {
+    "roc_auc": 1.0,
+    "pr_auc": 1.0,
+    "train_windows": 216,
+    "attack_windows": 60,
+    "prevalence": 0.2778
+  },
+  "validation_metrics": {
+    "roc_auc": 0.3938,
+    "pr_auc": 0.0454,
+    "val_windows": 936,
+    "attack_windows": 50,
+    "prevalence": 0.0534
+  },
+  "operating_points": {
+    "default": {
+      "threshold": 0.5,
+      "precision": 0.04,
+      "recall": 0.24,
+      "f1": 0.0686,
+      "tp": 12,
+      "fp": 288,
+      "tn": 598,
+      "fn": 38
+    },
+    "optimal_f1": {
+      "threshold": 0.0409,
+      "precision": 0.0534,
+      "recall": 1.0,
+      "f1": 0.1014,
+      "tp": 50,
+      "fp": 886,
+      "tn": 0,
+      "fn": 0
+    },
+    "high_precision": {
+      "threshold": 0.8,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 2,
+      "tn": 884,
+      "fn": 50
+    },
+    "high_recall": {
+      "threshold": 0.0409,
+      "precision": 0.0534,
+      "recall": 1.0,
+      "f1": 0.1014,
+      "tp": 50,
+      "fp": 886,
+      "tn": 0,
+      "fn": 0
+    }
+  },
+  "top_5_features": [
+    {
+      "feature": "auth_off_hours",
+      "importance": 0.21403553254361216
+    },
+    {
+      "feature": "auth_flow_interaction",
+      "importance": 0.06202598879930166
+    },
+    {
+      "feature": "delta_procs",
+      "importance": 0.060235474644162554
+    },
+    {
+      "feature": "total_events",
+      "importance": 0.057326559423023817
+    },
+    {
+      "feature": "user_to_host_ratio",
+      "importance": 0.049418675705711713
+    }
+  ],
+  "held_out_test_status": "UNTOUCHED_AND_EVALUATION_WITHHELD_PENDING_GATE_5"
+}

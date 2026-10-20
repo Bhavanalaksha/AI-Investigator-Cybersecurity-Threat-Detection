@@ -1,0 +1,5 @@
+Tolerance (s),Total Attacks,Captured Attacks,Missed Attacks,Attack Recall (%),Total Incidents,TP Incidents,FP Incidents,Incident Precision (%)
+0,497,123,374,24.75,440,22,418,5.0
+60,497,153,344,30.78,440,23,417,5.23
+300,497,231,266,46.48,440,25,415,5.68
+600,497,296,201,59.56,440,25,415,5.68

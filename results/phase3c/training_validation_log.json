@@ -1,0 +1,106 @@
+{
+  "validation_experiments": [
+    {
+      "Model": "RF (Balanced, Depth=8)",
+      "Parameters": {
+        "n_estimators": 100,
+        "max_depth": 8,
+        "class_weight": "balanced",
+        "random_state": 42
+      },
+      "Val_ROC_AUC": 0.5508,
+      "Val_PR_AUC": 0.1086,
+      "Val_Best_F1 (%)": 18.75,
+      "Val_Best_Precision (%)": 15.38,
+      "Val_Best_Recall (%)": 24.0,
+      "Optimal_F1_Threshold": 0.3508
+    },
+    {
+      "Model": "RF (Balanced, Depth=12)",
+      "Parameters": {
+        "n_estimators": 200,
+        "max_depth": 12,
+        "class_weight": "balanced",
+        "min_samples_split": 5,
+        "random_state": 42
+      },
+      "Val_ROC_AUC": 0.5064,
+      "Val_PR_AUC": 0.0803,
+      "Val_Best_F1 (%)": 15.31,
+      "Val_Best_Precision (%)": 10.27,
+      "Val_Best_Recall (%)": 30.0,
+      "Optimal_F1_Threshold": 0.3662
+    },
+    {
+      "Model": "RF (Cost-Weight 1:10)",
+      "Parameters": {
+        "n_estimators": 150,
+        "max_depth": 10,
+        "class_weight": {
+          "0": 1,
+          "1": 10
+        },
+        "min_samples_leaf": 2,
+        "random_state": 42
+      },
+      "Val_ROC_AUC": 0.6199,
+      "Val_PR_AUC": 0.1136,
+      "Val_Best_F1 (%)": 19.05,
+      "Val_Best_Precision (%)": 46.15,
+      "Val_Best_Recall (%)": 12.0,
+      "Optimal_F1_Threshold": 0.4866
+    },
+    {
+      "Model": "RF (Cost-Weight 1:5)",
+      "Parameters": {
+        "n_estimators": 100,
+        "max_depth": 8,
+        "class_weight": {
+          "0": 1,
+          "1": 5
+        },
+        "random_state": 42
+      },
+      "Val_ROC_AUC": 0.579,
+      "Val_PR_AUC": 0.1051,
+      "Val_Best_F1 (%)": 17.39,
+      "Val_Best_Precision (%)": 31.58,
+      "Val_Best_Recall (%)": 12.0,
+      "Optimal_F1_Threshold": 0.4487
+    },
+    {
+      "Model": "RF (Unweighted, Depth=8)",
+      "Parameters": {
+        "n_estimators": 100,
+        "max_depth": 8,
+        "class_weight": null,
+        "random_state": 42
+      },
+      "Val_ROC_AUC": 0.5729,
+      "Val_PR_AUC": 0.1074,
+      "Val_Best_F1 (%)": 18.52,
+      "Val_Best_Precision (%)": 13.39,
+      "Val_Best_Recall (%)": 30.0,
+      "Optimal_F1_Threshold": 0.2542
+    }
+  ],
+  "selected_model": {
+    "Model": "RF (Cost-Weight 1:10)",
+    "Parameters": {
+      "n_estimators": 150,
+      "max_depth": 10,
+      "class_weight": {
+        "0": 1,
+        "1": 10
+      },
+      "min_samples_leaf": 2,
+      "random_state": 42
+    },
+    "Val_ROC_AUC": 0.6199,
+    "Val_PR_AUC": 0.1136,
+    "Val_Best_F1 (%)": 19.05,
+    "Val_Best_Precision (%)": 46.15,
+    "Val_Best_Recall (%)": 12.0,
+    "Optimal_F1_Threshold": 0.4866
+  }
+}

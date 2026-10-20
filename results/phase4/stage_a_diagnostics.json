@@ -1,0 +1,23 @@
+{
+  "check_1_hashes": {
+    "csv_sha256": "82faebf1f713b7156725a313ae803318688bf37e63e136cd09bfa46ba81c5ec0",
+    "manifest_sha256": "4ad7277a99e7f550373413eb32f285832939b84c8777931968b975fc3aa57bd1",
+    "verified": true
+  },
+  "check_2_dataset_integrity": {
+    "row_count": 120000,
+    "timestamp_min": 691201,
+    "timestamp_max": 1123194,
+    "unique_lineage_count": 120000,
+    "manifest_strata_count": 480,
+    "manifest_underflow_count": 0
+  },
+  "check_4_redteam_mapping": {
+    "total_lanl_redteam": 749,
+    "window_redteam_count": 497,
+    "train_redteam_count": 117,
+    "val_redteam_count": 171,
+    "test_redteam_count": 209
+  },
+  "stage_a_verdict": "PASSED"
+}

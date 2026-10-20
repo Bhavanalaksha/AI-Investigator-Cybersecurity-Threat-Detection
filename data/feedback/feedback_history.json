@@ -62,5 +62,23 @@
     "processes": [],
     "notes": "Analyst decision recorded via dashboard.",
     "timestamp": 1790750468.6401985
+  },
+  {
+    "incident_id": "INC-0001",
+    "verdict": "CONFIRMED_SUSPICIOUS",
+    "action": "ADDED_TO_WATCHLIST",
+    "users": [
+      "sarah"
+    ],
+    "hosts": [
+      "DC01",
+      "FILE_SVR",
+      "LAPTOP02"
+    ],
+    "processes": [
+      "chrome.exe"
+    ],
+    "notes": "Analyst decision via Unified UI",
+    "timestamp": 1792047946.263457
   }
 ]

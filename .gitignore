@@ -39,3 +39,6 @@ data/subset/
 *.gz
 *.tar.gz
 *.zip
+
+# Quarantined archives and temporary backups
+archive_quarantine_20261020/

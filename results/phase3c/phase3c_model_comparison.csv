@@ -1,0 +1,8 @@
+System,Model Training / Calibration,Training Purity,Threshold,TP,FP,FN,TN,Precision (%),Recall (%),F1 (%),Specificity (%),FPR (%),Accuracy (%),Alert_Windows,ROC_AUC,PR_AUC
+Rule-Based SIEM Baseline,Rule Heuristics (Score >= 3),Native Rules Only,Score >= 3,64,162,0,63,28.32,100.0,44.14,28.0,72.0,43.94,226,,
+Isolated Graph-Only Baseline,Structural Graph Topology (600s),Native Telemetry Only,"Events >= 3, Hosts >= 2",64,225,0,0,22.15,100.0,36.26,0.0,100.0,22.15,289,,
+Historical Random Forest (SOC Mode),Trained with 273 Synthetic Train Rows,Contaminated Training / Clean Test,0.9300,30,14,34,211,68.18,46.88,55.56,93.78,6.22,83.39,44,0.683,0.5311
+Historical Random Forest (Balanced Mode),Trained with 273 Synthetic Train Rows,Contaminated Training / Clean Test,0.8459,36,28,28,197,56.25,56.25,56.25,87.56,12.44,80.62,64,0.683,0.5311
+Clean Retrained RF (Selected Best),100% Clean Native Training & Validation,100% Clean (Zero Synthetic Rows),0.4866,34,23,30,202,59.65,53.12,56.2,89.78,10.22,81.66,57,0.658,0.5556
+Clean Retrained RF (Balanced Architecture),100% Clean Native Training & Validation,100% Clean (Zero Synthetic Rows),0.3508,24,15,40,210,61.54,37.5,46.6,93.33,6.67,80.97,39,0.6274,0.4381
+AI Investigator Multi-Agent,Specialists + Correlation Graph,Native Telemetry Only,Active Incident Overlap,64,168,0,57,27.59,100.0,43.24,25.33,74.67,41.87,232,,

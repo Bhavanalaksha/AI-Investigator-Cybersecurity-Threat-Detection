@@ -1,0 +1,32 @@
+{
+  "Rule_Based_SIEM": {
+    "TP": 64,
+    "FP": 162,
+    "FN": 0,
+    "TN": 63
+  },
+  "Isolated_Graph_Only": {
+    "TP": 64,
+    "FP": 225,
+    "FN": 0,
+    "TN": 0
+  },
+  "Random_Forest_SOC_093": {
+    "TP": 30,
+    "FP": 14,
+    "FN": 34,
+    "TN": 211
+  },
+  "Random_Forest_Balanced_08459": {
+    "TP": 36,
+    "FP": 28,
+    "FN": 28,
+    "TN": 197
+  },
+  "Multi_Agent_Clean": {
+    "TP": 64,
+    "FP": 168,
+    "FN": 0,
+    "TN": 57
+  }
+}

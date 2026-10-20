@@ -1,0 +1,8 @@
+agent_name,call_count,total_execution_time_sec,average_time_per_call_sec,error_count
+AuthenticationAgent,1,2.9347,2.934737,0
+ProcessAgent,1,1.1062,1.10625,0
+NetworkAgent,1,1.1882,1.188201,0
+CorrelationAgent,1,33.9137,33.913659,0
+AnalysisAgent,1,0.0817,0.081672,0
+ResponseAgent,1,0.0058,0.005788,0
+OrchestratorAgent,1,39.3776,39.377619,0

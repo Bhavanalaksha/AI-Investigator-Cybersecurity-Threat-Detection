@@ -1,0 +1,14 @@
+{
+  "model_type": "RandomForestClassifier",
+  "n_estimators": 100,
+  "max_depth": 8,
+  "class_weight": "balanced",
+  "random_state": 42,
+  "features_count": 23,
+  "train_windows": 216,
+  "val_windows": 936,
+  "test_windows": 288,
+  "train_interval": "[691200, 756000)",
+  "val_interval": "[756000, 1036800)",
+  "test_interval": "[1036800, 1123200)"
+}

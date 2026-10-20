@@ -7,11 +7,14 @@
   "hosts": [
     "BACKUP01",
     "DC01",
+    "FILE_SVR",
     "FINANCE_SVR",
     "LAPTOP02",
     "MAIL01",
     "UNKNOWN_PC",
     "WS099"
   ],
-  "processes": []
+  "processes": [
+    "chrome.exe"
+  ]
 }
